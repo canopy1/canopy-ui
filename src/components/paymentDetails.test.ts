@@ -1,4 +1,4 @@
-import PaymentDetails from "./paymentDetails";
+import PaymentDetails from "@uiComponent/paymentDetails";
 
 describe("components/paymentDetails", () => {
   // beforeEach(() => {});
@@ -10,8 +10,3 @@ describe("components/paymentDetails", () => {
     expect(details.add(2, 2)).toBe(4);
   });
 });
-
-// export {
-//   // Use an empty export to please Babel's single file emit.
-//   // https://github.com/Microsoft/TypeScript/issues/15230
-// }

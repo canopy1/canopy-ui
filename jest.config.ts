@@ -198,6 +198,7 @@ export default {
   modulePaths: ["<rootDir>/src"],
 
   moduleNameMapper: {
-    "^@app/(.*)$": "<rootDir>/src/$1",
+    "^@ui/(.*)$": "<rootDir>/src/$1",
+    "^@uiComponent/(.*)$": "<rootDir>/src/components/$1"
   },
 };
