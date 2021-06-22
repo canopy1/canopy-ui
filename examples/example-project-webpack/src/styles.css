@@ -1,0 +1,12 @@
+/* import the global stylesheets */
+
+/*
+ * TOODO: might be useful to compile all css into  importable stylesheets for
+ * or at least some global styles if necessary.
+@import '@canopyinc/styles/global-styles.css'; ??
+*/
+
+body {
+  background: white;
+  color: red;
+}

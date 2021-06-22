@@ -1,4 +1,9 @@
 # Ignore artifacts:
+__snapshots__
+node_modules
 .build
 .coverage
 *.css
+
+# dont format plop templates
+new-package/**/*.*.hbs

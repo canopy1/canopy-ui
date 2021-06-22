@@ -1,0 +1,50 @@
+{
+  "name": "@canopyinc/ui-button",
+  "version": "0.0.1",
+  "description": "",
+  "author": "Canopy Technology Corp.",
+  "license": "UNLICENSED",
+  "main": ".build/main/index.js",
+  "typings": ".build/main/index.d.ts",
+  "module": ".build/module/index.js",
+  "types": ".build/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/canopy1/canopyUI.git",
+    "directory": "packages/ui-button"
+  },
+  "bugs": {
+    "url": "https://github.com/canopy1/canopyUI/issues"
+  },
+  "homepage": "https://github.com/canopy1/canopyUI/tree/master/packages/ui-button",
+  "keywords": [
+    "web components",
+    "lit.dev",
+    "lit"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from mono-repo root.\" && exit 1"
+  },
+  "dependencies": {
+    "@canopyinc/ui-core": "^0.1.0"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./src/*": "./src/*.js",
+    "./custom-elements.json": "./custom-elements.json",
+    "./package.json": "./package.json",
+    "./ui-button": "./ui-button.js",
+    "./ui-button.js": "./ui-button.js"
+  },
+  "files": [
+    "custom-elements.json",
+    ".build/main",
+    ".build/module",
+    "!**/*.test.*",
+    "!**/*.json",
+    "README.md"
+  ]
+}

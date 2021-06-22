@@ -1,0 +1,11 @@
+import { html, TemplateResult } from "@canopyinc/ui-core";
+import "../{{> tagName }}.js";
+
+export default {
+  title: "{{displayName name}}",
+  component: "{{> tagName}}",
+};
+
+export const Default = (): TemplateResult => {
+  return html`<{{> tagName}}></{{> tagName}}>`;
+};

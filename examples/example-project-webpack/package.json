@@ -1,0 +1,32 @@
+{
+  "name": "@canopyinc/example-project-webpack",
+  "private": true,
+  "version": "0.1.0",
+  "description": "An example project using CanopyUI web components",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "serve": "webpack-dev-server"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "@canopyinc/ui-core": "^0.0.1",
+    "@canopyinc/ui-button": "^0.0.1"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.7",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "http-server": "^0.12.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.5.0",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.27.0",
+    "webpack-bundle-analyzer": "^4.3.0",
+    "webpack-cli": "^4.3.1"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "@canopyinc/ui-core",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/canopy1/canopyUI.git",
+    "directory": "packages/ui-core"
+  },
+  "bugs": {
+    "url": "https://github.com/canopy1/canopyUI/issues"
+  },
+  "homepage": "https://learn.canopyservicing.com",
+  "keywords": [],
+  "version": "0.1.0",
+  "description": "",
+  "main": ".build/main/index.js",
+  "typings": ".build/main/index.d.ts",
+  "files": [
+    "custom-elements.json",
+    "*.d.ts",
+    "*.js",
+    "*.js.map",
+    ".build/main",
+    ".build/module",
+    "!**/*.test.*",
+    "!**/*.json",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "lit": "^2.0.0-rc.2"
+  }
+}

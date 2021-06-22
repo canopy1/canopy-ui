@@ -1,0 +1,15 @@
+{
+  "name": "canopy-ui-templates",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Templates for generating a CanopyUI package.",
+  "main": "index.js",
+  "scripts": {
+    "plop": "plop"
+  },
+  "author": "Canopy, Inc",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "plop": "^2.6.0"
+  }
+}

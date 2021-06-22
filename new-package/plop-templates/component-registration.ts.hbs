@@ -1,0 +1,10 @@
+import { {{ className name }} } from './src/{{ className name }}.js';
+
+customElements.define('{{> tagName }}', {{ className name }});
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "{{> tagName }}": {{ className name }};
+  }
+
+}
