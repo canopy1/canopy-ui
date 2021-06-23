@@ -1,12 +1,12 @@
-import PaymentDetails from "@uiComponent/paymentDetails";
+import { PaymentDetails } from "@uiComponent/paymentDetails";
 
 describe("components/paymentDetails", () => {
   // beforeEach(() => {});
 
   // afterEach(() => {});
 
-  it("two plus two is four", () => {
+  it("should contain name", () => {
     const details = new PaymentDetails();
-    expect(details.add(2, 2)).toBe(4);
+    expect(details.name).toBe("Dave Arel");
   });
 });
