@@ -55,7 +55,7 @@
       }
     ]
   },
-  "include": ["src/**/*.ts", "src/components/paymentDetails.tsx"],
-  "exclude": ["node_modules/**"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules/**", "src/stories/**"],
   "compileOnSave": false
 }
