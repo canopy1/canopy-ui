@@ -5,7 +5,6 @@
     "rootDir": "src",
     "moduleResolution": "node",
     "module": "commonjs",
-    "emitDeclarationOnly": true,
     "forceConsistentCasingInFileNames": true,
     "inlineSourceMap": true,
 
