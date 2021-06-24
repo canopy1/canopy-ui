@@ -1,6 +1,6 @@
 {
-  "name": "canopy-ui",
-  "version": "0.1.0",
+  "name": "@canopyinc/canopy-ui",
+  "version": "0.1.1",
   "description": "A UI web-components library for building on the Canopy API",
   "main": ".build/main/index.js",
   "typings": ".build/main/index.d.ts",

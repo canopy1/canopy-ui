@@ -6,14 +6,7 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "forceConsistentCasingInFileNames": true,
-    "inlineSourceMap": true,
-
-    // Allows `import component from '@uiComponent/compName'`
-    // instead of a relative path `../../../components/compName`
-    "paths": {
-      "@ui/*": ["./src/*"],
-      "@uiComponent/*": ["./src/components/*"]
-    },
+    "inlineSourceMap": false,
 
     // Ensure that .d.ts files are created by tsc, but not .js files
     "declaration": true,
@@ -55,6 +48,6 @@
     ]
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules/**", "src/stories/**", "src/**/*.stories.ts"],
+  "exclude": ["node_modules/**", "src/stories/**", "src/**/*.stories.ts", "src/**/*.test.ts"],
   "compileOnSave": false
 }

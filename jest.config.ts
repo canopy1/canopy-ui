@@ -195,10 +195,5 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
 
-  modulePaths: ["<rootDir>/src"],
-
-  moduleNameMapper: {
-    "^@ui/(.*)$": "<rootDir>/src/$1",
-    "^@uiComponent/(.*)$": "<rootDir>/src/components/$1"
-  },
+  modulePaths: ["<rootDir>/src"]
 };

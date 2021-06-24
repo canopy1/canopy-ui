@@ -1,4 +1,4 @@
-import { PaymentDetails } from "@uiComponent/paymentDetails";
+import { PaymentDetails } from "./paymentDetails";
 
 describe("components/paymentDetails", () => {
   // beforeEach(() => {});

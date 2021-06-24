@@ -1,1 +1,1 @@
-export * from "@uiComponent/paymentDetails";
+export * from "./components/paymentDetails";
