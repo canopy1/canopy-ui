@@ -18,33 +18,55 @@ export class PaymentDetails extends LitElement {
     }
   `;
 
-  /**
-   * The name to say "Hello" to.
-   */
-  @property()
-  public name = "Dave Arel";
+  @property({ attribute: 'amount', type: Number })
+  public amount = 0;
 
-  /**
-   * The number of times the button has been clicked.
-   */
-  @property({ type: Number })
-  public count = 0;
+  @property({ attribute: 'credit-limit', type: Number })
+  public creditLimit = 0;
+
+  @property({ attribute: 'available-credit', type: Number })
+  public availableCredit = 0;
+
+  @property({ attribute: 'pending-charges', type: Number })
+  public pendingCharges = 0;
+
+  @property({ attribute: 'promo-exp', type: String })
+  public promoExp = '';
 
   render(): TemplateResult<1> {
     return html`
-      <h1>Hello, ${this.name}!</h1>
-      <button @click=${this._onClick} part="button">Click Count: ${this.count}</button>
-      <slot></slot>
+      <div>
+        <div>
+          <div>
+            <span>Current Balance</span>
+            <span>${centsToDollars(this.amount)}</span>
+          </div>
+          <div>
+            <span>Credit Limit</span>
+            <span>${centsToDollars(this.creditLimit)}</span>
+          </div>
+        </div>
+        <div>
+          <div>
+            <span>Available Credit</span>
+            <span>${centsToDollars(this.availableCredit)}</span>
+          </div>
+          <div>
+            <span>Pending Charges</span>
+            <span>${centsToDollars(this.pendingCharges)}</span>
+          </div>
+          <div>
+            <span>Promo Period Expiration</span>
+            <span>${this.promoExp}</span>
+          </div>
+        </div>
+      </div>
     `;
   }
+}
 
-  private _onClick() {
-    this.count++;
-  }
-
-  foo(): string {
-    return "foo";
-  }
+function centsToDollars(amount: number) {
+  return `$${parseFloat(String(amount / 100)).toFixed(2)}`;
 }
 
 declare global {

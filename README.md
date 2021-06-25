@@ -1,5 +1,8 @@
 # CanopyUI
 
+CanopyUI is a library of WebComponents you can use regardless of your tech stack. See the usage
+guide below.
+
 ![CanopyUI](https://user-images.githubusercontent.com/1096881/110418148-98923f80-805c-11eb-9c70-0654ed0eae00.png)
 
 ## Setup
@@ -14,19 +17,41 @@ yarn build
 # run tests
 yarn test
 
-# todo:
-# run a dev server
-# yarn dev
+# run storybook server
+yarn storybook
 ```
 
-The `dev` script will watch for changes, then recompile, and run tests anytime a file is changed.
+Storybook will reload any changes you make.
+
+## Usage
+
+```
+# install
+yarn add `@canopyinc/canopy-ui`
+
+# import then bundle with your other JS
+import "@canopyinc/canopy-ui"
+```
+
+Then once the JS is loaded you can start writing HTML with CanopyUI's web components.
+
+```
+<payment-details 
+    amount="349392"
+    credit-limit="800000"
+    available-credit="450608"
+    pending-charges="0"
+    promo-exp="10/15/2021"
+>
+</payment-details>
+```
 
 ## Component Support
 
 As of 0.1.0:
 
+- [x] Payment Details
 - [ ] Account Overview
-- [ ] Payment Details
 - [ ] Product Details
 - [ ] Transaction History
 - [ ] Payment History
