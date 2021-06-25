@@ -36,14 +36,31 @@ import "@canopyinc/canopy-ui"
 Then once the JS is loaded you can start writing HTML with CanopyUI's web components.
 
 ```
-<payment-details 
+<cnpy-payment-details 
     amount="349392"
     credit-limit="800000"
     available-credit="450608"
     pending-charges="0"
     promo-exp="10/15/2021"
 >
-</payment-details>
+</cnpy-payment-details>
+```
+
+The following is similar but more flexible because you can add/remove <cnpy-stat> components and
+control their order.
+
+```
+<cnpy-payment-details>
+    <div slot="top">
+        <cnpy-stat label="Amount" value="349392" currency=true></cnpy-stat>
+        <cnpy-stat label="Available Credit" value="450608" currency=true></cnpy-stat>
+    </div>
+    <div slot="bottom">
+        <cnpy-stat-sm label="Credit Limit" value="800000" currency=true></cnpy-stat>
+        <cnpy-stat-sm label="Pending Charges" value="0" currency=true></cnpy-stat>
+        <cnpy-stat-sm label="Promo Period Expiration" value="10/15/2021"></cnpy-stat>
+    </div>
+</cnpy-payment-details>
 ```
 
 ## Component Support

@@ -1,13 +1,50 @@
 import { html, css, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-/**
- * An example element.
- *
- * @slot - This element has a slot
- * @csspart button - The button
- */
-@customElement("payment-details")
+@customElement('cnpy-stat')
+export class Stat extends LitElement {
+  @property({ attribute: 'label', type: String })
+  public label = '';
+
+  @property({ attribute: 'value', type: String })
+  public value = '';
+
+  @property({ attribute: 'currency', type: Boolean })
+  public currency = false;
+
+  render(): TemplateResult<1> {
+    return html`
+      <div>
+        <span>${this.label}</span>
+        <span>${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
+      </div>
+    `
+  }
+}
+
+// Could consolidate with {Stat} but may be premature
+@customElement('cnpy-stat-sm')
+export class StatSm extends LitElement {
+  @property({ attribute: 'label', type: String })
+  public label = '';
+
+  @property({ attribute: 'value', type: String })
+  public value = '';
+
+  @property({ attribute: 'currency', type: Boolean })
+  public currency = false;
+
+  render(): TemplateResult<1> {
+    return html`
+      <div>
+        <span>${this.label}</span>
+        <span>${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
+      </div>
+    `
+  }
+}
+
+@customElement("cnpy-payment-details")
 export class PaymentDetails extends LitElement {
   static styles = css`
     :host {
@@ -34,32 +71,28 @@ export class PaymentDetails extends LitElement {
   public promoExp = '';
 
   render(): TemplateResult<1> {
-    return html`
+
+    // Appears if no element with attr slot "top" given.
+    const defaultTop = html`
       <div>
-        <div>
-          <div>
-            <span>Current Balance</span>
-            <span>${centsToDollars(this.amount)}</span>
-          </div>
-          <div>
-            <span>Credit Limit</span>
-            <span>${centsToDollars(this.creditLimit)}</span>
-          </div>
-        </div>
-        <div>
-          <div>
-            <span>Available Credit</span>
-            <span>${centsToDollars(this.availableCredit)}</span>
-          </div>
-          <div>
-            <span>Pending Charges</span>
-            <span>${centsToDollars(this.pendingCharges)}</span>
-          </div>
-          <div>
-            <span>Promo Period Expiration</span>
-            <span>${this.promoExp}</span>
-          </div>
-        </div>
+        <cnpy-stat label="Amount" value="${this.amount}" currency=true></cnpy-stat>
+        <cnpy-stat label="Credit Limit" value="${this.creditLimit}" currency=true></cnpy-stat>
+      </div>
+    `;
+
+    // Appears if no element with attr slot "bottom" given.
+    const defaultBottom = html`
+      <div>
+        <cnpy-stat-sm label="Available Credit" value="${this.availableCredit}" currency=true></cnpy-stat-sm>
+        <cnpy-stat-sm label="Pending Charges" value="${this.pendingCharges}" currency=true></cnpy-stat-sm>
+        <cnpy-stat-sm label="Promo Period Expiration" value="${this.promoExp}"></cnpy-stat-sm>
+      </div>
+    `
+
+    return html`
+      <div class="cnpy-ui">
+        <slot name="top">${defaultTop}</slot>
+        <slot name="bottom">${defaultBottom}</slot>
       </div>
     `;
   }
@@ -71,6 +104,8 @@ function centsToDollars(amount: number) {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "payment-details": PaymentDetails;
+    "cnpy-payment-details": PaymentDetails;
+    "cnpy-stat": Stat,
+    "cnpy-stat-sm": StatSm
   }
 }
