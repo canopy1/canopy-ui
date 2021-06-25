@@ -90,7 +90,7 @@ export class PaymentDetails extends LitElement {
     return html`
       ${paymentDetailsCSS}
 
-      <div class="cnpy-ui">
+      <div>
         <slot name="top">${defaultTop}</slot>
         <slot name="bottom">${defaultBottom}</slot>
       </div>
