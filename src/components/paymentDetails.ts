@@ -1,5 +1,6 @@
-import { html, css, LitElement, TemplateResult } from "lit";
+import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { paymentDetailsCSS } from "./paymentDetails.css";
 @customElement('cnpy-stat')
 export class Stat extends LitElement {
   @property({ attribute: 'label', type: String })
@@ -52,83 +53,7 @@ export class StatSm extends LitElement {
 @customElement("cnpy-payment-details")
 export class PaymentDetails extends LitElement {
   // :host is style applied to shadow root
-  static styles = css`
-    :host {
-      display: block;
-      border: solid 1px #333;
-      border-radius: 16px;
-      background-color: #fff;
-      padding: 32px;
-      max-width: 800px;
-    }
-
-    hr {
-      margin: 2rem 0;
-    }
-
-    /*
-      I'm sure there's a better way to do this but for now..
-      Developers pass --cnpy-primary-color to cnpy-payment-details { ... } selector.
-      Then here we pass --canopy-stat-val-color to cnpy-stat { ... } with the base CSS variable.
-    */
-    cnpy-stat {
-      --canopy-stat-val-color: var(--cnpy-primary-color);
-    }
-
-    slot[name="top"] {
-      display: flex;
-      flex-flow: row wrap;
-    }
-
-    slot[name="top"] > * {
-      margin-right: 2rem;
-    }
-
-    slot[name="top"] > *:last-child {
-      margin-right: 0;
-    }
-
-    slot[name="bottom"] {
-      display: flex;
-      flex-flow: row wrap;
-    }
-
-    slot[name="bottom"] > * {
-      margin-right: 2rem;
-    }
-
-    slot[name="bottom"] > *:last-child {
-      margin-right: 0;
-    }
-
-    cnpy-stat {
-      display: flex;
-      flex-flow: column nowrap;
-    }
-
-    cnpy-stat span[part="label"] {
-      margin-bottom: 1rem;
-    }
-
-    cnpy-stat span[part="value"] {
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--canopy-stat-val-color);
-    }
-
-    cnpy-stat-sm {
-      display: flex;
-      flex-flow: column nowrap;
-    }
-
-    cnpy-stat-sm span[part="label"] {
-      margin-bottom: 1rem;
-    }
-
-    cnpy-stat-sm span[part="value"] {
-      font-weight: 500;
-    }
-  `;
+  static styles = paymentDetailsCSS;
 
   @property({ attribute: 'amount', type: Number })
   public amount = 0;
