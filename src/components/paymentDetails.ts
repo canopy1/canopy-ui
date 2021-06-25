@@ -2,23 +2,6 @@ import { html, css, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 @customElement('cnpy-stat')
 export class Stat extends LitElement {
-  static styles = css`
-    :host {
-      display: flex;
-      flex-flow: column nowrap;
-    }
-
-    span[part="label"] {
-      margin-bottom: 1rem;
-    }
-
-    span[part="value"] {
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--canopy-stat-val-color);
-    }
-  `;
-
   @property({ attribute: 'label', type: String })
   public label = '';
 
@@ -27,6 +10,11 @@ export class Stat extends LitElement {
 
   @property({ attribute: 'currency', type: Boolean })
   public currency = false;
+
+  // avoid rendering shadow root
+  createRenderRoot(): StatSm {
+    return this;
+  }
 
   render(): TemplateResult<1> {
     return html`
@@ -39,21 +27,6 @@ export class Stat extends LitElement {
 // Could consolidate with {Stat} but may be premature
 @customElement('cnpy-stat-sm')
 export class StatSm extends LitElement {
-  static styles = css`
-    :host {
-      display: flex;
-      flex-flow: column nowrap;
-    }
-
-    span[part="label"] {
-      margin-bottom: 1rem;
-    }
-
-    span[part="value"] {
-      font-weight: 500;
-    }
-  `;
-
   @property({ attribute: 'label', type: String })
   public label = '';
 
@@ -62,6 +35,11 @@ export class StatSm extends LitElement {
 
   @property({ attribute: 'currency', type: Boolean })
   public currency = false;
+
+  // avoid rendering shadow root
+  createRenderRoot(): StatSm {
+    return this;
+  }
 
   render(): TemplateResult<1> {
     return html`
@@ -121,6 +99,34 @@ export class PaymentDetails extends LitElement {
 
     slot[name="bottom"] > *:last-child {
       margin-right: 0;
+    }
+
+    cnpy-stat {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+
+    cnpy-stat span[part="label"] {
+      margin-bottom: 1rem;
+    }
+
+    cnpy-stat span[part="value"] {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--canopy-stat-val-color);
+    }
+
+    cnpy-stat-sm {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+
+    cnpy-stat-sm span[part="label"] {
+      margin-bottom: 1rem;
+    }
+
+    cnpy-stat-sm span[part="value"] {
+      font-weight: 500;
     }
   `;
 
