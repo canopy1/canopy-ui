@@ -22,14 +22,10 @@ export const Default = () => html`
 // Similar to default but more flexible
 export const WithSlottedStats = () => html`
   <cnpy-payment-details>
-    <div slot="top">
-      <cnpy-stat label="Amount" value="349392" currency=true></cnpy-stat>
-      <cnpy-stat label="Available Credit" value="450608" currency=true></cnpy-stat>
-    </div>
-    <div slot="bottom">
-      <cnpy-stat-sm label="Credit Limit" value="800000" currency=true></cnpy-stat-sm>
-      <cnpy-stat-sm label="Pending Charges" value="0" currency=true></cnpy-stat-sm>
-      <cnpy-stat-sm label="Promo Period Expiration" value="10/15/2021"></cnpy-stat-sm>
-    </div>
+    <cnpy-stat slot="top" label="Amount" value="349392" currency=true></cnpy-stat>
+    <cnpy-stat slot="top" label="Available Credit" value="450608" currency=true></cnpy-stat>
+    <cnpy-stat-sm slot="bottom" label="Credit Limit" value="800000" currency=true></cnpy-stat-sm>
+    <cnpy-stat-sm slot="bottom" label="Pending Charges" value="0" currency=true></cnpy-stat-sm>
+    <cnpy-stat-sm slot="bottom" label="Promo Period Expiration" value="10/15/2021"></cnpy-stat-sm>
   </cnpy-payment-details>
 `;

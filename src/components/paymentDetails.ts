@@ -1,8 +1,26 @@
 import { html, css, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
+const someDarkBlue = css`#002354`; // placeholder
+
 @customElement('cnpy-stat')
 export class Stat extends LitElement {
+  static styles = css`
+    :host {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+
+    .label {
+      color: var(--cnpy-stat-color, ${someDarkBlue});
+    }
+
+    .value {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+  `;
+
   @property({ attribute: 'label', type: String })
   public label = '';
 
@@ -14,10 +32,8 @@ export class Stat extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <div>
-        <span>${this.label}</span>
-        <span>${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
-      </div>
+      <span class="label">${this.label}</span>
+      <span class="value">${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
     `
   }
 }
@@ -25,6 +41,17 @@ export class Stat extends LitElement {
 // Could consolidate with {Stat} but may be premature
 @customElement('cnpy-stat-sm')
 export class StatSm extends LitElement {
+  static styles = css`
+    :host {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+
+    .value {
+      font-weight: 500;
+    }
+  `;
+
   @property({ attribute: 'label', type: String })
   public label = '';
 
@@ -36,22 +63,49 @@ export class StatSm extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <div>
-        <span>${this.label}</span>
-        <span>${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
-      </div>
+        <span class="label">${this.label}</span>
+        <span class="value">${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
     `
   }
 }
 
 @customElement("cnpy-payment-details")
 export class PaymentDetails extends LitElement {
+  // :host is style applied to shadow root
   static styles = css`
     :host {
       display: block;
-      border: solid 1px gray;
+      border: solid 1px #fff;
+      border-radius: 16px;
+      background-color: #fff;
       padding: 16px;
       max-width: 800px;
+    }
+
+    slot[name="top"] {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    slot[name="top"] > * {
+      margin-right: 2rem;
+    }
+
+    slot[name="top"] > *:last-child {
+      margin-right: 0;
+    }
+
+    slot[name="bottom"] {
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    slot[name="bottom"] > * {
+      margin-right: 2rem;
+    }
+
+    slot[name="bottom"] > *:last-child {
+      margin-right: 0;
     }
   `;
 
@@ -74,19 +128,15 @@ export class PaymentDetails extends LitElement {
 
     // Appears if no element with attr slot "top" given.
     const defaultTop = html`
-      <div>
-        <cnpy-stat label="Amount" value="${this.amount}" currency=true></cnpy-stat>
-        <cnpy-stat label="Credit Limit" value="${this.creditLimit}" currency=true></cnpy-stat>
-      </div>
+      <cnpy-stat label="Amount" value="${this.amount}" currency=true></cnpy-stat>
+      <cnpy-stat label="Credit Limit" value="${this.creditLimit}" currency=true></cnpy-stat>
     `;
 
     // Appears if no element with attr slot "bottom" given.
     const defaultBottom = html`
-      <div>
-        <cnpy-stat-sm label="Available Credit" value="${this.availableCredit}" currency=true></cnpy-stat-sm>
-        <cnpy-stat-sm label="Pending Charges" value="${this.pendingCharges}" currency=true></cnpy-stat-sm>
-        <cnpy-stat-sm label="Promo Period Expiration" value="${this.promoExp}"></cnpy-stat-sm>
-      </div>
+      <cnpy-stat-sm label="Available Credit" value="${this.availableCredit}" currency=true></cnpy-stat-sm>
+      <cnpy-stat-sm label="Pending Charges" value="${this.pendingCharges}" currency=true></cnpy-stat-sm>
+      <cnpy-stat-sm label="Promo Period Expiration" value="${this.promoExp}"></cnpy-stat-sm>
     `
 
     return html`

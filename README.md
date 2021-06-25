@@ -21,7 +21,8 @@ yarn test
 yarn storybook
 ```
 
-Storybook will reload any changes you make.
+Storybook will reload any changes you make. You are able to change background colors in Storybook
+for better contrast.
 
 ## Usage
 
