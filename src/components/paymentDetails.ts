@@ -1,8 +1,5 @@
 import { html, css, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
-
-const someDarkBlue = css`#002354`; // placeholder
-
 @customElement('cnpy-stat')
 export class Stat extends LitElement {
   static styles = css`
@@ -11,13 +8,10 @@ export class Stat extends LitElement {
       flex-flow: column nowrap;
     }
 
-    .label {
-      color: var(--cnpy-stat-color, ${someDarkBlue});
-    }
-
-    .value {
+    span[part="value"] {
       font-size: 2rem;
       font-weight: 600;
+      color: var(--canopy-stat-val-color);
     }
   `;
 
@@ -32,8 +26,8 @@ export class Stat extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <span class="label">${this.label}</span>
-      <span class="value">${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
+      <span part="label">${this.label}</span>
+      <span part="value">${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
     `
   }
 }
@@ -47,7 +41,7 @@ export class StatSm extends LitElement {
       flex-flow: column nowrap;
     }
 
-    .value {
+    span[part="value"] {
       font-weight: 500;
     }
   `;
@@ -63,8 +57,8 @@ export class StatSm extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-        <span class="label">${this.label}</span>
-        <span class="value">${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
+        <span part="label">${this.label}</span>
+        <span part="value">${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
     `
   }
 }
@@ -80,6 +74,15 @@ export class PaymentDetails extends LitElement {
       background-color: #fff;
       padding: 16px;
       max-width: 800px;
+    }
+
+    /*
+      I'm sure there's a better way to do this but for now..
+      Developers pass --cnpy-primary-color to cnpy-payment-details { ... } selector.
+      Then here we pass --canopy-stat-val-color to cnpy-stat { ... } with the base CSS variable.
+    */
+    cnpy-stat {
+      --canopy-stat-val-color: var(--cnpy-primary-color);
     }
 
     slot[name="top"] {

@@ -36,7 +36,7 @@ import "@canopyinc/canopy-ui"
 
 Then once the JS is loaded you can start writing HTML with CanopyUI's web components.
 
-```
+```html
 <cnpy-payment-details 
     amount="349392"
     credit-limit="800000"
@@ -50,7 +50,7 @@ Then once the JS is loaded you can start writing HTML with CanopyUI's web compon
 The following is similar but more flexible because you can add/remove <cnpy-stat> components and
 control their order.
 
-```
+```html
 <cnpy-payment-details>
     <div slot="top">
         <cnpy-stat label="Amount" value="349392" currency=true></cnpy-stat>
@@ -61,6 +61,27 @@ control their order.
         <cnpy-stat-sm label="Pending Charges" value="0" currency=true></cnpy-stat>
         <cnpy-stat-sm label="Promo Period Expiration" value="10/15/2021"></cnpy-stat>
     </div>
+</cnpy-payment-details>
+```
+
+## Styling (Work In Progress)
+
+To theme CanopyUI components with a custom CSS property, pass a supported variable to the selector
+named after the target web component.
+
+```html
+<style>
+    cnpy-payment-details {
+        --cnpy-primary-color: darkblue;
+    }
+</style>
+<cnpy-payment-details 
+    amount="349392"
+    credit-limit="800000"
+    available-credit="450608"
+    pending-charges="0"
+    promo-exp="10/15/2021"
+>
 </cnpy-payment-details>
 ```
 
