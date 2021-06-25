@@ -16,7 +16,7 @@ CanopyUI consumers provide CSS variables for the given components like the follo
 
 export const paymentDetailsCSS = html`
 <style>
-    :host {
+    cnpy-payment-details {
         display: block;
         border: solid 1px #333;
         border-radius: 16px;
