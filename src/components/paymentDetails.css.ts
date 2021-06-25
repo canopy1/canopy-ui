@@ -72,6 +72,8 @@ export const paymentDetailsCSS = html`
     --cui-spacing-8:                  64px;
     --cui-spacing-9:                  72px;
   }
+</style>
+<style>
 
   cnpy-payment-details {
     background-color: var(--cui-background-color-light);
