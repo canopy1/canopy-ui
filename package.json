@@ -15,7 +15,8 @@
     "lint": "prettier --check 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "prettier --write 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublishOnly": "yarn build"
   },
   "engines": {
     "node": ">=10"
