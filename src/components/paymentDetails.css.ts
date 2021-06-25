@@ -1,4 +1,4 @@
-import { css } from "lit";
+import { html } from "lit";
 
 /**
 
@@ -14,7 +14,8 @@ CanopyUI consumers provide CSS variables for the given components like the follo
  */
 
 
-export const paymentDetailsCSS = css`
+export const paymentDetailsCSS = html`
+<style>
     :host {
         display: block;
         border: solid 1px #333;
@@ -81,4 +82,5 @@ export const paymentDetailsCSS = css`
     slot[name="bottom"] > *:last-child {
         margin-right: 0;
     }
+</style>
 `;

@@ -52,9 +52,6 @@ export class StatSm extends LitElement {
 
 @customElement("cnpy-payment-details")
 export class PaymentDetails extends LitElement {
-  // :host is style applied to shadow root
-  static styles = paymentDetailsCSS;
-
   @property({ attribute: 'amount', type: Number })
   public amount = 0;
 
@@ -69,6 +66,11 @@ export class PaymentDetails extends LitElement {
 
   @property({ attribute: 'promo-exp', type: String })
   public promoExp = '';
+
+  // avoid rendering shadow root
+  createRenderRoot(): PaymentDetails {
+    return this;
+  }
 
   render(): TemplateResult<1> {
 
@@ -86,6 +88,8 @@ export class PaymentDetails extends LitElement {
     `
 
     return html`
+      ${paymentDetailsCSS}
+
       <div class="cnpy-ui">
         <slot name="top">${defaultTop}</slot>
         <hr />
