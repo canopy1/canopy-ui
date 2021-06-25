@@ -8,6 +8,10 @@ export class Stat extends LitElement {
       flex-flow: column nowrap;
     }
 
+    span[part="label"] {
+      margin-bottom: 1rem;
+    }
+
     span[part="value"] {
       font-size: 2rem;
       font-weight: 600;
@@ -41,6 +45,10 @@ export class StatSm extends LitElement {
       flex-flow: column nowrap;
     }
 
+    span[part="label"] {
+      margin-bottom: 1rem;
+    }
+
     span[part="value"] {
       font-weight: 500;
     }
@@ -69,11 +77,15 @@ export class PaymentDetails extends LitElement {
   static styles = css`
     :host {
       display: block;
-      border: solid 1px #fff;
+      border: solid 1px #333;
       border-radius: 16px;
       background-color: #fff;
-      padding: 16px;
+      padding: 32px;
       max-width: 800px;
+    }
+
+    hr {
+      margin: 2rem 0;
     }
 
     /*
@@ -145,6 +157,7 @@ export class PaymentDetails extends LitElement {
     return html`
       <div class="cnpy-ui">
         <slot name="top">${defaultTop}</slot>
+        <hr />
         <slot name="bottom">${defaultBottom}</slot>
       </div>
     `;
