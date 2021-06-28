@@ -11,7 +11,7 @@
   "keywords": [],
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "build": "tsc --project ./tsconfig.json && tsc --project ./tsconfig.umd.json",
     "lint": "prettier --check 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "prettier --write 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 6006",
@@ -50,7 +50,7 @@
   },
   "files": [
     ".build/main",
-    ".build/module",
+    ".build/umd",
     "!**/*.test.*",
     "!**/*.json",
     "README.md"
