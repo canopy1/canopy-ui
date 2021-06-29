@@ -1,4 +1,4 @@
-import { html } from "lit";
+import { html, css } from "lit";
 
 /**
 
@@ -13,8 +13,8 @@ CanopyUI consumers provide CSS variables for the given components like the follo
 
  */
 
-
-export const paymentDetailsCSS = html`
+// TODO: Output CSS vars as separate asset
+export const CSSTemplateVars = html`
 <style>
   :root {
     /* Colors */
@@ -73,9 +73,10 @@ export const paymentDetailsCSS = html`
     --cui-spacing-9:                  72px;
   }
 </style>
-<style>
+`
 
-  cnpy-payment-details {
+export const paymentDetailsCSS = css`
+  :host {
     background-color: var(--cui-background-color-light);
     border-radius: var(--cui-border-radius);
     box-shadow: var(--cui-box-shadow-lg);
@@ -84,38 +85,6 @@ export const paymentDetailsCSS = html`
     font-family: var(--cui-font-family-base);
     font-size: var(--cui-font-size-base);
     width: 900px; /* TODO: Make Responsive */
-  }
-
-  cnpy-stat {
-    display: flex;
-    flex-flow: column nowrap;
-  }
-
-  cnpy-stat span[part="label"] {
-    font-size: var(--cui-font-size-sm);
-    margin-bottom: var(--cui-spacing-1);
-  }
-
-  cnpy-stat span[part="value"] {
-    color: var(--cui-color-primary) !important;
-    font-size: var(--cui-font-size-h4);
-    font-weight: var(--cui-font-weight-bold);
-    color: var(--cui-cnpy-primary-color);
-  }
-
-  cnpy-stat-sm {
-    display: flex;
-    flex-flow: column nowrap;
-  }
-
-  cnpy-stat-sm span[part="label"] {
-    font-size: var(--cui-font-size-xs);
-    margin-bottom: var(--cui-spacing-1);
-  }
-
-  cnpy-stat-sm span[part="value"] {
-    color: var(--cui-text-color-headers);
-    font-weight: var(--cui-font-weight-semibold);
   }
 
   slot[name="top"] {
@@ -134,5 +103,40 @@ export const paymentDetailsCSS = html`
     column-gap: var(--cui-spacing-4);
     padding: var(--cui-spacing-4) var(--cui-spacing-5);
   }
-</style>
 `;
+
+export const statCSS = css`
+  :host {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  span[part="label"] {
+    font-size: var(--cui-font-size-sm);
+    margin-bottom: var(--cui-spacing-1);
+  }
+
+  span[part="value"] {
+    color: var(--cui-color-primary) !important;
+    font-size: var(--cui-font-size-h4);
+    font-weight: var(--cui-font-weight-bold);
+    color: var(--cui-cnpy-primary-color);
+  }
+`
+
+export const statSmCSS = css`
+  :host {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  span[part="label"] {
+    font-size: var(--cui-font-size-xs);
+    margin-bottom: var(--cui-spacing-1);
+  }
+
+  span[part="value"] {
+    color: var(--cui-text-color-headers);
+    font-weight: var(--cui-font-weight-semibold);
+  }
+`

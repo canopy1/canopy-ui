@@ -1,8 +1,10 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { paymentDetailsCSS } from "./paymentDetails.css";
+import { statCSS, statSmCSS, paymentDetailsCSS } from "./paymentDetails.css";
 @customElement('cnpy-stat')
 export class Stat extends LitElement {
+  static styles = statCSS;
+
   @property({ attribute: 'label', type: String })
   public label = '';
 
@@ -11,11 +13,6 @@ export class Stat extends LitElement {
 
   @property({ attribute: 'currency', type: Boolean })
   public currency = false;
-
-  // avoid rendering shadow root
-  createRenderRoot(): StatSm {
-    return this;
-  }
 
   render(): TemplateResult<1> {
     return html`
@@ -25,33 +22,15 @@ export class Stat extends LitElement {
   }
 }
 
-// Could consolidate with {Stat} but may be premature
 @customElement('cnpy-stat-sm')
-export class StatSm extends LitElement {
-  @property({ attribute: 'label', type: String })
-  public label = '';
-
-  @property({ attribute: 'value', type: String })
-  public value = '';
-
-  @property({ attribute: 'currency', type: Boolean })
-  public currency = false;
-
-  // avoid rendering shadow root
-  createRenderRoot(): StatSm {
-    return this;
-  }
-
-  render(): TemplateResult<1> {
-    return html`
-        <span part="label">${this.label}</span>
-        <span part="value">${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
-    `
-  }
+export class StatSm extends Stat {
+  static styles = statSmCSS
 }
 
 @customElement("cnpy-payment-details")
 export class PaymentDetails extends LitElement {
+  static styles = paymentDetailsCSS
+
   @property({ attribute: 'amount', type: Number })
   public amount = 0;
 
@@ -66,11 +45,6 @@ export class PaymentDetails extends LitElement {
 
   @property({ attribute: 'promo-exp', type: String })
   public promoExp = '';
-
-  // avoid rendering shadow root
-  createRenderRoot(): PaymentDetails {
-    return this;
-  }
 
   render(): TemplateResult<1> {
 
@@ -88,8 +62,6 @@ export class PaymentDetails extends LitElement {
     `
 
     return html`
-      ${paymentDetailsCSS}
-
       <div>
         <slot name="top">${defaultTop}</slot>
         <slot name="bottom">${defaultBottom}</slot>
