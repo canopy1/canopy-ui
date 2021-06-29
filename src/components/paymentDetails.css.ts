@@ -13,7 +13,7 @@ CanopyUI consumers provide CSS variables for the given components like the follo
 
  */
 
-// TODO: Output CSS vars as separate asset
+// TODO: Build script to generate variables.css from this
 export const CSSTemplateVars = html`
 <style>
   :root {
