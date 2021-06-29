@@ -1,6 +1,6 @@
 {
   "name": "@canopyinc/canopy-ui",
-  "version": "0.1.10-draft-0",
+  "version": "0.1.10-draft-1",
   "description": "A UI web-components library for building on the Canopy API",
   "main": "index.js",
   "typings": ".build/cjs/index.d.ts",
@@ -11,7 +11,7 @@
   "keywords": [],
   "scripts": {
     "test": "jest",
-    "build": "tsc --project ./tsconfig.cjs.json && tsc --project ./tsconfig.umd.json && tsc --project ./tsconfig.esm.json",
+    "build": "tsc --project ./tsconfig.cjs.json && tsc --project ./tsconfig.umd.json && tsc --project ./tsconfig.json",
     "lint": "prettier --check 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "prettier --write 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 6006",
