@@ -2,7 +2,6 @@
 
 import { html } from "lit";
 import { CSSTemplateVars } from "../components/paymentDetails.css";
-
 import "./paymentDetails";
 
 export default {

@@ -1,17 +1,17 @@
 {
   "name": "@canopyinc/canopy-ui",
-  "version": "0.1.9",
+  "version": "0.1.10-draft-0",
   "description": "A UI web-components library for building on the Canopy API",
-  "main": ".build/main/index.js",
-  "typings": ".build/main/index.d.ts",
-  "module": ".build/module/index.js",
+  "main": "index.js",
+  "typings": ".build/cjs/index.d.ts",
+  "module": ".build/cjs/index.js",
   "repository": "https://github.com/canopy1/canopy-ui",
   "author": "CanopyServicing",
   "license": "ISC",
   "keywords": [],
   "scripts": {
     "test": "jest",
-    "build": "tsc --project ./tsconfig.json && tsc --project ./tsconfig.umd.json",
+    "build": "tsc --project ./tsconfig.cjs.json && tsc --project ./tsconfig.umd.json && tsc --project ./tsconfig.esm.json",
     "lint": "prettier --check 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "prettier --write 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -p 6006",
@@ -49,10 +49,9 @@
     "typescript": "^4.0.2"
   },
   "files": [
-    ".build/main",
-    ".build/umd",
-    "!**/*.test.*",
-    "!**/*.json",
+    ".build",
+    "variables.css",
+    "index.js",
     "README.md"
   ]
 }

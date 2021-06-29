@@ -47,15 +47,15 @@ Then once the JS is loaded you can start writing HTML with CanopyUI's web compon
 </cnpy-payment-details>
 ```
 
-## Styling (Work In Progress)
+## Styling
 
 To theme CanopyUI components with a custom CSS property, pass a supported variable to the selector
-named after the target web component.
+on the target web component. All variables are prefixed with `--cui`.
 
 ```html
 <style>
     cnpy-payment-details {
-        --cnpy-primary-color: darkblue;
+        --cui-color-primary: darkblue;
     }
 </style>
 <cnpy-payment-details 
