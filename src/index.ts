@@ -1,1 +1,1 @@
-export * from "./components/payment_details/paymentDetails";
+export * from "./components/payment_details/payment_details";

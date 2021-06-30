@@ -1,6 +1,6 @@
-import { PaymentDetails } from "./paymentDetails";
+import { PaymentDetails } from "./payment_details";
 
-describe("components/paymentDetails", () => {
+describe("components/payment_details", () => {
   // beforeEach(() => {});
 
   // afterEach(() => {});

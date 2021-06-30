@@ -37,14 +37,14 @@ import "@canopyinc/canopy-ui"
 Then once the JS is loaded you can start writing HTML with CanopyUI's web components.
 
 ```html
-<cnpy-payment-details 
+<cui-payment-details 
     amount="349392"
     credit-limit="800000"
     available-credit="450608"
     pending-charges="0"
     promo-exp="10/15/2021"
 >
-</cnpy-payment-details>
+</cui-payment-details>
 ```
 
 ## Styling
@@ -54,18 +54,18 @@ on the target web component. All variables are prefixed with `--cui`.
 
 ```html
 <style>
-    cnpy-payment-details {
+    cui-payment-details {
         --cui-color-primary: darkblue;
     }
 </style>
-<cnpy-payment-details 
+<cui-payment-details 
     amount="349392"
     credit-limit="800000"
     available-credit="450608"
     pending-charges="0"
     promo-exp="10/15/2021"
 >
-</cnpy-payment-details>
+</cui-payment-details>
 ```
 
 ## Component Support

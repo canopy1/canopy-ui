@@ -1,8 +1,9 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { centsToDollars } from "../../utils";
-import { statCSS, statSmCSS, paymentDetailsCSS } from "./paymentDetails.css";
-@customElement('cnpy-stat')
+import { statCSS, statSmCSS, paymentDetailsCSS } from "./payment_details.css";
+
+@customElement('cui-stat')
 export class Stat extends LitElement {
   static styles = statCSS;
 
@@ -23,12 +24,12 @@ export class Stat extends LitElement {
   }
 }
 
-@customElement('cnpy-stat-sm')
+@customElement('cui-stat-sm')
 export class StatSm extends Stat {
   static styles = statSmCSS
 }
 
-@customElement("cnpy-payment-details")
+@customElement("cui-payment-details")
 export class PaymentDetails extends LitElement {
   static styles = paymentDetailsCSS
 
@@ -51,15 +52,15 @@ export class PaymentDetails extends LitElement {
 
     // Appears if no element with attr slot "top" given.
     const defaultTop = html`
-      <cnpy-stat label="Amount" value="${this.amount}" currency=true></cnpy-stat>
-      <cnpy-stat label="Credit Limit" value="${this.creditLimit}" currency=true></cnpy-stat>
+      <cui-stat label="Amount" value="${this.amount}" currency=true></cui-stat>
+      <cui-stat label="Credit Limit" value="${this.creditLimit}" currency=true></cui-stat>
     `;
 
     // Appears if no element with attr slot "bottom" given.
     const defaultBottom = html`
-      <cnpy-stat-sm label="Available Credit" value="${this.availableCredit}" currency=true></cnpy-stat-sm>
-      <cnpy-stat-sm label="Pending Charges" value="${this.pendingCharges}" currency=true></cnpy-stat-sm>
-      <cnpy-stat-sm label="Promo Period Expiration" value="${this.promoExp}"></cnpy-stat-sm>
+      <cui-stat-sm label="Available Credit" value="${this.availableCredit}" currency=true></cui-stat-sm>
+      <cui-stat-sm label="Pending Charges" value="${this.pendingCharges}" currency=true></cui-stat-sm>
+      <cui-stat-sm label="Promo Period Expiration" value="${this.promoExp}"></cui-stat-sm>
     `
 
     return html`
@@ -73,8 +74,8 @@ export class PaymentDetails extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "cnpy-payment-details": PaymentDetails;
-    "cnpy-stat": Stat,
-    "cnpy-stat-sm": StatSm
+    "cui-payment-details": PaymentDetails;
+    "cui-stat": Stat,
+    "cui-stat-sm": StatSm
   }
 }
