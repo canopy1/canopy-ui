@@ -1,7 +1,5 @@
-// demo-button.stories.js
-
 import { html } from "lit";
-import { CSSTemplateVars } from "../components/paymentDetails.css";
+import { CSSTemplateVars } from "./paymentDetails.css";
 import "./paymentDetails";
 
 export default {
