@@ -1,5 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { centsToDollars } from "../../utils";
 import { statCSS, statSmCSS, paymentDetailsCSS } from "./paymentDetails.css";
 @customElement('cnpy-stat')
 export class Stat extends LitElement {
@@ -68,10 +69,6 @@ export class PaymentDetails extends LitElement {
       </div>
     `;
   }
-}
-
-function centsToDollars(amount: number) {
-  return `$${parseFloat(String(amount / 100)).toFixed(2)}`;
 }
 
 declare global {
