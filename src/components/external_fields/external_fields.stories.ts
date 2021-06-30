@@ -1,6 +1,6 @@
 import { html } from "lit";
 import "./external_fields";
-import { ExternalFieldsProp } from "./external_fields";
+import { ExternalFieldsFormatProp, ExternalFieldsProp } from "./external_fields";
 import { CSSTemplateVars } from "../payment_details/payment_details.css";
 
 const externalFields: ExternalFieldsProp = [
@@ -12,7 +12,15 @@ const externalFields: ExternalFieldsProp = [
   { key: "Loan Amount", value: 1000_00 },
 ]
 
+const format: ExternalFieldsFormatProp = {
+  "Disbursement Fee": "centsToDollars",
+  "Origination Fee": "centsToDollars",
+  "Discount Amount": "centsToDollars",
+  "Loan Amount": "centsToDollars"
+}
+
 const externalFieldsInput = JSON.stringify(externalFields);
+const formatInput = JSON.stringify(format);
 
 export default {
   title: "Components/cui-external-fields",
@@ -21,5 +29,5 @@ export default {
 export const Default = () => html`
   ${CSSTemplateVars}
 
-  <cui-external-fields fields=${externalFieldsInput}></cui-external-fields>
+  <cui-external-fields fields=${externalFieldsInput} format=${formatInput}></cui-external-fields>
 `

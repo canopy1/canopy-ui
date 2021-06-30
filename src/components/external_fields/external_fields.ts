@@ -1,5 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { centsToDollars } from "../../utils";
 import { externalFieldsCSS } from "./external_fields.css";
 
 interface ExternalField {
@@ -9,11 +10,10 @@ interface ExternalField {
 
 export type ExternalFieldsProp = Array<ExternalField>
 
-// TODO: Support formatters
-// type Formatters = "cents2dollars";
-// export interface ExternalFieldsFormatProp {
-//   [key: string]: Formatters
-// }
+type Formatters = "centsToDollars";
+export interface ExternalFieldsFormatProp {
+  [key: string]: Formatters
+}
 
 @customElement("cui-external-fields")
 export class ExternalFields extends LitElement {
@@ -22,14 +22,23 @@ export class ExternalFields extends LitElement {
   @property({ attribute: 'fields', type: Array })
   public fields: ExternalFieldsProp = []
 
-  // @property({ attribute: 'format', type: Object })
-  // public format: ExternalFieldsFormatProp = {}
+  @property({ attribute: 'format', type: Object })
+  public format: ExternalFieldsFormatProp = {}
+
+  formatVal(key: ExternalField["key"], value: ExternalField["value"]): ExternalField["value"] {
+    if (this.format[key]) {
+      if (this.format[key] === "centsToDollars" && typeof value === "number") {
+        return centsToDollars(value);
+      }
+    }
+    return value;
+  }
 
   render(): TemplateResult<1> {
 
     return html`
       <ul>
-        ${this.fields.map(f => html`<li>${f.key} : ${f.value}</li>`)}
+        ${this.fields.map(f => html`<li>${f.key} : ${this.formatVal(f.key, f.value)}</li>`)}
       </ul>
     `;
   }
