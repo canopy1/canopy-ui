@@ -1,5 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { amScheduleCSS } from "./am_schedule.css";
 import { centsToDollars } from "../../utils";
 
 // NOTE: 1ts column is unlabeled but contains status symbols
@@ -18,6 +19,8 @@ export type AmItemsProp = AmItem[];
 
 @customElement("cui-am-schedule")
 export class AmSchedule extends LitElement {
+  static styles = amScheduleCSS;
+
   @property({ attribute: 'items', type: Array })
   public items: AmItemsProp = [];
 

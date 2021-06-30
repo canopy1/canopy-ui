@@ -1,6 +1,7 @@
 import { html } from "lit";
 import "./am_schedule";
 import { AmItemsProp } from "./am_schedule";
+import { CSSTemplateVars } from "../payment_details/payment_details.css";
 
 const someAmItems: AmItemsProp = [
     {
@@ -20,5 +21,7 @@ export default {
 };
 
 export const Default = () => html`
+  ${CSSTemplateVars}
+
   <cui-am-schedule items=${amInput}></cui-am-schedule>
 `
