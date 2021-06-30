@@ -1,7 +1,7 @@
 import { html } from "lit";
 import "./external_fields";
 import { ExternalFieldsFormatProp, ExternalFieldsProp } from "./external_fields";
-import { CSSTemplateVars } from "../payment_details/payment_details.css";
+import { CSSTemplateVars } from "../../variables.css";
 
 const externalFields: ExternalFieldsProp = [
   { key: "Disbursement Fee", value: 12_00 },

@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { CSSTemplateVars } from "./payment_details.css";
+import { CSSTemplateVars } from "../../variables.css";
 import "./payment_details";
 import { PaymentDetailsProp } from "./payment_details";
 

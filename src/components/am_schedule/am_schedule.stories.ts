@@ -1,7 +1,7 @@
 import { html } from "lit";
 import "./am_schedule";
 import { AmItemsProp } from "./am_schedule";
-import { CSSTemplateVars } from "../payment_details/payment_details.css";
+import { CSSTemplateVars } from "../../variables.css";
 
 const someAmItems: AmItemsProp = [
     {
