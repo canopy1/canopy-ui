@@ -14,10 +14,12 @@ interface AmItem {
   end_balance: number
 }
 
+export type AmItemsProp = AmItem[];
+
 @customElement("cui-am-schedule")
 export class AmSchedule extends LitElement {
   @property({ attribute: 'items', type: Array })
-  public items: AmItem[] = [];
+  public items: AmItemsProp = [];
 
   renderTableBody(): TemplateResult<1> {
     return html`

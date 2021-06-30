@@ -1,7 +1,8 @@
 import { html } from "lit";
 import "./am_schedule";
+import { AmItemsProp } from "./am_schedule";
 
-const someAmItems = [
+const someAmItems: AmItemsProp = [
     {
       date: "5/19/21",
       due: 18325,
