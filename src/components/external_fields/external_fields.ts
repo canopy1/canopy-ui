@@ -38,7 +38,12 @@ export class ExternalFields extends LitElement {
 
     return html`
       <ul>
-        ${this.fields.map(f => html`<li>${f.key} : ${this.formatVal(f.key, f.value)}</li>`)}
+        ${this.fields.map(f => html`
+          <li>
+            <span part="key">${f.key}</span>
+            <span part="value">${this.formatVal(f.key, f.value)}</span>
+          </li>
+        `)}
       </ul>
     `;
   }
