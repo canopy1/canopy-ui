@@ -6,23 +6,30 @@ import { centsToDollars } from "../../utils";
 // NOTE: 1ts column is unlabeled but contains status symbols
 const headerLabels = ["", "Date", "Due", "Paid", "Interest", "Principal", "End Balance"];
 
-interface AmItem {
-  date: string;
-  due: number;
-  paid: number;
-  interest: number;
-  principal: number;
-  end_balance: number
+interface AmScheduleItem {
+  "line_item_id": number,
+  "cycle_exclusive_end": string,
+  "min_pay_due_at": string,
+  "am_min_pay_cents": number,
+  "am_cycle_payment_cents": number,
+  "am_interest_cents": number,
+  "am_deferred_cents": number,
+  "am_principal_cents": number,
+  "am_start_principal_balance_cents": number,
+  "am_end_principal_balance_cents": number,
+  "am_start_total_balance_cents": number,
+  "am_end_total_balance_cents": number,
+  "paid_on_time": boolean
 }
 
-export type AmItemsProp = AmItem[];
+export type AmScheduleItemsProp = AmScheduleItem[];
 
 @customElement("cui-am-schedule")
 export class AmSchedule extends LitElement {
   static styles = amScheduleCSS;
 
   @property({ attribute: 'items', type: Array })
-  public items: AmItemsProp = [];
+  public items: AmScheduleItemsProp = [];
 
   renderTableBody(): TemplateResult<1> {
     return html`
@@ -30,12 +37,12 @@ export class AmSchedule extends LitElement {
         ${this.items.map(i => html`
           <tr>
             <td>◯</td>
-            <td>${i.date}</td>
-            <td>${centsToDollars(i.due)}</td>
-            <td>${centsToDollars(i.paid)}</td>
-            <td>${centsToDollars(i.interest)}</td>
-            <td>${centsToDollars(i.principal)}</td>
-            <td>${centsToDollars(i.end_balance)}<td>
+            <td>${i.min_pay_due_at}</td>
+            <td>${centsToDollars(i.am_min_pay_cents)}</td>
+            <td>${centsToDollars(i.am_cycle_payment_cents)}</td>
+            <td>${centsToDollars(i.am_interest_cents)}</td>
+            <td>${centsToDollars(i.am_principal_cents)}</td>
+            <td>${centsToDollars(i.am_end_principal_balance_cents)}<td>
           </tr>
         `)}
       </tbody>
