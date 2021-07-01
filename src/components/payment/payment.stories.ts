@@ -3,24 +3,31 @@ import "./payment";
 import { CSSTemplateVars } from "../../variables.css";
 
 export default {
-  title: "Components/cui-payment",
+  title: "Components/Payment",
 };
 
-const paymentMethods = JSON.stringify([
+const paymentMethods = [
   { value: "card1", text: "Visa ending 4222", default: true },
   { value: "card2", text: "Visa ending 4221" }
-]);
-const paymentAmounts = JSON.stringify([
+];
+const paymentAmounts = [
   { value: "32349", text: "Minimum Payment Due - $323.49" },
   { value: "50000", text: "Entire Balance - $500.00", default: true}
-]);
+];
 
-export const Default = () => html`
+const Template = ({ paymentMethods, paymentAmounts }) => html`
   ${CSSTemplateVars}
 
   <cui-payment
-    payment-methods=${paymentMethods}
-    payment-amounts=${paymentAmounts}
+    payment-methods=${JSON.stringify(paymentMethods)}
+    payment-amounts=${JSON.stringify(paymentAmounts)}
   >
   </cui-payment>
 `
+
+export const Default = Template.bind({});
+
+Default.args = {
+  paymentAmounts,
+  paymentMethods
+}

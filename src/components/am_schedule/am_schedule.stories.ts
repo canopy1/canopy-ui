@@ -3,6 +3,10 @@ import "./am_schedule";
 import { AmItemsProp } from "./am_schedule";
 import { CSSTemplateVars } from "../../variables.css";
 
+export default {
+  title: "Components/AmSchedule",
+};
+
 const someAmItems: AmItemsProp = [
     {
       date: "5/19/21",
@@ -14,14 +18,18 @@ const someAmItems: AmItemsProp = [
     }
 ]
 
-const amInput = JSON.stringify(someAmItems);
-
-export default {
-  title: "Components/cui-am-schedule",
-};
-
-export const Default = () => html`
+const Template = ({ amItems }) => html`
   ${CSSTemplateVars}
-
-  <cui-am-schedule items=${amInput}></cui-am-schedule>
+  <cui-am-schedule
+    items=${JSON.stringify(amItems)}
+  >
+  </cui-am-schedule>
 `
+
+export const Default = Template.bind({});
+
+Default.args = {
+  amItems: someAmItems
+}
+
+

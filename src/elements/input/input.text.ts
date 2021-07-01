@@ -6,7 +6,7 @@ const inputTextCSS = css`
     display: flex;
   }
 
-  input.cui-input-text {
+  input {
     background-color: var(--cui-input-background-color);
     border-color: var(--cui-input-border-color);
     border-style: var(--cui-input-border-style);
@@ -22,15 +22,15 @@ const inputTextCSS = css`
     width: 100%;
   }
 
-  input.cui-input-text:active,
-  input.cui-input-text:focus,
-  input.cui-input-text:focus-visible {
+  input:active,
+  input:focus,
+  input:focus-visible {
     border-color: var(--cui-input-border-color-active);
     box-shadow: var(--cui-input-box-shadow-active);
     outline: none;
   }
 
-  input.cui-input-text::placeholder {
+  input::placeholder {
     color: var(--cui-input-placeholder-color);
   }
 `

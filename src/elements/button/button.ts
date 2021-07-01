@@ -1,12 +1,12 @@
 import { html, css, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-const buttonCSS = css`
+export const buttonCSS = css`
   :host {
     display: flex;
   }
 
-  button.cui-btn {
+  button {
     background-color: var(--cui-btn-background-color);
     border-color: var(--cui-btn-border-color);
     border-style: var(--cui-btn-border-style);
@@ -23,13 +23,13 @@ const buttonCSS = css`
     width: 100%;
   }
 
-  button.cui-btn:hover {
+  button:hover {
     background-color: var(--cui-btn-background-color-hover);
   }
 
-  button.cui-btn:active,
-  button.cui-btn:focus,
-  button.cui-btn:focus-visible {
+  button:active,
+  button:focus,
+  button:focus-visible {
     box-shadow: var(--cui-btn-box-shadow-active);
   }
 `
