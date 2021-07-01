@@ -51,9 +51,6 @@ export class Button extends LitElement {
   @property({ attribute: 'class', type: String })
   public class = '';
 
-  @property({ attribute: 'onClick', type: Function })
-  public onClick = '';
-
   @property({ attribute: 'disabled', type: String })
   public disabled = 'false';
 
@@ -64,7 +61,6 @@ export class Button extends LitElement {
     return html`
       <button
         class="cui-btn ${this.class}"
-        onClick="${this.onClick}"
         icon="${this.icon}"
         name="${this.name}"
         value="${this.value}"

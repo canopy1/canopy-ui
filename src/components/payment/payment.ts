@@ -142,17 +142,21 @@ export class Payment extends LitElement {
     const handler = idToHandler[id];
 
     return html`
-      <label for="${id}">${label}</label>
-      <select id="${id}" @input=${handler}>
-      ${prop.map(p => html`
+      <div class="field">
+        <label for="${id}">
+          ${label}<span class="required-symbol">*</span>
+        </label>
+        <select id="${id}" @input=${handler}>
+          ${prop.map(p => html`
             <option
               value=${p.value} 
               ?selected=${p.value === this._form[fieldVal]}
             >
               ${p.text}
             </option>
-            `)}
-      </select>
+          `)}
+        </select>
+      <div>
     `
   }
 
@@ -170,9 +174,15 @@ export class Payment extends LitElement {
       <form>
         ${this._renderDropdown("payment-amount", "Payment Amount", this.paymentAmounts)}
         ${this._renderDropdown("payment-method", "Pay From", this.paymentMethods)}
-        <label for="payment-date">Payment Date</label>
-        <input id="payment-date" @input=${this._handleInputPaymentDate}></input>
-        <p>Payment due by ${this.meta.due_by}</p>
+        <div class="field">
+          <label for="payment-date">
+            Payment Date<span class="required-symbol">*</span>
+          </label>
+          <input id="payment-date" @input=${this._handleInputPaymentDate}></input>
+        </div>
+        <p class="payment-due-notice">
+          Payment due by <span class="payment-due-date">${this.meta.due_by}</span>
+        </p>
       </form>
       <cui-btn @click=${() => this._transition("verify-details")}>
         Next: Verify Payment Details
@@ -213,12 +223,15 @@ export class Payment extends LitElement {
         this._successContent();
     
     return html`
-      <div class="modal">
-        <div class="title">
+      <div class="modal ${this._step}">
+        <div class="modal-title">
           <span>Make A Payment</span>
-          <button @click=${this._reset}>X</button>
+          <button class="close-icon" @click=${this._reset}>X</button>
         </div>
-        ${content}
+        <hr />
+        <div class="modal-content">
+          ${content}
+        </div>
       </div>
       <div class="modal-overlay"></div>
     `
