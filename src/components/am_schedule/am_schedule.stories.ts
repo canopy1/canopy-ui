@@ -18,7 +18,7 @@ const someAmItems: AmItemsProp = [
     }
 ]
 
-const Template = ({ amItems }) => html`
+const Story = ({ amItems }) => html`
   ${CSSTemplateVars}
   <cui-am-schedule
     items=${JSON.stringify(amItems)}
@@ -26,7 +26,7 @@ const Template = ({ amItems }) => html`
   </cui-am-schedule>
 `
 
-export const Default = Template.bind({});
+export const Default = Story.bind({});
 
 Default.args = {
   amItems: someAmItems

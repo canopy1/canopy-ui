@@ -8,12 +8,12 @@ export default {
 
 const Template: Story<Partial<PageProps>> = (args) => Page(args);
 
-export const LoggedIn = Template.bind({});
+export const LoggedIn = Story.bind({});
 LoggedIn.args = {
   ...HeaderStories.LoggedIn.args,
 };
 
-export const LoggedOut = Template.bind({});
+export const LoggedOut = Story.bind({});
 LoggedOut.args = {
   ...HeaderStories.LoggedOut.args,
 };

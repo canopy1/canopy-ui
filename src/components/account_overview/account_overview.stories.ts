@@ -15,7 +15,7 @@ const paymentDetails: AccountOverviewPropDetails = {
   promo_exp: "10/15/2021"
 }
 
-const Template = ({ details }) => html`
+const Story = ({ details }) => html`
   ${CSSTemplateVars}
   <cui-account-overview
     details=${JSON.stringify(details)}
@@ -23,7 +23,7 @@ const Template = ({ details }) => html`
   </cui-account-overview>
 `
 
-export const Default = Template.bind({});
+export const Default = Story.bind({});
 
 Default.args = {
   details: paymentDetails

@@ -15,7 +15,7 @@ const paymentAmounts = [
   { value: "50000", text: "Entire Balance - $500.00", default: true}
 ];
 
-const Template = ({ paymentMethods, paymentAmounts }) => html`
+const Story = ({ paymentMethods, paymentAmounts }) => html`
   ${CSSTemplateVars}
 
   <cui-payment
@@ -25,7 +25,7 @@ const Template = ({ paymentMethods, paymentAmounts }) => html`
   </cui-payment>
 `
 
-export const Default = Template.bind({});
+export const Default = Story.bind({});
 
 Default.args = {
   paymentAmounts,

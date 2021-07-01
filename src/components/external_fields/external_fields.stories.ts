@@ -24,14 +24,14 @@ const format: ExternalFieldsFormatProp = {
 }
 
 
-const Template = ({ fields, format}) => html`
+const Story = ({ fields, format}) => html`
   ${CSSTemplateVars}
   <cui-external-fields
     fields=${JSON.stringify(fields)}
     format=${JSON.stringify(format)}>
   </cui-external-fields>
 `
-export const Default = Template.bind({});
+export const Default = Story.bind({});
 
 Default.args = {
   fields: externalFields,
