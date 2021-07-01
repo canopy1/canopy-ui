@@ -69,7 +69,8 @@ export class Button extends LitElement {
         name="${this.name}"
         value="${this.value}"
         type="${this.type}"
-        disabled="${this.disabled}">
+        disabled="${this.disabled}"
+      >
           <slot></slot>
       </button>
     `

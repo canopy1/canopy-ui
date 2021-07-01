@@ -171,9 +171,9 @@ export class Payment extends LitElement {
         <input id="payment-date" @input=${this._handleInputPaymentDate}></input>
         <p>Payment due by ${this._dueBy}</p>
       </form>
-      <button @click=${() => this._transition("verify-details")}>
+      <cui-btn @click=${() => this._transition("verify-details")}>
         Next: Verify Payment Details
-      </button>
+      </cui-btn>
     `
   }
 
@@ -187,9 +187,9 @@ export class Payment extends LitElement {
         <dt>Payment Date</dt>
         <dd>7/5/2021</dd>
       <dl>
-      <button @click=${this._handleSubmitPayment}>
+      <cui-btn @click=${this._handleSubmitPayment}>
         Submit Payment
-      </button>
+      </cui-btn>
     `
   }
 
@@ -198,9 +198,9 @@ export class Payment extends LitElement {
       <span>✓</span>
       <p>Your payment has been submitted!</p>
       <p>Please allow 1-3 days for your payment to post to your account.</p>
-      <button @click=${this._reset}>
+      <cui-btn @click=${this._reset}>
         Close
-      </button>
+      </cui-btn>
     `
   }
 
@@ -239,7 +239,7 @@ export class Payment extends LitElement {
           <span>Min. Payment Due</span>
           <span>${centsToDollars(data1.fees_due)}</span>
         </div>
-        <button @click=${() => this._transition("form")}>Make A Payment</button>
+        <cui-btn @click=${() => this._transition("form")}>Make A Payment</cui-btn>
         ${this.renderPaymentMeta()}
         ${this._step === "initial" ? null : this._renderModal()}
       </div>
