@@ -3,21 +3,21 @@ import { customElement, state, property } from "lit/decorators.js";
 import { centsToDollars } from "../../utils";
 import { paymentCSS } from "./payment.css";
 
-export interface PaymentProp {
+export interface PaymentMetaProp {
   due_by: string;
   past_due: number;
   fees_due: number;
   [key: string]: string | number;
 }
 
-interface Option { text: string; value: string; default: boolean; }
-export type DropdownProp = Option[];
+const prettyMeta: Record<keyof PaymentMetaProp, string> = {
+  due_by: "Due By",
+  past_due: "Past Due",
+  fees_due: "Fees Due"
+};
 
-const data1: PaymentProp = {
-  due_by: "7/15/2021",
-  past_due: 0,
-  fees_due: 32349
-}
+interface Option { text: string; value: string; default?: boolean; }
+export type DropdownProp = Option[];
 
 export type PaymentEvents = PaymentStepEvents | "click-submit";
 type PaymentStepEvents = `step-${PaymentSteps}`;
@@ -29,7 +29,6 @@ export type PaymentFormState = {
   paymentDate: string
 }
 
-// TODO: OnSubmitPayment gets relevant JS
 // TODO: Use elements
 @customElement("cui-payment")
 export class Payment extends LitElement {
@@ -49,6 +48,13 @@ export class Payment extends LitElement {
     }, 0)
   }
 
+  @property({ attribute: "payment-meta", type: Object })
+  public meta: PaymentMetaProp = {
+    due_by: "-",
+    past_due: 0,
+    fees_due: 0
+  }
+
   @property({ attribute: "payment-amounts", type: Array })
   public paymentAmounts: DropdownProp = [];
 
@@ -61,9 +67,6 @@ export class Payment extends LitElement {
 
   @state()
   private _step: PaymentSteps = "initial";
-
-  @state()
-  private _dueBy = data1.due_by;
 
   @state()
   private _form: { paymentAmount: string; paymentMethod: string; paymentDate: string } = {
@@ -169,7 +172,7 @@ export class Payment extends LitElement {
         ${this._renderDropdown("payment-method", "Pay From", this.paymentMethods)}
         <label for="payment-date">Payment Date</label>
         <input id="payment-date" @input=${this._handleInputPaymentDate}></input>
-        <p>Payment due by ${this._dueBy}</p>
+        <p>Payment due by ${this.meta.due_by}</p>
       </form>
       <cui-btn @click=${() => this._transition("verify-details")}>
         Next: Verify Payment Details
@@ -180,7 +183,7 @@ export class Payment extends LitElement {
   private _verifyDetailsContent(): TemplateResult<1> {
     return html`
       <span>Payment Amount</span>
-      <span>${centsToDollars(32349)}</span>
+      <span>${centsToDollars(Number(this._form.paymentAmount))}</span>
       <dl>
         <dt>Pay From</dt>
         <dd>Visa ending 4222</dd>
@@ -224,9 +227,9 @@ export class Payment extends LitElement {
   private renderPaymentMeta(): TemplateResult<1> {
     return html`
       <dl>
-        ${Object.keys(data1).map(k => html`
-          <dt>${k}</dt>
-          <dd>${data1[k]}</dd>
+        ${Object.keys(this.meta).map(k => html`
+          <dt>${prettyMeta[k]}</dt>
+          <dd>${this.meta[k]}</dd>
         `)}
       </dl>
     `
@@ -234,10 +237,10 @@ export class Payment extends LitElement {
 
   protected render(): TemplateResult<1> {
     return html`
-      <div>
-        <div>
-          <span>Min. Payment Due</span>
-          <span>${centsToDollars(data1.fees_due)}</span>
+      <div class="container">
+        <div class="payment-due">
+          <span class="payment-due-label">Min. Payment Due</span>
+          <span class="payment-due-value">${centsToDollars(this.meta.fees_due)}</span>
         </div>
         <cui-btn @click=${() => this._transition("form")}>Make A Payment</cui-btn>
         ${this.renderPaymentMeta()}
