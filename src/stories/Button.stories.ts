@@ -11,13 +11,13 @@ export default {
 
 const Template: Story<Partial<ButtonProps>> = (args) => Button(args);
 
-export const Primary = Story.bind({});
+export const Primary = Template.bind({});
 Primary.args = {
   primary: true,
   label: 'Button',
 };
 
-export const Secondary = Story.bind({});
+export const Secondary = Template.bind({});
 Secondary.args = {
   label: 'Button',
 };

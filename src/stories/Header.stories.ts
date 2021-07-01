@@ -7,10 +7,10 @@ export default {
 
 const Template: Story<Partial<HeaderProps>> = (args) => Header(args);
 
-export const LoggedIn = Story.bind({});
+export const LoggedIn = Template.bind({});
 LoggedIn.args = {
   user: {},
 };
 
-export const LoggedOut = Story.bind({});
+export const LoggedOut = Template.bind({});
 LoggedOut.args = {};
