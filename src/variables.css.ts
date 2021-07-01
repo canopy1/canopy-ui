@@ -1,4 +1,4 @@
-import { html } from "lit";
+import { html } from "lit"
 
 // TODO: Build script to generate variables.css from this
 export const CSSTemplateVars = html`
