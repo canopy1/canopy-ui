@@ -1,4 +1,4 @@
-import { PaymentDetails } from "./payment_details";
+import { AccountOverview } from "./account_overview";
 
 describe("components/payment_details", () => {
   // beforeEach(() => {});
@@ -6,7 +6,7 @@ describe("components/payment_details", () => {
   // afterEach(() => {});
 
   it("should contain name", () => {
-    const details = new PaymentDetails();
+    const details = new AccountOverview();
     expect(details.name).toBe("Dave Arel");
   });
 });

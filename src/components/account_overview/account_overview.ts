@@ -1,7 +1,7 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { centsToDollars } from "../../utils";
-import { statCSS, statSmCSS, paymentDetailsCSS } from "./payment_details.css";
+import { statCSS, statSmCSS, paymentDetailsCSS } from "./acount_overview.css";
 
 @customElement('cui-stat')
 export class Stat extends LitElement {
@@ -29,7 +29,7 @@ export class StatSm extends Stat {
   static styles = statSmCSS
 }
 
-export interface PaymentDetailsProp {
+export interface AccountOverviewPropDetails {
   amount: number;
   credit_limit: number;
   available_credit: number;
@@ -37,12 +37,12 @@ export interface PaymentDetailsProp {
   promo_exp: string
 }
 
-@customElement("cui-payment-details")
-export class PaymentDetails extends LitElement {
+@customElement("cui-account-overview")
+export class AccountOverview extends LitElement {
   static styles = paymentDetailsCSS
 
   @property({ attribute: 'details', type: Object })
-  public details: PaymentDetailsProp = {
+  public details: AccountOverviewPropDetails = {
     amount: 0,
     credit_limit: 0,
     available_credit: 0,
@@ -76,7 +76,7 @@ export class PaymentDetails extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "cui-payment-details": PaymentDetails;
+    "cui-account-overview": AccountOverview;
     "cui-stat": Stat,
     "cui-stat-sm": StatSm
   }
