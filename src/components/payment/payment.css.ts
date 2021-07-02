@@ -79,6 +79,7 @@ export const paymentCSS = css`
     justify-content: space-between;
     align-items: center;
     padding: var(--cui-spacing-3) var(--cui-spacing-4);
+    font-weight: var(--cui-font-weight-semibold);
     color: var(--cui-color-black);
   }
 
@@ -110,5 +111,14 @@ export const paymentCSS = css`
 
   hr {
     margin: 0;
+  }
+
+  .btn-set {
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  .btn-set cui-btn {
+    flex: 1 0 auto;
   }
 `
