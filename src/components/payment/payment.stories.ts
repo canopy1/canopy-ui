@@ -72,7 +72,13 @@ export const SubmitError = () => {
   el.setAttribute('autopay-disabled-confirm-text',autopayDisabledConfirmText);
   el.setAttribute('autopay-enabled-success-text', autopayEnabledSuccessText);
   el.setAttribute('autopay-disabled-success-text', autopayDisabledSuccessText);
-  el.onSubmitPayment = form => new Promise((_, reject) => setTimeout(() => reject(form), 800))
-  el.onSubmitAutopay = form => new Promise((_, reject) => setTimeout(() => reject(form), 800))
+  el.onSubmitPayment = form => new Promise((_, reject) => setTimeout(() => {
+    alert(`[onSubmitPayment] rejected with value ${JSON.stringify(form)}`); 
+    reject(form);
+  }, 800))
+  el.onSubmitAutopay = form => new Promise((_, reject) => setTimeout(() => {
+    alert(`[onSubmitAutopay] rejected with value ${JSON.stringify(form)}`); 
+    reject(form);
+  }, 800))
   return el;
 }
