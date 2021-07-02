@@ -18,15 +18,7 @@ export const paymentCSS = css`
     margin: var(--cui-spacing-4);
   }
 
-  .payment-due-label {
-    font-weight: var(--cui-font-weight-semibold);
-    margin-bottom: var(--cui-spacing-2);
-  }
-  
-  .payment-due-value {
-    color: var(--cui-color-primary);
-    font-size: var(--cui-font-size-xl);
-    font-weight: var(--cui-font-weight-bold);
+  .payment-due cui-stat {
     margin-bottom: var(--cui-spacing-4);
   }
 
@@ -64,6 +56,28 @@ export const paymentCSS = css`
     font-weight: var(--cui-font-weight-semibold);
   }
 
+  .confirm-payment-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: var(--cui-spacing-3);
+  }
+
+  .cui-alert {
+    color: var(--cui-text-color-headers);
+    background-color: var(--cui-text-color-light);
+    border-radius: var(--cui-border-radius-sm);
+    margin-bottom: var(--cui-spacing-4);
+    padding: var(--cui-spacing-2) var(--cui-spacing-3);
+  }
+
+  .cui-alert p {
+    margin: 0 !important;
+  }
+
+  .cui-alert-danger {
+    background-color: var(--cui-color-danger-lighten);
+  }
+
   .modal {
     background-color: var(--cui-modal-background-color);
     border-radius: var(--cui-modal-border-radius);
@@ -72,8 +86,9 @@ export const paymentCSS = css`
     top: 50%;
     left: 50%;
     margin-left: -160px;
+    max-width: var(--cui-modal-max-width);
+    width: 100%;
     z-index: ${zIndex+1};
-    width: 320px;
     -webkit-animation: slide-in-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-in-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
@@ -98,6 +113,9 @@ export const paymentCSS = css`
 
   .modal-content {
     padding: var(--cui-spacing-4);
+  }
+  .modal-content.bg-faded {
+    background-color: var(--cui-background-color-faded);
   }
 
   .modal-overlay {

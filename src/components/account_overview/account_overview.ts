@@ -1,33 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
-import { centsToDollars } from "../../utils";
-import { statCSS, statSmCSS, paymentDetailsCSS } from "./acount_overview.css";
-
-@customElement('cui-stat')
-export class Stat extends LitElement {
-  static styles = statCSS;
-
-  @property({ attribute: 'label', type: String })
-  public label = '';
-
-  @property({ attribute: 'value', type: String })
-  public value = '';
-
-  @property({ attribute: 'currency', type: Boolean })
-  public currency = false;
-
-  render(): TemplateResult<1> {
-    return html`
-      <span part="label">${this.label}</span>
-      <span part="value">${this.currency ? centsToDollars(Number(this.value)) : this.value}</span>
-    `
-  }
-}
-
-@customElement('cui-stat-sm')
-export class StatSm extends Stat {
-  static styles = statSmCSS
-}
+import { paymentDetailsCSS } from "./acount_overview.css";
 
 export interface AccountOverviewPropDetails {
   amount: number;
@@ -54,15 +27,15 @@ export class AccountOverview extends LitElement {
 
     // Appears if no element with attr slot "top" given.
     const defaultTop = html`
-      <cui-stat label="Amount" value="${this.details.amount}" currency=true></cui-stat>
-      <cui-stat label="Credit Limit" value="${this.details.credit_limit}" currency=true></cui-stat>
+      <cui-stat size="large" label="Amount" value="${this.details.amount}" currency=true></cui-stat>
+      <cui-stat size="large" label="Credit Limit" value="${this.details.credit_limit}" currency=true></cui-stat>
     `;
 
     // Appears if no element with attr slot "bottom" given.
     const defaultBottom = html`
-      <cui-stat-sm label="Available Credit" value="${this.details.available_credit}" currency=true></cui-stat-sm>
-      <cui-stat-sm label="Pending Charges" value="${this.details.pending_charges}" currency=true></cui-stat-sm>
-      <cui-stat-sm label="Promo Period Expiration" value="${this.details.promo_exp}"></cui-stat-sm>
+      <cui-stat size="small" label="Available Credit" value="${this.details.available_credit}" currency=true></cui-stat>
+      <cui-stat size="small" label="Pending Charges" value="${this.details.pending_charges}" currency=true></cui-stat>
+      <cui-stat size="small" label="Promo Period Expiration" value="${this.details.promo_exp}"></cui-stat>
     `
 
     return html`
@@ -77,7 +50,5 @@ export class AccountOverview extends LitElement {
 declare global {
   interface HTMLElementTagNameMap {
     "cui-account-overview": AccountOverview;
-    "cui-stat": Stat,
-    "cui-stat-sm": StatSm
   }
 }

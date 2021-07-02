@@ -3,7 +3,8 @@ import { customElement, property } from "lit/decorators.js";
 
 export const buttonCSS = css`
   :host {
-    display: flex;
+    display: block;
+    overflow: hidden;
   }
 
   button {
@@ -15,13 +16,18 @@ export const buttonCSS = css`
     box-shadow: var(--cui-btn-box-shadow);
     color: var(--cui-btn-text-color);
     cursor: pointer;
+    display: block;
     font-size: var(--cui-btn-font-size);
     font-weight: var(--cui-font-weight-bold);
     min-height: var(--cui-btn-height);
     outline: var(--cui-btn-outline);
-    padding: var(--cui-btn-padding-vertical) var(--cui-btn-padding-horizontal);
     transition: var(--cui-btn-transition);
     width: 100%;
+  }
+
+  button span {
+    display: block;
+    padding: var(--cui-btn-padding-vertical) var(--cui-btn-padding-horizontal);
   }
 
   button:hover {
@@ -68,7 +74,7 @@ export class Button extends LitElement {
         type="${this.type}"
         disabled="${this.disabled}"
       >
-          <slot></slot>
+          <span><slot></slot></span>
       </button>
     `
   }

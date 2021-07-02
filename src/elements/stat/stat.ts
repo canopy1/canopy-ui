@@ -1,5 +1,6 @@
 import { html, css, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { centsToDollars } from "../../utils";
 
 export const statCSS = css`
   :host {
@@ -37,7 +38,7 @@ export const statCSS = css`
   }
 `
 
-@customElement('cui-stats')
+@customElement('cui-stat')
 
 export class Stat extends LitElement {
   static styles = statCSS;
@@ -48,6 +49,9 @@ export class Stat extends LitElement {
   @property({ attribute: 'value', type: String })
   public value = '$123.45';
 
+  @property({ attribute: 'currency', type: Boolean })
+  public currency = false;
+
   @property({ attribute: 'size', type: ["default", "large", "small"] })
   public size = 'default';
 
@@ -55,7 +59,7 @@ export class Stat extends LitElement {
     return html`
       <div class="${this.size === 'large' ? 'large' : null} ${this.size === 'small' ? 'small' : null}">
         <h5>${this.label}</h5>
-        <data value="${this.value}">${this.value}</data>
+        <data value="${this.value}">${this.currency ? centsToDollars(Number(this.value)) : this.value}</data>
       </div>
     `
   }
@@ -63,6 +67,6 @@ export class Stat extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "cui-stats": Stat;
+    "cui-stat": Stat;
   }
 }

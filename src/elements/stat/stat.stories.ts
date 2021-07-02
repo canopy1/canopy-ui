@@ -7,24 +7,24 @@ export default {
 
 export const Default = () => html`
   <div style="display: flex;">
-    <cui-stats
+    <cui-stat
       label="Large Stat"
       value="$987.65"
       size="large"
       style="margin: 0 32px;">
-    </cui-stats>
+    </cui-stat>
   
-    <cui-stats
+    <cui-stat
       label="Default Stat"
       value="$987.65"
       style="margin: 0 32px;">
-    </cui-stats>
+    </cui-stat>
 
-    <cui-stats
+    <cui-stat
       label="Small Stat"
       value="$987.65"
       size="small"
       style="margin: 0 32px;">
-    </cui-stats>
+    </cui-stat>
   </div>
 `
