@@ -6,7 +6,7 @@ const inputTextCSS = css`
     display: flex;
   }
 
-  input {
+  select {
     background-color: var(--cui-input-background-color);
     border-color: var(--cui-input-border-color);
     border-style: var(--cui-input-border-style);
@@ -23,22 +23,18 @@ const inputTextCSS = css`
     width: 100%;
   }
 
-  input:active,
-  input:focus,
-  input:focus-visible {
+  select:active,
+  select:focus,
+  select:focus-visible {
     border-color: var(--cui-input-border-color-active);
     box-shadow: var(--cui-input-box-shadow-active);
     outline: none;
   }
-
-  input::placeholder {
-    color: var(--cui-input-placeholder-color);
-  }
 `
 
-@customElement('cui-input-text')
+@customElement('cui-input-select')
 
-export class inputText extends LitElement {
+export class inputSelect extends LitElement {
   static styles = inputTextCSS;
 
   @property({ attribute: 'class', type: String })
@@ -53,32 +49,38 @@ export class inputText extends LitElement {
   @property({ attribute: 'id', type: String })
   public id = '';
 
-  @property({ attribute: 'placeholder', type: String })
-  public placeholder = '';
-
   @property({ attribute: 'required', type: Boolean })
   public required = null;
 
   @property({ attribute: 'disabled', type: Boolean })
   public disabled = null;
 
+  @property({ attribute: 'items', type : Array }) 
+  public items = [];
+
+  private renderItem(item: string) {
+    return html`
+      <option>${item}</option>
+    `;
+  }
+
   render(): TemplateResult<1> {
     return html`
-      <input
+      <select
         class="${this.class}"
-        type="text"
         name="${this.name}"
-        value="${this.value}"
-        placeholder="${this.placeholder}"
+        id="${this.id}"
         ${this.required && 'required'}
         ${this.disabled && 'disabled'}
-      </input>
+      >
+        ${this.items.map(item => this.renderItem(item))}
+      </select>
     `
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "cui-input-text": inputText;
+    "cui-input-select": inputSelect;
   }
 }

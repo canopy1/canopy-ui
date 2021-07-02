@@ -1,7 +1,7 @@
 import { html, css, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 
-export const listItemCSS = css`
+export const ListItemCSS = css`
   :host {
     color: var(--cui-text-color-body);
     font-family: var(--cui-font-family-base);
@@ -27,8 +27,8 @@ export const listItemCSS = css`
 
 @customElement('cui-list-item')
 
-export class listItem extends LitElement {
-  static styles = listItemCSS;
+export class ListItem extends LitElement {
+  static styles = ListItemCSS;
 
   @property({ attribute: 'label', type: String })
   public label = '';
@@ -48,6 +48,6 @@ export class listItem extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "cui-list-item": listItem;
+    "cui-list-item": ListItem;
   }
 }

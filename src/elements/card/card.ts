@@ -10,6 +10,7 @@ export const cardCSS = css`
     font-family: var(--cui-font-family-base);
     font-size: var(--cui-font-size-base);
     overflow: hidden;
+    width: 100%;
   }
 `
 

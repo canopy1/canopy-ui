@@ -3,6 +3,8 @@ import { customElement, state, property } from "lit/decorators.js";
 import { centsToDollars } from "../../utils";
 import { paymentCSS } from "./payment.css";
 
+import closeIcon from "../../icons/close-grey.svg";
+
 // Props
 export interface PaymentMetaProp {
   due_by: string;
@@ -281,12 +283,19 @@ export class Payment extends LitElement {
 
   private _paymentSuccessContent(): TemplateResult<1> {
     return html`
-      <span>✓</span>
-      <p>Your payment has been submitted!</p>
-      <p>Please allow 1-3 days for your payment to post to your account.</p>
-      <cui-btn @click=${this._reset}>
-        Close
-      </cui-btn>
+      <div class="payment-confirmation">
+        <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+          <path d="M36 4.5C18.6047 4.5 4.5 18.6047 4.5 36C4.5 53.3953 18.6047 67.5 36 67.5C53.3953 67.5 67.5 53.3953 67.5 36C67.5 18.6047 53.3953 4.5 36 4.5ZM36 62.1562C21.5578 62.1562 9.84375 50.4422 9.84375 36C9.84375 21.5578 21.5578 9.84375 36 9.84375C50.4422 9.84375 62.1562 21.5578 62.1562 36C62.1562 50.4422 50.4422 62.1562 36 62.1562Z" fill="#4867FF"/>
+          <path d="M36 9.84375C21.5578 9.84375 9.84375 21.5578 9.84375 36C9.84375 50.4422 21.5578 62.1562 36 62.1562C50.4422 62.1562 62.1562 50.4422 62.1562 36C62.1562 21.5578 50.4422 9.84375 36 9.84375ZM49.5984 25.7133L34.7906 46.2445C34.5837 46.5334 34.3108 46.7688 33.9947 46.9312C33.6786 47.0935 33.3284 47.1782 32.973 47.1782C32.6177 47.1782 32.2674 47.0935 31.9514 46.9312C31.6353 46.7688 31.3624 46.5334 31.1555 46.2445L22.3945 34.0945C22.1273 33.7219 22.3945 33.2016 22.8516 33.2016H26.1492C26.8734 33.2016 27.5484 33.5531 27.9703 34.1367L32.9766 41.0836L44.0297 25.7555C44.4516 25.1648 45.1336 24.8203 45.8508 24.8203H49.1484C49.6055 24.8203 49.8727 25.3406 49.5984 25.7133V25.7133Z" fill="#E6F7FF"/>
+          <path d="M49.1487 24.8203H45.851C45.1338 24.8203 44.4518 25.1648 44.0299 25.7555L32.9767 41.0836L27.9705 34.1367C27.5486 33.5531 26.8736 33.2016 26.1494 33.2016H22.8517C22.3947 33.2016 22.1275 33.7219 22.3947 34.0945L31.1556 46.2445C31.3626 46.5334 31.6354 46.7688 31.9515 46.9312C32.2676 47.0935 32.6179 47.1782 32.9732 47.1782C33.3286 47.1782 33.6788 47.0935 33.9949 46.9312C34.311 46.7688 34.5838 46.5334 34.7908 46.2445L49.5987 25.7133C49.8729 25.3406 49.6057 24.8203 49.1487 24.8203V24.8203Z" fill="#4867FF"/>
+        </svg>    
+        <br />
+        <p><strong>Your payment has been submitted!</strong><br />
+        Please allow 1-3 days for your payment to post to your account.</p>
+        <cui-btn @click=${this._reset}>
+          Close
+        </cui-btn>
+      </div>
     `
   }
 
@@ -340,9 +349,11 @@ export class Payment extends LitElement {
         : "Disable Autopay";
 
     return html`
-      <div class="modal-title">
-        <span>${title}</span>
-        <button class="close-icon" @click=${this._reset}>X</button>
+      <div class="modal-header">
+        <strong>${title}</strong>
+        <button class="close-icon" @click=${this._reset}>
+          <img src="${closeIcon}" alt="Close" />
+        </button>
       </div>
     `
   }
@@ -351,7 +362,6 @@ export class Payment extends LitElement {
     return html`
       <div class="modal ${this._step}">
         ${this._modalTitle}
-        <hr />
         <div class="modal-content">
           ${this._modalContent}
         </div>
@@ -362,44 +372,47 @@ export class Payment extends LitElement {
 
   private get _paymentMeta(): TemplateResult<1> {
     return html`
-      <dl>
+      <ul class="cui-payment--meta">
         ${Object.keys(this.meta).map(k => html`
-          <dt>${prettyMeta[k]}</dt>
-          <dd>${this.meta[k]}</dd>
+          <cui-list-item label="${prettyMeta[k]}" alt>
+            ${this.meta[k]}
+          </cui-list-item>
         `)}
-      </dl>
+      </ul>
     `
   }
 
   private _renderAutopayToggle(): TemplateResult<1> {
     console.log("renderAutopayToggle", this._form);
     return html`
-      <div>
-        <label for="autopay">Toggle Autopay</label>
-        <input
-          type="checkbox"
-          id="autopay"
-          name="autopay"
-          ?checked=${this._form.autopayEnabled}
-          @change=${this._handleToggleAutopay}
-        >
-        </input>
-      </div>
+      <cui-list-item label="Autopay">
+        <div class="autopay-toggle">
+          <span>${this._form.autopayEnabled ? 'On' : 'Off'}</span>
+          <input
+            type="checkbox"
+            class="toggle"
+            id="autopay"
+            name="autopay"
+            ?checked=${this._form.autopayEnabled}
+            @change=${this._handleToggleAutopay}
+          />
+        </div>
+      </cui-list-item>
     `;
   }
 
   protected render(): TemplateResult<1> {
     return html`
-      <div class="container">
+      <cui-card>
         ${this._hasAutopayError ? this._autopayErrorMessage : null}
         <div class="payment-due">
           <span class="payment-due-label">Min. Payment Due</span>
           <span class="payment-due-value">${centsToDollars(this.meta.fees_due)}</span>
+          <cui-btn @click=${() => this._transition("payment-form")}>Make A Payment</cui-btn>
         </div>
-        <cui-btn @click=${() => this._transition("payment-form")}>Make A Payment</cui-btn>
         ${this._paymentMeta}
         ${this._renderAutopayToggle()}
-      </div>
+      </cui-card>
 
       ${this._step === "initial" ? null : this._modal}
     `;

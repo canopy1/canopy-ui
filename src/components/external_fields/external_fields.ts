@@ -3,6 +3,9 @@ import { customElement, property } from "lit/decorators.js";
 import { centsToDollars } from "../../utils";
 import { externalFieldsCSS } from "./external_fields.css";
 
+import "../../elements/card/card";
+import "../../elements/list-item/list-item";
+
 interface ExternalField {
   key: string;
   value: string | number | boolean
@@ -37,7 +40,7 @@ export class ExternalFields extends LitElement {
 
   render(): TemplateResult<1> {
     return html`
-      <cui-card style="width: 100%;">
+      <cui-card>
         <ul>
           ${this.fields.map(f => html`
             <cui-list-item label="${f.key}">

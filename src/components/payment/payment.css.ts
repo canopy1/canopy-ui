@@ -8,19 +8,14 @@ export const paymentCSS = css`
     font-family: var(--cui-font-family-base);
     font-size: var(--cui-font-size-base);
     color: var(--cui-text-color-body);
-  }
-
-  .container {
-    background-color: var(--cui-background-color-light);
-    border-radius: var(--cui-border-radius);
-    padding: var(--cui-spacing-5);
-    width: 300px;
+    display: block;
+    width: 100%;
   }
 
   .payment-due {
     display: flex;
     flex-flow: column nowrap;
-    margin-bottom: var(--cui-spacing-4);
+    margin: var(--cui-spacing-4);
   }
 
   .payment-due-label {
@@ -29,9 +24,15 @@ export const paymentCSS = css`
   }
   
   .payment-due-value {
+    color: var(--cui-color-primary);
     font-size: var(--cui-font-size-xl);
     font-weight: var(--cui-font-weight-bold);
-    color: var(--cui-color-primary-darken);
+    margin-bottom: var(--cui-spacing-4);
+  }
+
+  .cui-payment--meta {
+    margin: 0;
+    padding: 0;
   }
 
   .field {
@@ -64,23 +65,35 @@ export const paymentCSS = css`
   }
 
   .modal {
+    background-color: var(--cui-modal-background-color);
+    border-radius: var(--cui-modal-border-radius);
+    box-shadow: var(--cui-modal-box-shadow);
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    margin-left: -160px;
     z-index: ${zIndex+1};
-    width: 400px;
-    background-color: var(--cui-background-color-light);
-    border-radius: var(--cui-border-radius);
+    width: 320px;
+    -webkit-animation: slide-in-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-in-bottom 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
   }
 
-  .modal-title {
-    display: flex;
-    justify-content: space-between;
+  .modal p {
+    line-height: var(--cui-line-height-base);
+    margin-bottom: var(--cui-spacing-4);
+  }
+
+  .modal-header {
     align-items: center;
-    padding: var(--cui-spacing-3) var(--cui-spacing-4);
+    border-bottom: var(--cui-modal-header-border);
+    color: var(--cui-text-color-headers);
+    display: flex;
     font-weight: var(--cui-font-weight-semibold);
-    color: var(--cui-color-black);
+    justify-content: space-between;
+    padding: var(--cui-modal-header-padding);
+  }
+  .modal-header strong {
+    font-weight: var(--cui-modal-header-font-weight);
   }
 
   .modal-content {
@@ -88,29 +101,39 @@ export const paymentCSS = css`
   }
 
   .modal-overlay {
-    z-index: ${zIndex};
+    background-color: var(--cui-modal-overlay-background);
+    height: 100%;
+    left: 0;
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background-color: #3e4e7a;
+    z-index: ${zIndex};
+    -webkit-animation: fade-in .3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+	  animation: fade-in .3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
   }
 
-  .modal.success {
+  .modal .payment-confirmation {
     text-align: center;
   }
 
   .close-icon {
+    align-items: center;
     background: none;
     border: none;
     cursor: pointer;
-    font-size: var(--cui-font-size-lg);
-    color: var(--cui-text-color-light);
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    margin-right: -12px;
+    padding: 0;
+    transition: all 0.2s linear;
+    width: 20px;
   }
-
-  hr {
-    margin: 0;
+  .close-icon img {
+    width: 14px;
+  }
+  .close-icon:hover {
+    filter: brightness(40%);
   }
 
   .btn-set {
@@ -120,5 +143,90 @@ export const paymentCSS = css`
 
   .btn-set cui-btn {
     flex: 1 0 auto;
+  }  
+
+  .autopay-toggle span {
+    font-weight: normal;
+    padding-right: 4px;
+  }
+
+  .toggle {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    height: 20px;
+    width: 32px;
+    border-radius: 16px;
+    display: inline-block;
+    position: relative;
+    margin: -4px 0;
+    border: 2px solid var(--cui-text-color-light);
+    background-color: var(--cui-background-color-light);
+    transition: all .2s ease;
+  }
+  .toggle:focus {
+    outline: 0;
+  }
+  .toggle:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--cui-text-color-light);
+    transition: all .2s cubic-bezier(.5,.1,.75,1.35);
+  }
+  .toggle:checked {
+    border-color: var(--cui-color-success);
+  }
+  .toggle:checked:after {
+    background: var(--cui-color-success);
+    transform: translateX(12px);
+  } 
+
+  @-webkit-keyframes slide-in-bottom {
+    0% {
+      -webkit-transform: translateY(0%);
+              transform: translateY(0%);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-bottom {
+    0% {
+      -webkit-transform: translateY(0%);
+              transform: translateY(0%);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%);
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `

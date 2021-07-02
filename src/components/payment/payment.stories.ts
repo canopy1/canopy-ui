@@ -19,7 +19,7 @@ const paymentMethods = [
 
 const paymentAmounts: DropdownProp = [
   { value: "32349", text: "Minimum Payment Due - $323.49" },
-  { value: "50000", text: "Entire Balance - $500.00", default: true}
+  { value: "50000", text: "Entire Balance - $500.00", default: true }
 ];
 
 const autopayEnabled = false;
@@ -46,6 +46,7 @@ const Story = ({
     autopay-disabled-confirm-text=${autopayDisabledConfirmText}
     autopay-enabled-success-text=${autopayEnabledSuccessText}
     autopay-disabled-success-text=${autopayDisabledSuccessText}
+    style="width: 280px"
   >
   </cui-payment>
 `
