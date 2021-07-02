@@ -9,10 +9,10 @@ guide below.
 
 ```
 # install
-yarn add `@canopyinc/canopy-ui`
+yarn add @canopyinc/ui
 
 # import then bundle with your other JS
-import "@canopyinc/canopy-ui"
+import "@canopyinc/ui"
 ```
 
 Then once the JS is loaded you can start writing HTML with CanopyUI's web components.
