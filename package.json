@@ -1,6 +1,6 @@
 {
   "name": "@canopyinc/ui",
-  "version": "0.1.0-dev.1",
+  "version": "0.1.0-dev.2",
   "description": "A UI web-components library for building on the Canopy API",
   "main": "index.js",
   "typings": ".build/cjs/index.d.ts",
@@ -52,7 +52,7 @@
   },
   "files": [
     ".build",
-    "variables.css",
+    "src/variables.css",
     "index.js",
     "README.md"
   ]
