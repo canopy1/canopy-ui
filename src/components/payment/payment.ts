@@ -367,7 +367,7 @@ export class Payment extends LitElement {
           ${this._modalContent}
         </div>
       </div>
-      <div class="modal-overlay"></div>
+      <div class="modal-overlay" @click=${this._reset}></div>
     `
   }
 
