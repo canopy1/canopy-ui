@@ -26,6 +26,7 @@
   --cui-font-size-sm:             .75rem;
   --cui-font-size-lg:             1.25rem;
   --cui-font-size-xl:             1.5rem;
+  --cui-font-size-h5:             var(--cui-font-size-xl);
   --cui-font-size-h4:             2rem;
   --cui-font-size-h3:             2.5rem;
   --cui-font-size-h2:             3rem;
@@ -114,8 +115,21 @@
   /* List Item */
   --cui-li-padding-horizontal:                var(--cui-spacing-4);
   --cui-li-padding-vertical:                  12px;
-  --cui-li-label-font-weight:                 var(--cui-font-weight-bold);
+  --cui-li-label-font-weight:                 var(--cui-font-weight-semibold);
   --cui-li-even-row-background-color:         var(--cui-background-color-faded);
+
+  /* Stat */
+  --cui-stat-label-text-color:                var(--cui-text-color-body);
+  --cui-stat-label-font-size:                 var(--cui-font-size-base);
+  --cui-stat-label-font-size-small:           var(--cui-font-size-sm);
+  --cui-stat-label-font-weight:               var(--cui-font-weight-semibold);
+  --cui-stat-data-text-color:                 var(--cui-color-primary);
+  --cui-stat-data-text-color-small:           var(--cui-text-color-headers);
+  --cui-stat-data-font-weight:                var(--cui-font-weight-bold);
+  --cui-stat-data-font-weight-small:          normal;
+  --cui-stat-data-font-size:                  var(--cui-font-size-h5);
+  --cui-stat-data-font-size-small:            var(--cui-font-size-base);
+  --cui-stat-data-font-size-large:            var(--cui-font-size-h4);
 
   /* Modals */
   --cui-modal-overlay-background:             rgba(27, 43, 89, 0.8);
