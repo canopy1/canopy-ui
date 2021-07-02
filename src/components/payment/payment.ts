@@ -405,10 +405,9 @@ export class Payment extends LitElement {
           <span>${this._shouldCheckAutopay() ? 'On' : 'Off'}</span>
           <input
             type="checkbox"
-            class="toggle"
+            class="toggle ${this._shouldCheckAutopay() ? 'is-on' : ""}"
             id="autopay"
             name="autopay"
-            ?checked=${this._shouldCheckAutopay()}
             @change=${this._handleToggleAutopay}
           />
         </div>
