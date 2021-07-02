@@ -64,7 +64,7 @@ export const amScheduleCSS = css`
     width: var(--cui-am-schedule-status-icon-size);
   }
 
-  .cui-am-schedule--status-icon img {
+  .cui-am-schedule--status-icon svg {
     display: none;
     width: 50%;
   }
@@ -72,7 +72,7 @@ export const amScheduleCSS = css`
   tr.cui-am-schedule--row-paid .cui-am-schedule--status-icon {
     background-color: var(--cui-am-schedule-status-color-success);
   }
-  tr.cui-am-schedule--row-paid .cui-am-schedule--status-icon img {
+  tr.cui-am-schedule--row-paid .cui-am-schedule--status-icon svg {
     display: block;
   }
 

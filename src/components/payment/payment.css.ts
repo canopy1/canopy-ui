@@ -147,7 +147,7 @@ export const paymentCSS = css`
     transition: all 0.2s linear;
     width: 20px;
   }
-  .close-icon img {
+  .close-icon svg {
     width: 14px;
   }
   .close-icon:hover {

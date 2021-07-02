@@ -1,10 +1,15 @@
-import { html, LitElement, TemplateResult } from "lit";
+import { html, LitElement, TemplateResult, svg } from "lit";
 import { customElement, state, property } from "lit/decorators.js";
 import { DateTime } from "luxon";
 import { centsToDollars } from "../../utils";
 import { paymentCSS } from "./payment.css";
 
-import closeIcon from "../../icons/close-grey.svg";
+// TODO: SVG build pipeline
+// import closeIcon from "../../icons/close-grey.svg";
+
+const closeIconSVG = svg`
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="none" d="M-5-5h24v24H-5z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#9da7c2" d="M14 1.4L12.6 0 7 5.6 1.4 0 0 1.4 5.6 7 0 12.6 1.4 14 7 8.4l5.6 5.6 1.4-1.4L8.4 7z"/></svg>
+`
 
 // Props
 export interface PaymentMetaProp {
@@ -357,7 +362,7 @@ export class Payment extends LitElement {
       <div class="modal-header">
         <strong>${title}</strong>
         <button class="close-icon" @click=${this._reset}>
-          <img src="${closeIcon}" alt="Close" />
+          ${closeIconSVG}
         </button>
       </div>
     `

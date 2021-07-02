@@ -1,10 +1,11 @@
-import { html, LitElement, TemplateResult } from "lit";
+import { html, LitElement, TemplateResult, svg } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { DateTime } from "luxon";
 import { amScheduleCSS } from "./am_schedule.css";
 import { centsToDollars } from "../../utils";
 
-import checkIcon from "../../icons/check-light.svg";
+// TODO: SVG build pipeline
+// import checkIcon from "../../icons/check-light.svg";
 
 // NOTE: First column is unlabeled but contains status symbols
 const headerLabels = ["", "Date", "Amount Due", "Paid", "Interest", "Principal", "End Balance"];
@@ -27,6 +28,10 @@ interface AmScheduleItem {
 
 export type AmScheduleItemsProp = AmScheduleItem[];
 
+const checkIconSVG = svg`
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36"><path d="M34.1 5.1h-2.8c-.4 0-.8.2-1 .5l-16.6 21-8-10.1c-.1-.2-.3-.3-.4-.4-.2-.1-.4-.1-.6-.1H1.9c-.3 0-.4.3-.3.5l11 13.9c.5.7 1.5.7 2 0L34.3 5.6c.2-.2 0-.5-.2-.5z" fill="#fff"/></svg>
+`
+
 @customElement("cui-am-schedule")
 export class AmSchedule extends LitElement {
   static styles = amScheduleCSS;
@@ -39,7 +44,11 @@ export class AmSchedule extends LitElement {
       <tbody>
         ${this.items.map(i => html`
           <tr class="${(i.am_cycle_payment_cents >= i.am_min_pay_cents) ? 'cui-am-schedule--row-paid' : ''}">
-            <td><div class="cui-am-schedule--status-icon"><img src="${checkIcon}" alt="Status" /></div></td>
+            <td>
+              <div class="cui-am-schedule--status-icon">
+                ${checkIconSVG}         
+              </div>
+            </td>
             <td>${DateTime.fromISO(i.min_pay_due_at).toFormat("M/d/yy")}</td>
             <td>${centsToDollars(i.am_min_pay_cents)}</td>
             <td class="cui-am-schedule--cell-paid">${(i.am_cycle_payment_cents > 0) ? centsToDollars(i.am_cycle_payment_cents) : '–'}</td>
