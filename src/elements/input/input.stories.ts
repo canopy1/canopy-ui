@@ -1,5 +1,4 @@
 import { html } from "lit";
-import { CSSTemplateVars } from "../../variables.css";
 import "./input.text";
 
 export default {
@@ -7,8 +6,6 @@ export default {
 };
 
 export const Text = () => html`
-  ${CSSTemplateVars}
-
   <cui-input-text
     name="cui-input-text"
     value="Hello World"

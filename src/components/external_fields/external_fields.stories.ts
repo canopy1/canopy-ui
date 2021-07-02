@@ -1,7 +1,6 @@
 import { html } from "lit";
 import "./external_fields";
 import { ExternalFieldsFormatProp, ExternalFieldsProp } from "./external_fields";
-import { CSSTemplateVars } from "../../variables.css";
 
 export default {
   title: "Components/ExternalFields",
@@ -25,7 +24,6 @@ const format: ExternalFieldsFormatProp = {
 
 
 const Story = ({ fields, format}) => html`
-  ${CSSTemplateVars}
   <cui-external-fields
     fields=${JSON.stringify(fields)}
     format=${JSON.stringify(format)}

@@ -1,7 +1,6 @@
 import { html } from "lit";
 import "./am_schedule";
 import { AmScheduleItemsProp } from "./am_schedule";
-import { CSSTemplateVars } from "../../variables.css";
 
 export default {
   title: "Components/AmSchedule",
@@ -59,7 +58,6 @@ const someAmItems: AmScheduleItemsProp = [
 ]
 
 const Story = ({ amItems }) => html`
-  ${CSSTemplateVars}
   <cui-am-schedule
     items=${JSON.stringify(amItems)}
   >

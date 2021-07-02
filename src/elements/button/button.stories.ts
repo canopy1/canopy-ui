@@ -1,5 +1,4 @@
 import { html } from "lit";
-import { CSSTemplateVars } from "../../variables.css";
 import "./button";
 
 export default {
@@ -7,8 +6,6 @@ export default {
 };
 
 export const Default = () => html`
-  ${CSSTemplateVars}
-
   <cui-btn
     icon=""
     disabled="false"
