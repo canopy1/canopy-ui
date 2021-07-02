@@ -1,5 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, state, property } from "lit/decorators.js";
+import { DateTime } from "luxon";
 import { centsToDollars } from "../../utils";
 import { paymentCSS } from "./payment.css";
 
@@ -366,16 +367,20 @@ export class Payment extends LitElement {
           ${this._modalContent}
         </div>
       </div>
-      <div class="modal-overlay"></div>
+      <div class="modal-overlay" @click=${this._reset}></div>
     `
   }
 
   private get _paymentMeta(): TemplateResult<1> {
+    const currencyFields = ["past_due", "fees_due"];
     return html`
       <ul class="cui-payment--meta">
         ${Object.keys(this.meta).map(k => html`
           <cui-list-item label="${prettyMeta[k]}" alt>
-            ${this.meta[k]}
+            ${(currencyFields.includes(k)
+                ? centsToDollars(Number(this.meta[k]))
+                : this.meta[k])
+              }
           </cui-list-item>
         `)}
       </ul>
@@ -421,15 +426,8 @@ export class Payment extends LitElement {
 
 const isDefaultOption = (a: Option) => a.default === true;
 
-// format: mm/dd/yyyy
 const getToday = () => {
-  const today = new Date();
-  // @ts-ignore
-  const dd = String(today.getDate()).padStart(2, '0');
-  // @ts-ignore
-  const mm = String(today.getMonth()+1).padStart(2, '0');
-  const yyyy = String(today.getFullYear());
-  return `${mm}/${dd}/${yyyy}`;
+  return DateTime.now().toFormat("M/d/yyyy");
 }
 
 declare global {

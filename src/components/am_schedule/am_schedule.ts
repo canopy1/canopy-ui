@@ -1,5 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
+import { DateTime } from "luxon";
 import { amScheduleCSS } from "./am_schedule.css";
 import { centsToDollars } from "../../utils";
 
@@ -39,7 +40,7 @@ export class AmSchedule extends LitElement {
         ${this.items.map(i => html`
           <tr class="${(i.am_cycle_payment_cents >= i.am_min_pay_cents) ? 'cui-am-schedule--row-paid' : ''}">
             <td><div class="cui-am-schedule--status-icon"><img src="${checkIcon}" alt="Status" /></div></td>
-            <td>${i.min_pay_due_at}</td>
+            <td>${DateTime.fromISO(i.min_pay_due_at).toFormat("M/d/yy")}</td>
             <td>${centsToDollars(i.am_min_pay_cents)}</td>
             <td class="cui-am-schedule--cell-paid">${(i.am_cycle_payment_cents > 0) ? centsToDollars(i.am_cycle_payment_cents) : '–'}</td>
             <td>${centsToDollars(i.am_interest_cents)}</td>
