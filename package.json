@@ -53,6 +53,11 @@
     "ts-node": "^9.0.0",
     "typescript": "^4.0.2"
   },
+  "resolutions": {
+    "prismjs": "1.24.0",
+    "glob-parent": "5.1.2",
+    "trim": "0.0.3"
+  },
   "files": [
     ".build",
     "src/variables.css",
