@@ -247,4 +247,30 @@ export const paymentCSS = css`
       opacity: 1;
     }
   }
+
+  /* Borrow styles from input.select. Reuse source CSS later. */
+  select {
+    background-color: var(--cui-input-background-color);
+    border-color: var(--cui-input-border-color);
+    border-style: var(--cui-input-border-style);
+    border-width: var(--cui-input-border-width);
+    border-radius: var(--cui-input-border-radius);
+    box-shadow: var(--cui-input-box-shadow);
+    color: var(--cui-input-text-color);
+    font-size: var(--cui-btn-font-size);
+    min-height: var(--cui-input-height);
+    height: var(--cui-input-height);
+    line-height: var(--cui-input-line-height);
+    padding: var(--cui-input-padding-vertical) var(--cui-input-padding-horizontal);
+    transition: var(--cui-input-transition);
+    width: 100%;
+  }
+
+  select:active,
+  select:focus,
+  select:focus-visible {
+    border-color: var(--cui-input-border-color-active);
+    box-shadow: var(--cui-input-box-shadow-active);
+    outline: none;
+  }
 `
