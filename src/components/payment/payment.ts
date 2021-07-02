@@ -1,5 +1,6 @@
 import { html, LitElement, TemplateResult, svg } from "lit";
 import { customElement, state, property } from "lit/decorators.js";
+import { unsafeHTML } from 'lit/directives/unsafe-html.js';
 import { DateTime } from "luxon";
 import { centsToDollars } from "../../utils";
 import { paymentCSS } from "./payment.css";
@@ -79,11 +80,11 @@ export class Payment extends LitElement {
   @property({ attribute: "autopay-enabled", type: Boolean })
   public autopayEnabled = false;
 
-  @property({ attribute: "autopay-enabled-confirm-text" })
-  public autopayEnabledConfirmText = "-";
+  @property({ attribute: "autopay-enabled-confirm-body" })
+  public autopayEnabledConfirmBody = "-";
 
-  @property({ attribute: "autopay-disabled-confirm-text" })
-  public autopayDisabledConfirmText = "-";
+  @property({ attribute: "autopay-disabled-confirm-body" })
+  public autopayDisabledConfirmBody = "-";
 
   @property({ type: Function })
   public onSubmitPayment: (input: PaymentFormState) => Promise<any>
@@ -300,7 +301,7 @@ export class Payment extends LitElement {
     return html`
       <div class="modal-content">
         <div class="payment-confirmation">
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" style="margin-bottom: 12px;">
             <path d="M36 4.5C18.6047 4.5 4.5 18.6047 4.5 36C4.5 53.3953 18.6047 67.5 36 67.5C53.3953 67.5 67.5 53.3953 67.5 36C67.5 18.6047 53.3953 4.5 36 4.5ZM36 62.1562C21.5578 62.1562 9.84375 50.4422 9.84375 36C9.84375 21.5578 21.5578 9.84375 36 9.84375C50.4422 9.84375 62.1562 21.5578 62.1562 36C62.1562 50.4422 50.4422 62.1562 36 62.1562Z" fill="#4867FF"/>
             <path d="M36 9.84375C21.5578 9.84375 9.84375 21.5578 9.84375 36C9.84375 50.4422 21.5578 62.1562 36 62.1562C50.4422 62.1562 62.1562 50.4422 62.1562 36C62.1562 21.5578 50.4422 9.84375 36 9.84375ZM49.5984 25.7133L34.7906 46.2445C34.5837 46.5334 34.3108 46.7688 33.9947 46.9312C33.6786 47.0935 33.3284 47.1782 32.973 47.1782C32.6177 47.1782 32.2674 47.0935 31.9514 46.9312C31.6353 46.7688 31.3624 46.5334 31.1555 46.2445L22.3945 34.0945C22.1273 33.7219 22.3945 33.2016 22.8516 33.2016H26.1492C26.8734 33.2016 27.5484 33.5531 27.9703 34.1367L32.9766 41.0836L44.0297 25.7555C44.4516 25.1648 45.1336 24.8203 45.8508 24.8203H49.1484C49.6055 24.8203 49.8727 25.3406 49.5984 25.7133V25.7133Z" fill="#E6F7FF"/>
             <path d="M49.1487 24.8203H45.851C45.1338 24.8203 44.4518 25.1648 44.0299 25.7555L32.9767 41.0836L27.9705 34.1367C27.5486 33.5531 26.8736 33.2016 26.1494 33.2016H22.8517C22.3947 33.2016 22.1275 33.7219 22.3947 34.0945L31.1556 46.2445C31.3626 46.5334 31.6354 46.7688 31.9515 46.9312C32.2676 47.0935 32.6179 47.1782 32.9732 47.1782C33.3286 47.1782 33.6788 47.0935 33.9949 46.9312C34.311 46.7688 34.5838 46.5334 34.7908 46.2445L49.5987 25.7133C49.8729 25.3406 49.6057 24.8203 49.1487 24.8203V24.8203Z" fill="#4867FF"/>
@@ -319,10 +320,10 @@ export class Payment extends LitElement {
   private _autopayConfirmContent(): TemplateResult<1> {
     return html`
       <div class="modal-content">
-        <p>${this._form.autopayEnabled ? this.autopayEnabledConfirmText : this.autopayDisabledConfirmText}</p>
+        ${this._form.autopayEnabled ? unsafeHTML(this.autopayEnabledConfirmBody) : unsafeHTML(this.autopayDisabledConfirmBody)}
         <div class="btn-set">
-          <cui-btn @click=${this._handleSubmitAutopay}>Confirm</cui-btn>
-          <cui-btn @click=${this._reset}>Close</cui-btn>
+          <cui-btn @click=${this._handleSubmitAutopay}>${this._form.autopayEnabled ? "Enable Autopay" : "Disable Autopay" }</cui-btn>
+          <cui-btn @click=${this._reset} color="secondary">Cancel</cui-btn>
         </div>
       </div>
     `;
