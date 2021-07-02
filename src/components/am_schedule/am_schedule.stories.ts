@@ -1,70 +1,57 @@
 import { html } from "lit";
 import "./am_schedule";
-import { AmItemsProp } from "./am_schedule";
+import { AmScheduleItemsProp } from "./am_schedule";
 import { CSSTemplateVars } from "../../variables.css";
 
-const someAmItems: AmItemsProp = [
+export default {
+  title: "Components/AmSchedule",
+};
+
+const someAmItems: AmScheduleItemsProp = [
   {
-    date: "4/19/21",
-    due: 18325,
-    paid: 18325,
-    interest: 2663,
-    principal: 15663,
-    end_balance: 152602
+    "line_item_id": 400,
+    "cycle_exclusive_end": "2018-07-20T09:10:14+00:00",
+    "min_pay_due_at": "2018-07-20T09:10:14+00:00",
+    "am_min_pay_cents": 84000,
+    "am_cycle_payment_cents": 18325,
+    "am_interest_cents": 10000,
+    "am_deferred_cents": 4000,
+    "am_principal_cents": 70000,
+    "am_start_principal_balance_cents": 136691,
+    "am_end_principal_balance_cents": 136691,
+    "am_start_total_balance_cents": 136691,
+    "am_end_total_balance_cents": 136691,
+    "paid_on_time": true
   },
   {
-    date: "5/19/21",
-    due: 18325,
-    paid: 18325,
-    interest: 2663,
-    principal: 15663,
-    end_balance: 152602
-  },
-  {
-    date: "6/19/21",
-    due: 18325,
-    paid: null,
-    interest: 2663,
-    principal: 15663,
-    end_balance: 152602
-  },
-  {
-    date: "7/19/21",
-    due: 18325,
-    paid: null,
-    interest: 2663,
-    principal: 15663,
-    end_balance: 152602
-  },
-  {
-    date: "8/19/21",
-    due: 18325,
-    paid: null,
-    interest: 2663,
-    principal: 15663,
-    end_balance: 152602
-  },
-  {
-    date: "9/19/21",
-    due: 18325,
-    paid: null,
-    interest: 2663,
-    principal: 15663,
-    end_balance: 152602
+    "line_item_id": 401,
+    "cycle_exclusive_end": "2018-08-20T09:10:14+00:00",
+    "min_pay_due_at": "2018-08-20T09:10:14+00:00",
+    "am_min_pay_cents": 84000,
+    "am_cycle_payment_cents": 18325,
+    "am_interest_cents": 10000,
+    "am_deferred_cents": 4000,
+    "am_principal_cents": 70000,
+    "am_start_principal_balance_cents": 136691,
+    "am_end_principal_balance_cents": 136691,
+    "am_start_total_balance_cents": 136691,
+    "am_end_total_balance_cents": 136691,
+    "paid_on_time": true
   }
 ]
 
-const amInput = JSON.stringify(someAmItems);
-
-export default {
-  title: "Components/cui-am-schedule",
-  parameters:{
-    layout: 'padded',
-  },
-};
-
-export const Default = () => html`
+const Story = ({ amItems }) => html`
   ${CSSTemplateVars}
-
-  <cui-am-schedule items=${amInput}></cui-am-schedule>
+  <cui-am-schedule
+    items=${JSON.stringify(amItems)}
+  >
+  </cui-am-schedule>
 `
+
+export const Default = Story.bind({});
+
+Default.args = {
+  amItems: someAmItems
+}
+
+

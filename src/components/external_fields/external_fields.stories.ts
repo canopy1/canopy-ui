@@ -3,6 +3,10 @@ import "./external_fields";
 import { ExternalFieldsFormatProp, ExternalFieldsProp } from "./external_fields";
 import { CSSTemplateVars } from "../../variables.css";
 
+export default {
+  title: "Components/ExternalFields",
+};
+
 const externalFields: ExternalFieldsProp = [
   { key: "Disbursement Fee", value: 12_00 },
   { key: "Origination Date", value: "6/14/2020" },
@@ -19,15 +23,17 @@ const format: ExternalFieldsFormatProp = {
   "Loan Amount": "centsToDollars"
 }
 
-const externalFieldsInput = JSON.stringify(externalFields);
-const formatInput = JSON.stringify(format);
 
-export default {
-  title: "Components/cui-external-fields",
-};
-
-export const Default = () => html`
+const Story = ({ fields, format}) => html`
   ${CSSTemplateVars}
-
-  <cui-external-fields fields=${externalFieldsInput} format=${formatInput}></cui-external-fields>
+  <cui-external-fields
+    fields=${JSON.stringify(fields)}
+    format=${JSON.stringify(format)}>
+  </cui-external-fields>
 `
+export const Default = Story.bind({});
+
+Default.args = {
+  fields: externalFields,
+  format
+}

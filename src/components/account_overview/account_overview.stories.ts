@@ -1,10 +1,10 @@
 import { html } from "lit";
 import { CSSTemplateVars } from "../../variables.css";
-import "./account_overview";
 import { AccountOverviewPropDetails } from "./account_overview";
+import "./account_overview";
 
 export default {
-  title: "Components/cui-account-overview",
+  title: "Components/AccountOverview",
 };
 
 const paymentDetails: AccountOverviewPropDetails = {
@@ -15,22 +15,16 @@ const paymentDetails: AccountOverviewPropDetails = {
   promo_exp: "10/15/2021"
 }
 
-const paymentDetailsInput = JSON.stringify(paymentDetails);
-
-export const Default = () => html`
+const Story = ({ details }) => html`
   ${CSSTemplateVars}
-
-  <cui-account-overview details=${paymentDetailsInput}></cui-account-overview>
+  <cui-account-overview
+    details=${JSON.stringify(details)}
+  >
+  </cui-account-overview>
 `
 
-export const withColorPrimaryOverride = () => html`
-  ${CSSTemplateVars}
+export const Default = Story.bind({});
 
-  <style>
-    cui-account-overview {
-      --cui-color-primary: darkblue;
-    }
-  </style>
-
-  <cui-account-overview details=${paymentDetailsInput}></cui-account-overview>
-`
+Default.args = {
+  details: paymentDetails
+}
