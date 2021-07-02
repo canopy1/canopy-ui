@@ -26,7 +26,7 @@ export type DropdownProp = Option[];
 // UI Steps
 type PaymentSteps = "initial" | MakePaymentModalSteps | ToggleAutopayModalSteps;
 type MakePaymentModalSteps = "payment-form" | "payment-confirm" | "payment-success";
-type ToggleAutopayModalSteps = "autopay-confirm" | "autopay-success";
+type ToggleAutopayModalSteps = "autopay-confirm";
 
 export type PaymentEvents = PaymentStepEvents | "click-submit";
 export type PaymentStepEvents = `step-${PaymentSteps}`;
@@ -55,7 +55,7 @@ export class Payment extends LitElement {
         autopayEnabled: this.autopayEnabled
       }
       this.requestUpdate();
-    }, 0)
+    }, 0);
   }
 
   @property({ attribute: "payment-meta", type: Object })
@@ -80,12 +80,6 @@ export class Payment extends LitElement {
   @property({ attribute: "autopay-disabled-confirm-text" })
   public autopayDisabledConfirmText = "-";
 
-  @property({ attribute: "autopay-enabled-success-text" })
-  public autopayEnabledSuccessText = "-";
-
-  @property({ attribute: "autopay-disabled-success-text" })
-  public autopayDisabledSuccessText = "-";
-
   @property({ type: Function })
   public onSubmitPayment: (input: PaymentFormState) => Promise<any>
     = (i) => new Promise((resolve) => resolve(i));
@@ -106,10 +100,13 @@ export class Payment extends LitElement {
   }
 
   @state()
-  private _hasPaymentError = false;
+  private _autopayRequest: "none" | "staging" | "pending" | "success" = "none";
 
   @state()
   private _hasAutopayError = false;
+
+  @state()
+  private _hasPaymentError = false;
 
   private async _handleSubmitPayment() {
     try {
@@ -124,18 +121,24 @@ export class Payment extends LitElement {
 
   private async _handleSubmitAutopay() {
     try {
+      this._autopayRequest = "pending";
+      this.requestUpdate();
+      console.log(this._autopayRequest); // TOREMOVE
       await this.onSubmitAutopay(this._form);
-      this._transition("autopay-success");
+      this._autopayRequest = "success"
+      this._hasAutopayError = false;
+      this._transition("initial");
+      console.log(this._autopayRequest); // TOREMOVE
     } catch(e) {
-      console.warn(e);
-      this._hasAutopayError = true;
       // revert upon failure
       this._form = { 
         ...this._form,
         autopayEnabled: !this._form.autopayEnabled
       }
-      console.log(this._form);
+      this._hasAutopayError = true;
       this._transition("initial");
+      
+      console.log(this._form);
     }
   }
 
@@ -146,7 +149,6 @@ export class Payment extends LitElement {
       paymentAmount: fieldEl?.value
     }
     this.requestUpdate();
-    console.log(this._form)
   }
 
   private _handleChangePaymentMethod() {
@@ -167,11 +169,13 @@ export class Payment extends LitElement {
     this.requestUpdate();
   }
 
-  private _handleToggleAutopay() {
+  private _handleToggleAutopay(event: Event) {
+    event?.preventDefault();
     this._form = { 
       ...this._form,
       autopayEnabled: !this._form.autopayEnabled
     }
+    this._autopayRequest = "staging";
     this._transition("autopay-confirm");
   }
 
@@ -224,7 +228,7 @@ export class Payment extends LitElement {
   private get _paymentErrorMessage(): TemplateResult<1> {
     return html`
       <div class="cui-alert cui-alert-danger">
-        <p><strong>We could not process your payment</strong><br /> Please try again or contact us.</p>
+        <p><strong>We could not process your payment.</strong><br /> Please try again or contact us.</p>
       </div>
     `
   }
@@ -232,8 +236,8 @@ export class Payment extends LitElement {
   private get _autopayErrorMessage(): TemplateResult<1> {
     // NOTE: autopayEnabled state is reverted on failure so the opposite verb is used.
     return html`
-      <div>
-        <p>We were unable to ${!this._form.autopayEnabled ? "enable" : "disable"} autopay. Please try again or contact us.</p>
+      <div class="cui-alert cui-alert-danger">
+        <p><strong>We were unable to ${!this._form.autopayEnabled ? "enable" : "disable"} autopay.</strong> Please try again or contact us.</p>
       </div>
     `
   }
@@ -319,15 +323,6 @@ export class Payment extends LitElement {
     `;
   }
 
-  private _autopaySuccessContent(): TemplateResult<1> {
-    return html`
-      <div class="modal-content">
-        <p>${this._form.autopayEnabled ? this.autopayEnabledSuccessText : this.autopayDisabledSuccessText}</p>
-        <cui-btn @click=${this._reset}>Close</cui-btn>
-      </div>
-    `
-  }
-
   private get _modalContent(): TemplateResult<1> {
     switch (this._step) {
       case "payment-form": 
@@ -338,8 +333,6 @@ export class Payment extends LitElement {
         return this._paymentSuccessContent();
       case "autopay-confirm":
         return this._autopayConfirmContent();
-      case "autopay-success":
-        return this._autopaySuccessContent();
       default:
         return html``;
     }
@@ -396,18 +389,25 @@ export class Payment extends LitElement {
     `
   }
 
+  private _shouldCheckAutopay() {
+    const enableAutopay = this._form.autopayEnabled;
+    const intermediateStatus = ["staging", "pending"];
+    const autopayRequestIsIntermediate = intermediateStatus.includes(this._autopayRequest);
+    // Don't show next state when request still needs to complete
+    const checked = autopayRequestIsIntermediate ? !enableAutopay : enableAutopay;
+    return checked;
+  }
+
   private _renderAutopayToggle(): TemplateResult<1> {
-    console.log("renderAutopayToggle", this._form);
     return html`
       <cui-list-item label="Autopay">
         <div class="autopay-toggle">
-          <span>${this._form.autopayEnabled ? 'On' : 'Off'}</span>
+          <span>${this._shouldCheckAutopay() ? 'On' : 'Off'}</span>
           <input
             type="checkbox"
-            class="toggle"
+            class="toggle ${this._shouldCheckAutopay() ? 'is-on' : ""}"
             id="autopay"
             name="autopay"
-            ?checked=${this._form.autopayEnabled}
             @change=${this._handleToggleAutopay}
           />
         </div>

@@ -198,10 +198,10 @@ export const paymentCSS = css`
     background: var(--cui-text-color-light);
     transition: all .2s cubic-bezier(.5,.1,.75,1.35);
   }
-  .toggle:checked {
+  .toggle.is-on {
     border-color: var(--cui-color-success);
   }
-  .toggle:checked:after {
+  .toggle.is-on:after {
     background: var(--cui-color-success);
     transform: translateX(12px);
   } 
