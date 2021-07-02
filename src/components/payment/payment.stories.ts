@@ -23,23 +23,23 @@ const paymentAmounts: DropdownProp = [
 ];
 
 const autopayEnabled = false;
-const autopayEnabledConfirmText = "Please confirm you would like to enable autopay."
-const autopayDisabledConfirmText = "Are you sure you want disable autopay? You may be charged fees for late or missed payments."
+const autopayEnabledConfirmBody = "<p style='text-align: center;'>Your <strong>Visa ending 4222</strong> will be charged <strong>$128.03</strong> on the <strong>3rd of each month</strong>.</p>"
+const autopayDisabledConfirmBody = "<p style='text-align: center;'><strong>Are you sure you want disable autopay?</strong><br /> You may be charged fees for late or missed payments without autopay.</p>"
 
 const Story = ({
   paymentMeta,
   paymentMethods,
   paymentAmounts,
-  autopayEnabledConfirmText,
-  autopayDisabledConfirmText,
+  autopayEnabledConfirmBody,
+  autopayDisabledConfirmBody,
 }) => html`
   <cui-payment
     payment-meta=${JSON.stringify(paymentMeta)}
     payment-methods=${JSON.stringify(paymentMethods)}
     payment-amounts=${JSON.stringify(paymentAmounts)}
     ${autopayEnabled ? "autopay-enabled" : ""}
-    autopay-enabled-confirm-text=${autopayEnabledConfirmText}
-    autopay-disabled-confirm-text=${autopayDisabledConfirmText}
+    autopay-enabled-confirm-body=${autopayEnabledConfirmBody}
+    autopay-disabled-confirm-body=${autopayDisabledConfirmBody}
     style="width: 280px"
   >
   </cui-payment>
@@ -52,8 +52,8 @@ Default.args = {
   paymentAmounts,
   paymentMethods,
   autopayEnabled,
-  autopayEnabledConfirmText,
-  autopayDisabledConfirmText
+  autopayEnabledConfirmBody,
+  autopayDisabledConfirmBody
 }
 
 export const SubmitError = () => {
@@ -61,8 +61,8 @@ export const SubmitError = () => {
   el.setAttribute('payment-meta', JSON.stringify(paymentMeta));
   el.setAttribute('payment-methods', JSON.stringify(paymentMethods));
   el.setAttribute('payment-amounts', JSON.stringify(paymentAmounts));
-  el.setAttribute('autopay-enabled-confirm-text', autopayEnabledConfirmText);
-  el.setAttribute('autopay-disabled-confirm-text',autopayDisabledConfirmText);
+  el.setAttribute('autopay-enabled-confirm-body', autopayEnabledConfirmBody);
+  el.setAttribute('autopay-disabled-confirm-body',autopayDisabledConfirmBody);
   el.onSubmitPayment = form => new Promise((_, reject) => setTimeout(() => {
     // alert(`[onSubmitPayment] rejected with value ${JSON.stringify(form)}`); 
     reject(form);

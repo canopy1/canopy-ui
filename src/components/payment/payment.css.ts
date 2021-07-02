@@ -85,7 +85,7 @@ export const paymentCSS = css`
     position: fixed;
     top: 50%;
     left: 50%;
-    margin-left: -160px;
+    margin-left: var(--cui-modal-offset-x);
     max-width: var(--cui-modal-max-width);
     width: 100%;
     z-index: ${zIndex+1};
@@ -96,6 +96,7 @@ export const paymentCSS = css`
   .modal p {
     line-height: var(--cui-line-height-base);
     margin-bottom: var(--cui-spacing-4);
+    margin-top: 0;
   }
 
   .modal-header {
@@ -155,8 +156,9 @@ export const paymentCSS = css`
   }
 
   .btn-set {
-    display: flex;
-    flex-flow: row nowrap;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: var(--cui-spacing-2);
   }
 
   .btn-set cui-btn {

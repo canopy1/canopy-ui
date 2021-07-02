@@ -63,20 +63,23 @@
   --cui-spacing-9:                72px;
 
   /* Button */
-  --cui-btn-background-color:         var(--cui-color-primary);
-  --cui-btn-background-color-hover:   var(--cui-color-primary-darken);
-  --cui-btn-text-color:               var(--cui-color-white);
-  --cui-btn-border-width:             0;
-  --cui-btn-border-color:             transparent;
-  --cui-btn-border-style:             solid;
-  --cui-btn-box-shadow:               0px 0px 0px 0px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
-  --cui-btn-box-shadow-active:        0px 0px 0px 3px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
-  --cui-btn-font-size:                var(--cui-font-size-base);
-  --cui-btn-height:                   40px;
-  --cui-btn-outline:                  none;
-  --cui-btn-padding-horizontal:       var(--cui-spacing-3);
-  --cui-btn-padding-vertical:         var(--cui-spacing-2);
-  --cui-btn-transition:               all 0.2s ease;
+  --cui-btn-background-color:                   var(--cui-color-primary);
+  --cui-btn-background-color-hover:             var(--cui-color-primary-darken);
+  --cui-btn-text-color:                         var(--cui-color-white);
+  --cui-btn-border-width:                       0;
+  --cui-btn-border-color:                       transparent;
+  --cui-btn-border-style:                       solid;
+  --cui-btn-box-shadow:                         0px 0px 0px 0px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
+  --cui-btn-box-shadow-active:                  0px 0px 0px 3px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
+  --cui-btn-font-size:                          var(--cui-font-size-base);
+  --cui-btn-height:                             40px;
+  --cui-btn-outline:                            none;
+  --cui-btn-padding-horizontal:                 var(--cui-spacing-3);
+  --cui-btn-padding-vertical:                   var(--cui-spacing-2);
+  --cui-btn-transition:                         all 0.2s ease;
+  --cui-btn-secondary-background-color:         var(--cui-background-color-faded);
+  --cui-btn-secondary-background-color-hover:   var(--cui-text-color-light);
+  --cui-btn-secondary-text-color:               var(--cui-text-color-headers);
 
   /* Inputs */
   --cui-input-background-color:       var(--cui-background-color-light);
@@ -142,6 +145,7 @@
   --cui-modal-header-font-weight:             var(--cui-font-weight-bold);
   --cui-modal-header-border:                  var(--cui-border-width) var(--cui-border-style) var(--cui-border-color);
   --cui-modal-max-width:                      360px;
+  --cui-modal-offset-x:                       -180px; /* Half of --cui-modal-max-width and negative */
   
   /* Component: Amortization Schedule */
   --cui-am-schedule-status-color-default:     var(--cui-text-color-light);

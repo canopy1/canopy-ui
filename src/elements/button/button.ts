@@ -4,7 +4,6 @@ import { customElement, property } from "lit/decorators.js";
 export const buttonCSS = css`
   :host {
     display: block;
-    overflow: hidden;
   }
 
   button {
@@ -39,6 +38,15 @@ export const buttonCSS = css`
   button:focus-visible {
     box-shadow: var(--cui-btn-box-shadow-active);
   }
+
+  button.cui-btn-secondary {
+    background-color: var(--cui-btn-secondary-background-color);
+    color: var(--cui-btn-secondary-text-color);
+  }
+
+  button.cui-btn-secondary:hover {
+    background-color: var(--cui-btn-secondary-background-color-hover);
+  }
 `
 
 @customElement('cui-btn')
@@ -55,6 +63,9 @@ export class Button extends LitElement {
   @property({ attribute: 'value', type: String })
   public value = '';
 
+  @property({ attribute: 'color', type: ["primary", "secondary"] })
+  public color = 'primary';
+
   @property({ attribute: 'class', type: String })
   public class = '';
 
@@ -67,7 +78,7 @@ export class Button extends LitElement {
   render(): TemplateResult<1> {
     return html`
       <button
-        class="cui-btn ${this.class}"
+        class="cui-btn ${this.color === 'secondary' ? 'cui-btn-secondary': null } ${this.class}"
         icon="${this.icon}"
         name="${this.name}"
         value="${this.value}"
