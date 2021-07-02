@@ -25,8 +25,6 @@ const paymentAmounts: DropdownProp = [
 const autopayEnabled = false;
 const autopayEnabledConfirmText = "Please confirm you would like to enable autopay."
 const autopayDisabledConfirmText = "Are you sure you want disable autopay? You may be charged fees for late or missed payments."
-const autopayEnabledSuccessText = "Autopay has been successfully enabled.";
-const autopayDisabledSuccessText = "Autopay has been successfully disabled.";
 
 const Story = ({
   paymentMeta,
@@ -34,8 +32,6 @@ const Story = ({
   paymentAmounts,
   autopayEnabledConfirmText,
   autopayDisabledConfirmText,
-  autopayEnabledSuccessText,
-  autopayDisabledSuccessText
 }) => html`
   <cui-payment
     payment-meta=${JSON.stringify(paymentMeta)}
@@ -44,8 +40,6 @@ const Story = ({
     ${autopayEnabled ? "autopay-enabled" : ""}
     autopay-enabled-confirm-text=${autopayEnabledConfirmText}
     autopay-disabled-confirm-text=${autopayDisabledConfirmText}
-    autopay-enabled-success-text=${autopayEnabledSuccessText}
-    autopay-disabled-success-text=${autopayDisabledSuccessText}
     style="width: 280px"
   >
   </cui-payment>
@@ -59,9 +53,7 @@ Default.args = {
   paymentMethods,
   autopayEnabled,
   autopayEnabledConfirmText,
-  autopayDisabledConfirmText,
-  autopayEnabledSuccessText,
-  autopayDisabledSuccessText
+  autopayDisabledConfirmText
 }
 
 export const SubmitError = () => {
@@ -71,8 +63,6 @@ export const SubmitError = () => {
   el.setAttribute('payment-amounts', JSON.stringify(paymentAmounts));
   el.setAttribute('autopay-enabled-confirm-text', autopayEnabledConfirmText);
   el.setAttribute('autopay-disabled-confirm-text',autopayDisabledConfirmText);
-  el.setAttribute('autopay-enabled-success-text', autopayEnabledSuccessText);
-  el.setAttribute('autopay-disabled-success-text', autopayDisabledSuccessText);
   el.onSubmitPayment = form => new Promise((_, reject) => setTimeout(() => {
     // alert(`[onSubmitPayment] rejected with value ${JSON.stringify(form)}`); 
     reject(form);
