@@ -68,14 +68,17 @@ yarn storybook
 Storybook will reload any changes you make. You are able to change background colors in Storybook
 for better contrast.
 
-## Available Component
+## Available Components
 
-As of 0.1.0:
+As of v0.1.0:
 
 - [x] Account Overview
 - [x] Amortization Schedule
 - [x] Payments
 - [x] External Fields
+
+Sloted for v0.1.1:
+
 - [ ] Product Details
 - [ ] Transaction History
 - [ ] Payment History
