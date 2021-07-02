@@ -55,7 +55,7 @@ export class inputText extends LitElement {
   render(): TemplateResult<1> {
     return html`
       <input
-        class="cui-input-text ${this.class}"
+        class="${this.class}"
         type="text"
         name="${this.name}"
         value="${this.value}"

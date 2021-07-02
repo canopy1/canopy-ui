@@ -178,7 +178,7 @@ export class Payment extends LitElement {
           <label for="payment-date">
             Payment Date<span class="required-symbol">*</span>
           </label>
-          <input id="payment-date" @input=${this._handleInputPaymentDate}></input>
+          <cui-input-text id="payment-date" @input=${this._handleInputPaymentDate} value=${this._form.paymentDate}></cui-input-text>
         </div>
         <p class="payment-due-notice">
           Payment due by <span class="payment-due-date">${this.meta.due_by}</span>
@@ -199,7 +199,7 @@ export class Payment extends LitElement {
         <dd>Visa ending 4222</dd>
         <dt>Payment Date</dt>
         <dd>7/5/2021</dd>
-      <dl>
+      </dl>
       <cui-btn @click=${this._handleSubmitPayment}>
         Submit Payment
       </cui-btn>
