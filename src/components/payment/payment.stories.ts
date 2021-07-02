@@ -66,34 +66,16 @@ Default.args = {
   autopayDisabledSuccessText
 }
 
-// TODO:
-//
-// const ErrorStory = ({
-//   paymentMeta,
-//   paymentMethods,
-//   paymentAmounts,
-//   autopayEnabledConfirmText,
-//   autopayDisabledConfirmText,
-//   autopayEnabledSuccessText,
-//   autopayDisabledSuccessText
-// }) => html`
-//   ${CSSTemplateVars}
-//   <div id="err-story"></div>
-//   <script>
-//     const el = document.createElement('cui-payment');
-//     el.setAttribute('payment-meta', ${JSON.stringify(paymentMeta)});
-//     el.setAttribute('payment-methods', ${JSON.stringify(paymentMethods)});
-//     el.setAttribute('payment-amounts', ${JSON.stringify(paymentAmounts)});
-//     el.setAttribute('autopay-enabled-confirm-text', ${autopayEnabledConfirmText});
-//     el.setAttribute('autopay-disabled-confirm-text',${autopayDisabledConfirmText});
-//     el.setAttribute('autopay-enabled-success-text', ${autopayEnabledSuccessText});
-//     el.setAttribute('autopay-disabled-success-text', ${autopayDisabledSuccessText});
-//     document.getElementById("err-story").appendChild(el);
-//   </script>
-// `
-
-// export const PaymentError = ErrorStory.bind({});
-
-// PaymentError.args = {
-//   ...Default.args
-// }
+export const SubmitError = () => {
+  const el = document.createElement('cui-payment');
+  el.setAttribute('payment-meta', JSON.stringify(paymentMeta));
+  el.setAttribute('payment-methods', JSON.stringify(paymentMethods));
+  el.setAttribute('payment-amounts', JSON.stringify(paymentAmounts));
+  el.setAttribute('autopay-enabled-confirm-text', autopayEnabledConfirmText);
+  el.setAttribute('autopay-disabled-confirm-text',autopayDisabledConfirmText);
+  el.setAttribute('autopay-enabled-success-text', autopayEnabledSuccessText);
+  el.setAttribute('autopay-disabled-success-text', autopayDisabledSuccessText);
+  el.onSubmitPayment = form => new Promise((_, reject) => setTimeout(() => reject(form), 800))
+  el.onSubmitAutopay = form => new Promise((_, reject) => setTimeout(() => reject(form), 800))
+  return el;
+}
