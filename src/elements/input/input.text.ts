@@ -14,6 +14,7 @@ const inputTextCSS = css`
     border-radius: var(--cui-input-border-radius);
     box-shadow: var(--cui-input-box-shadow);
     color: var(--cui-input-text-color);
+    font-size: var(--cui-btn-font-size);
     min-height: var(--cui-input-height);
     height: var(--cui-input-height);
     line-height: var(--cui-input-line-height);

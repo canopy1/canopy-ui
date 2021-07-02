@@ -3,8 +3,10 @@ import { customElement, property } from "lit/decorators.js";
 import { amScheduleCSS } from "./am_schedule.css";
 import { centsToDollars } from "../../utils";
 
-// NOTE: 1ts column is unlabeled but contains status symbols
-const headerLabels = ["", "Date", "Due", "Paid", "Interest", "Principal", "End Balance"];
+import checkIcon from "../../icons/check-light.svg";
+
+// NOTE: First column is unlabeled but contains status symbols
+const headerLabels = ["", "Date", "Amount Due", "Paid", "Interest", "Principal", "End Balance"];
 
 interface AmItem {
   date: string;
@@ -28,14 +30,14 @@ export class AmSchedule extends LitElement {
     return html`
       <tbody>
         ${this.items.map(i => html`
-          <tr>
-            <td>◯</td>
+          <tr class="${(i.paid >= i.due) ? 'cui-am-schedule--row-paid' : ''}">
+            <td><div class="cui-am-schedule--status-icon"><img src="${checkIcon}" alt="Status" /></div></td>
             <td>${i.date}</td>
             <td>${centsToDollars(i.due)}</td>
-            <td>${centsToDollars(i.paid)}</td>
+            <td class="cui-am-schedule--cell-paid">${(i.paid > 0) ? centsToDollars(i.paid) : '–'}</td>
             <td>${centsToDollars(i.interest)}</td>
             <td>${centsToDollars(i.principal)}</td>
-            <td>${centsToDollars(i.end_balance)}<td>
+            <td>${centsToDollars(i.end_balance)}</td>
           </tr>
         `)}
       </tbody>

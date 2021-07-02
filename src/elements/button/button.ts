@@ -15,6 +15,7 @@ const buttonCSS = css`
     box-shadow: var(--cui-btn-box-shadow);
     color: var(--cui-btn-text-color);
     cursor: pointer;
+    font-size: var(--cui-btn-font-size);
     font-weight: var(--cui-font-weight-bold);
     min-height: var(--cui-btn-height);
     outline: var(--cui-btn-outline);
