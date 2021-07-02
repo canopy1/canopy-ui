@@ -16,6 +16,7 @@ export interface ExternalFieldsFormatProp {
 }
 
 @customElement("cui-external-fields")
+
 export class ExternalFields extends LitElement {
   static styles = externalFieldsCSS;
 
@@ -35,16 +36,16 @@ export class ExternalFields extends LitElement {
   }
 
   render(): TemplateResult<1> {
-
     return html`
-      <ul>
-        ${this.fields.map(f => html`
-          <li>
-            <span part="key">${f.key}</span>
-            <span part="value">${this.formatVal(f.key, f.value)}</span>
-          </li>
-        `)}
-      </ul>
+      <cui-card style="width: 100%;">
+        <ul>
+          ${this.fields.map(f => html`
+            <cui-list-item label="${f.key}">
+              ${this.formatVal(f.key, f.value)}
+            </cui-list-item>
+          `)}
+        </ul>
+      </cui-card>
     `;
   }
 }

@@ -28,7 +28,8 @@ const Story = ({ fields, format}) => html`
   ${CSSTemplateVars}
   <cui-external-fields
     fields=${JSON.stringify(fields)}
-    format=${JSON.stringify(format)}>
+    format=${JSON.stringify(format)}
+    style="width: 320px">
   </cui-external-fields>
 `
 export const Default = Story.bind({});

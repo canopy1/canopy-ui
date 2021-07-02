@@ -2,14 +2,18 @@ import { css } from "lit";
 
 // TODO: Styling, Responsiveness
 export const externalFieldsCSS = css`
+  :host {
+    display: block;
+    width: 100%;
+  }
+
   ul {
-    width: 300px;
     font-family: var(--cui-font-family-base);
     font-size: var(--cui-font-size-base);
-    padding-left: 0;
-    border-radius: var(--cui-border-radius);
-    background-color: var(--cui-background-color-light);
     list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    width: 100%;
   }
 
   li {

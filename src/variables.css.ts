@@ -115,12 +115,17 @@ export const CSSTemplateVars = html`
     --cui-table-header-cell-padding-vertical:   var(--cui-spacing-2);
     --cui-table-cell-padding-horizontal:        var(--cui-spacing-3);
     --cui-table-cell-padding-vertical:          var(--cui-spacing-3);
+
+    /* List Item */
+    --cui-li-padding-horizontal:                var(--cui-spacing-4);
+    --cui-li-padding-vertical:                  12px;
+    --cui-li-label-font-weight:                 var(--cui-font-weight-bold);
+    --cui-li-even-row-background-color:         var(--cui-background-color-faded);
     
     /* Component: Amortization Schedule */
-    --cui-am-schedule-status-color-default:    var(--cui-text-color-light);
-    --cui-am-schedule-status-color-success:    var(--cui-color-success);
-    --cui-am-schedule-status-icon-size:        16px;
-
+    --cui-am-schedule-status-color-default:     var(--cui-text-color-light);
+    --cui-am-schedule-status-color-success:     var(--cui-color-success);
+    --cui-am-schedule-status-icon-size:         16px;
   }
 </style>
 `
