@@ -100,7 +100,10 @@ export class Payment extends LitElement {
   }
 
   @state()
-  private _autopayRequest: "none" | "staging" | "pending" | "success" | "error" = "none";
+  private _autopayRequest: "none" | "staging" | "pending" | "success" = "none";
+
+  @state()
+  private _hasAutopayError = false;
 
   @state()
   private _hasPaymentError = false;
@@ -123,6 +126,7 @@ export class Payment extends LitElement {
       console.log(this._autopayRequest); // TOREMOVE
       await this.onSubmitAutopay(this._form);
       this._autopayRequest = "success"
+      this._hasAutopayError = false;
       this._transition("initial");
       console.log(this._autopayRequest); // TOREMOVE
     } catch(e) {
@@ -131,7 +135,7 @@ export class Payment extends LitElement {
         ...this._form,
         autopayEnabled: !this._form.autopayEnabled
       }
-      this._autopayRequest = "error"
+      this._hasAutopayError = true;
       this._transition("initial");
       
       console.log(this._form);
@@ -224,7 +228,7 @@ export class Payment extends LitElement {
   private get _paymentErrorMessage(): TemplateResult<1> {
     return html`
       <div class="cui-alert cui-alert-danger">
-        <p><strong>We could not process your payment</strong><br /> Please try again or contact us.</p>
+        <p><strong>We could not process your payment.</strong><br /> Please try again or contact us.</p>
       </div>
     `
   }
@@ -232,8 +236,8 @@ export class Payment extends LitElement {
   private get _autopayErrorMessage(): TemplateResult<1> {
     // NOTE: autopayEnabled state is reverted on failure so the opposite verb is used.
     return html`
-      <div>
-        <p>We were unable to ${!this._form.autopayEnabled ? "enable" : "disable"} autopay. Please try again or contact us.</p>
+      <div class="cui-alert cui-alert-danger">
+        <p><strong>We were unable to ${!this._form.autopayEnabled ? "enable" : "disable"} autopay.</strong> Please try again or contact us.</p>
       </div>
     `
   }
@@ -415,7 +419,7 @@ export class Payment extends LitElement {
   protected render(): TemplateResult<1> {
     return html`
       <cui-card>
-        ${this._autopayRequest === "error" ? this._autopayErrorMessage : null}
+        ${this._hasAutopayError ? this._autopayErrorMessage : null}
         <div class="payment-due">
           <cui-stat label="Min. Payment Due" value="${this.meta.fees_due}" currency=true></cui-stat>
           <cui-btn @click=${() => this._transition("payment-form")}>Make A Payment</cui-btn>
