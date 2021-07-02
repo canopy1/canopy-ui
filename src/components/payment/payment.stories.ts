@@ -1,6 +1,5 @@
 import { html } from "lit";
 import { PaymentMetaProp, DropdownProp } from "./payment";
-import { CSSTemplateVars } from "../../variables.css";
 import "./payment";
 
 export default {
@@ -38,8 +37,6 @@ const Story = ({
   autopayEnabledSuccessText,
   autopayDisabledSuccessText
 }) => html`
-  ${CSSTemplateVars}
-
   <cui-payment
     payment-meta=${JSON.stringify(paymentMeta)}
     payment-methods=${JSON.stringify(paymentMethods)}

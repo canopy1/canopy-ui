@@ -1,5 +1,4 @@
 import { html } from "lit";
-import { CSSTemplateVars } from "../../variables.css";
 import { AccountOverviewPropDetails } from "./account_overview";
 import "./account_overview";
 
@@ -16,7 +15,6 @@ const paymentDetails: AccountOverviewPropDetails = {
 }
 
 const Story = ({ details }) => html`
-  ${CSSTemplateVars}
   <cui-account-overview
     details=${JSON.stringify(details)}
   >

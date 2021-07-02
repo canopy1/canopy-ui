@@ -1,6 +1,6 @@
 import { html } from "lit"
 
-// TODO: Build script to generate variables.css from this
+// @deprecated - Change both variables.css and the <style> in preview-body.html instead
 export const CSSTemplateVars = html`
 <style>
   :root {
