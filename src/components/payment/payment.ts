@@ -371,11 +371,15 @@ export class Payment extends LitElement {
   }
 
   private get _paymentMeta(): TemplateResult<1> {
+    const currencyFields = ["past_due", "fees_due"];
     return html`
       <ul class="cui-payment--meta">
         ${Object.keys(this.meta).map(k => html`
           <cui-list-item label="${prettyMeta[k]}" alt>
-            ${this.meta[k]}
+            ${(currencyFields.includes(k)
+                ? centsToDollars(Number(this.meta[k]))
+                : this.meta[k])
+              }
           </cui-list-item>
         `)}
       </ul>
