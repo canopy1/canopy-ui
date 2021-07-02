@@ -125,16 +125,23 @@ export class Payment extends LitElement {
     }
   }
 
+  private _handleCancelAutopay() {
+    this._autopayRequest = "none";
+    this._form = { 
+      ...this._form,
+      autopayEnabled: !this._form.autopayEnabled
+    }
+    this._transition("initial");
+  }
+
   private async _handleSubmitAutopay() {
     try {
       this._autopayRequest = "pending";
       this.requestUpdate();
-      console.log(this._autopayRequest); // TOREMOVE
       await this.onSubmitAutopay(this._form);
       this._autopayRequest = "success"
       this._hasAutopayError = false;
       this._transition("initial");
-      console.log(this._autopayRequest); // TOREMOVE
     } catch(e) {
       // revert upon failure
       this._form = { 
@@ -142,9 +149,7 @@ export class Payment extends LitElement {
         autopayEnabled: !this._form.autopayEnabled
       }
       this._hasAutopayError = true;
-      this._transition("initial");
-      
-      console.log(this._form);
+      this._transition("initial"); 
     }
   }
 
@@ -243,7 +248,7 @@ export class Payment extends LitElement {
     // NOTE: autopayEnabled state is reverted on failure so the opposite verb is used.
     return html`
       <div class="cui-alert cui-alert-danger">
-        <p><strong>We were unable to ${!this._form.autopayEnabled ? "enable" : "disable"} autopay.</strong> Please try again or contact us.</p>
+        <p><strong>We were unable to ${this._shouldCheckAutopay() ? "enable" : "disable"} autopay.</strong> Please try again or contact us.</p>
       </div>
     `
   }
@@ -323,7 +328,7 @@ export class Payment extends LitElement {
         ${this._form.autopayEnabled ? unsafeHTML(this.autopayEnabledConfirmBody) : unsafeHTML(this.autopayDisabledConfirmBody)}
         <div class="btn-set">
           <cui-btn @click=${this._handleSubmitAutopay}>${this._form.autopayEnabled ? "Enable Autopay" : "Disable Autopay" }</cui-btn>
-          <cui-btn @click=${this._reset} color="secondary">Cancel</cui-btn>
+          <cui-btn @click=${this._handleCancelAutopay} color="secondary">Cancel</cui-btn>
         </div>
       </div>
     `;
