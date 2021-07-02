@@ -1,5 +1,6 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, state, property } from "lit/decorators.js";
+import { DateTime } from "luxon";
 import { centsToDollars } from "../../utils";
 import { paymentCSS } from "./payment.css";
 
@@ -425,15 +426,8 @@ export class Payment extends LitElement {
 
 const isDefaultOption = (a: Option) => a.default === true;
 
-// format: mm/dd/yyyy
 const getToday = () => {
-  const today = new Date();
-  // @ts-ignore
-  const dd = String(today.getDate()).padStart(2, '0');
-  // @ts-ignore
-  const mm = String(today.getMonth()+1).padStart(2, '0');
-  const yyyy = String(today.getFullYear());
-  return `${mm}/${dd}/${yyyy}`;
+  return DateTime.now().toFormat("M/d/yyyy");
 }
 
 declare global {

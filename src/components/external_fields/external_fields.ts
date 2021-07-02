@@ -1,3 +1,4 @@
+import { DateTime } from "luxon";
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { centsToDollars } from "../../utils";
@@ -13,7 +14,7 @@ interface ExternalField {
 
 export type ExternalFieldsProp = Array<ExternalField>
 
-type Formatters = "centsToDollars";
+type Formatters = "centsToDollars" | "M/d/yy";
 export interface ExternalFieldsFormatProp {
   [key: string]: Formatters
 }
@@ -33,6 +34,8 @@ export class ExternalFields extends LitElement {
     if (this.format[key]) {
       if (this.format[key] === "centsToDollars" && typeof value === "number") {
         return centsToDollars(value);
+      } else if (this.format[key] === "M/d/yy" && typeof value === "string") {
+        return DateTime.fromISO(value).toFormat("M/d/yy");
       }
     }
     return value;
