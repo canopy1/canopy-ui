@@ -25,7 +25,7 @@ const Story = () => {
     "Loan Amount": "centsToDollars"
   }
 
-  html`
+  return html`
     <cui-external-fields
       fields=${JSON.stringify(fields)}
       format=${JSON.stringify(format)}
