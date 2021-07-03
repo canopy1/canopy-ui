@@ -1,7 +1,9 @@
 # CanopyUI
 
-CanopyUI is a library of WebComponents you can use regardless of your tech stack. See the usage
-guide below.
+CanopyUI is a library of WebComponents you can use regardless of your tech stack. Our public
+Storybook preview is hosted on Github Pages at https://canopy1.github.io/canopy-ui/. You can walk
+through our Storybook to see what properties are supported and experiment with dynamic properties
+yourself.
 
 ![CanopyUI](https://user-images.githubusercontent.com/1096881/110418148-98923f80-805c-11eb-9c70-0654ed0eae00.png)
 
@@ -13,38 +15,60 @@ yarn add @canopyinc/ui
 
 # import then bundle with your other JS
 import "@canopyinc/ui"
+
+# optional choice to load CSS directly
+<link href="https://unpkg.com/@canopyinc/ui/src/variables.css" rel="stylesheet'>
 ```
 
-Then once the JS is loaded you can start writing HTML with CanopyUI's web components.
+Then once the JS is loaded you can start writing with CanopyUI's web components.
 
 ```html
+  <div id="my-container"></div>
+  
+  <script>
+    // with JavaScript
+    const accountDetails = {
+      amount: 349392,
+      credit_limit: 800000,
+      available_credit: 450608,
+      pending_charges: 0,
+      promo_exp: "10/15/2021"
+    }
+
+    const accountOverviewEl = document.createElement('cui-account-overview');
+    accountOverviewEl.setAttribute('details', JSON.stringify(accountDetails));
+
+    document.getElementById("my-container").appendChild(accountOverviewEl);
+  </script>
+```
+
+Since CanopyUI is built from the WebComponents set of standards you may also write HTML markup
+directly.
+
+```html
+<!-- NOTE: All properties should be passed strings including objects and arrays. -->
 <cui-account-overview
-  amount: 349392,
-  credit_limit: 800000,
-  available_credit: 450608,
-  pending_charges: 0,
-  promo_exp: "10/15/2021"
+  details="..."
 >
 </cui-account-overview>
 ```
 
 ## Styling
 
-To theme CanopyUI components with a custom CSS property, pass a supported variable to the selector
-on the target web component. All variables are prefixed with `--cui-`.
+To theme CanopyUI components with a custom CSS property, pass a supported custom property to the
+`:root { ... }` CSS selector. For more granularity per component you can also target the name of the
+component with a CSS selector directly such as `cui-account-overview { ... }`.
+
+Refer to the Styling doc for a list of supported CSS properties.
 
 ```html
 <style>
-  cui-account-overview {
+  :root {
     --cui-color-primary: darkblue;
   }
 </style>
 <cui-account-overview
-  amount="349392"
-  credit-limit="800000"
-  available-credit="450608"
-  pending-charges="0"
-  promo-exp="10/15/2021"
+  details="..."
 >
 </cui-account-overview>
 ```
