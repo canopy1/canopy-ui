@@ -27,15 +27,15 @@ export class AccountOverview extends LitElement {
 
     // Appears if no element with attr slot "top" given.
     const defaultTop = html`
-      <cui-stat size="large" label="Amount" value="${this.details.amount}" currency=true></cui-stat>
-      <cui-stat size="large" label="Credit Limit" value="${this.details.credit_limit}" currency=true></cui-stat>
+      <cui-stat size="large" label="Amount" value="${this.details?.amount}" currency=true></cui-stat>
+      <cui-stat size="large" label="Credit Limit" value="${this.details?.credit_limit}" currency=true></cui-stat>
     `;
 
     // Appears if no element with attr slot "bottom" given.
     const defaultBottom = html`
-      <cui-stat size="small" label="Available Credit" value="${this.details.available_credit}" currency=true></cui-stat>
-      <cui-stat size="small" label="Pending Charges" value="${this.details.pending_charges}" currency=true></cui-stat>
-      <cui-stat size="small" label="Promo Period Expiration" value="${this.details.promo_exp}"></cui-stat>
+      <cui-stat size="small" label="Available Credit" value="${this.details?.available_credit}" currency=true></cui-stat>
+      <cui-stat size="small" label="Pending Charges" value="${this.details?.pending_charges}" currency=true></cui-stat>
+      <cui-stat size="small" label="Promo Period Expiration" value="${this.details?.promo_exp}"></cui-stat>
     `
 
     return html`
