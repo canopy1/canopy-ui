@@ -14,8 +14,8 @@
     "build": "tsc --project ./tsconfig.cjs.json && tsc --project ./tsconfig.umd.json && tsc --project ./tsconfig.json",
     "lint": "prettier --check 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "prettier --write 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -s public -p 6006",
+    "build-storybook": "build-storybook -s public",
     "deploy-storybook": "storybook-to-ghpages",
     "prepublishOnly": "yarn build",
     "postpublish": "yarn deploy-storybook"

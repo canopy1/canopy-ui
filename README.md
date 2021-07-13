@@ -17,7 +17,7 @@ yarn add @canopyinc/ui
 import "@canopyinc/ui"
 
 # optional choice to load CSS directly
-<link href="https://unpkg.com/@canopyinc/ui/src/variables.css" rel="stylesheet'>
+<link href="https://unpkg.com/@canopyinc/ui/public/variables.css" rel="stylesheet'>
 ```
 
 Then once the JS is loaded you can start writing with CanopyUI's web components.
@@ -52,6 +52,22 @@ directly.
 >
 </cui-account-overview>
 ```
+
+## Components
+
+## Available Components
+
+| Component                   | Status |
+| --------------------------- | ------ |
+| `<cui-account-overview>`    | v0.1.0 |
+| `<cui-am-schedule>`         | v0.1.0 |
+| `<cui-external-fields>`     | v0.1.0 |
+| `<cui-payment>`             | v0.1.0 |
+| `<cui-customer-details>`    | TBD    |
+| `<cui-payment-history>`     | TBD    |
+| `<cui-product-details>`     | TBD    |
+| `<cui-statements>`          | TBD    |
+| `<cui-transaction-history>` | TBD    |
 
 ## Styling
 
@@ -91,20 +107,3 @@ yarn storybook
 
 Storybook will reload any changes you make. You are able to change background colors in Storybook
 for better contrast.
-
-## Available Components
-
-As of v0.1.0:
-
-- [x] Account Overview
-- [x] Amortization Schedule
-- [x] Payments
-- [x] External Fields
-
-Sloted for v0.1.1:
-
-- [ ] Product Details
-- [ ] Transaction History
-- [ ] Payment History
-- [ ] Statements
-- [ ] Customer Details
