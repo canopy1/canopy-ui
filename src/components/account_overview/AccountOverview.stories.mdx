@@ -6,11 +6,11 @@ import { AccountOverview } from "./account_overview";
 
 export const Default = () => {
   const details = {
-    amount: 349392,
-    credit_limit: 800000,
-    available_credit: 450608,
+    total_balance_cents: 349392,
+    credit_limit_cents: 800000,
+    available_credit_cents: 450608,
     pending_charges: 0,
-    promo_exp: "10/15/2021"
+    promo_exclusive_end: "10/15/2021"
   };
   return html`
     <cui-account-overview
