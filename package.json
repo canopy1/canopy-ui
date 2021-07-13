@@ -1,6 +1,6 @@
 {
   "name": "@canopyinc/ui",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A UI web-components library for building on the Canopy API",
   "main": "index.js",
   "typings": ".build/cjs/index.d.ts",
@@ -58,5 +58,12 @@
     "prismjs": "1.24.0",
     "glob-parent": "5.1.2",
     "trim": "0.0.3"
-  }
+  },
+  "include": [
+    ".build",
+    "public",
+    "src",
+    "index.js",
+    "README.md"
+  ]
 }
