@@ -57,7 +57,7 @@ directly.
 | `<cui-account-overview>`    | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-accountoverview) | 
 | `<cui-am-schedule>`         | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-amschedule) | 
 | `<cui-external-fields>`     | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-externalfields) |
-| `<cui-payment>`             | v0.1.0 | |
+| `<cui-payment>`             | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-payment) |
 | `<cui-customer-details>`    | TBD    | |
 | `<cui-payment-history>`     | TBD    | |
 | `<cui-product-details>`     | TBD    | |
