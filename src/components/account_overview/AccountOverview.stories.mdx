@@ -1,16 +1,19 @@
 import { html } from "lit"
-import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
 import { AccountOverview } from "./account_overview";
 
-<Meta title="Components/AccountOverview" />
+<Meta
+  title="Components/AccountOverview"
+  component="cui-account-overview"
+/>
 
-export const Default = () => {
+export const Default = ({ total_balance_cents, credit_limit_cents, available_credit_cents, pending_charges, promo_exclusive_end }) => {
   const details = {
-    total_balance_cents: 349392,
-    credit_limit_cents: 800000,
-    available_credit_cents: 450608,
-    pending_charges: 0,
-    promo_exclusive_end: "10/15/2021"
+    total_balance_cents,
+    credit_limit_cents,
+    available_credit_cents,
+    pending_charges,
+    promo_exclusive_end
   };
   return html`
     <cui-account-overview
@@ -20,10 +23,77 @@ export const Default = () => {
   `;
 };
 
-# AccountOverview
+# AccountOverview (`cui-account-overview`)
+
+## Example
+
+```html
+<div id="container"></div>
+
+<script>
+  const el = document.createElement("cui-account-overview");
+  const accountDetails = {
+    total_balance_cents: 349391,
+    credit_limit_cents: 800000,
+    available_credit_cents: 450608,
+    pending_charges: 0,
+    promo_exclusive_end: "10/15/2021"
+  };
+  el.setAttribute("details", JSON.stringify(accountDetails));
+  document.getElementById("container").appendChild(el);
+</script>
+```
 
 <Canvas>
-  <Story name="Default">
+  <Story name="Default" args={{
+    total_balance_cents: 349392,
+    credit_limit_cents: 800000,
+    available_credit_cents: 450608,
+    pending_charges: 0,
+    promo_exclusive_end: "10/15/2021"
+  }}>
       {Default.bind({})}
   </Story>
 </Canvas>
+
+## API
+
+### Attributes/Properties
+
+| property | type | default |
+| -------- | ---- | ------- |
+| details.total_balance_cents | number | 0 | 
+| details.credit_limit_cents | number | 0 |
+| details.available_credit_cents | number | 0 |
+| details.pending_charges | number | 0 |
+| details.promo_exclusive_end | string | "-" |
+
+### Events
+
+*None*
+
+### CSS Custom Properties
+
+| property |
+| -------- |
+| --cui-background-color-light |
+| --cui-border-color |
+| --cui-border-radius |
+| --cui-border-style |
+| --cui-border-width |
+| --cui-box-shadow-lg |
+| --cui-font-family-base |
+| --cui-font-size-base |
+| --cui-font-size-h4 |
+| --cui-font-size-sm |
+| --cui-font-size-xs |
+| --cui-font-weight-bold |
+| --cui-font-weight-semibold |
+| --cui-primary-color |
+| --cui-spacing-1 |
+| --cui-spacing-4 |
+| --cui-spacing-5 |
+| --cui-text-color-body |
+| --cui-text-color-headers |
+
+

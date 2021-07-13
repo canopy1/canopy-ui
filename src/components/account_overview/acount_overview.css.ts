@@ -42,7 +42,6 @@ export const statCSS = css`
   }
 
   span[part="value"] {
-    color: var(--cui-color-primary) !important;
     font-size: var(--cui-font-size-h4);
     font-weight: var(--cui-font-weight-bold);
     color: var(--cui-primary-color);

@@ -9,48 +9,43 @@ yourself.
 
 ## Usage
 
-```
+```bash
 # install
-yarn add @canopyinc/ui
+npm install @canopyinc/ui
 
 # import then bundle with your other JS
 import "@canopyinc/ui"
 
-# optional choice to load CSS directly
+# load CSS
 <link href="https://unpkg.com/@canopyinc/ui/public/variables.css" rel="stylesheet'>
 ```
 
 Then once the JS is loaded you can start writing with CanopyUI's web components.
 
 ```html
-  <div id="my-container"></div>
-  
-  <script>
-    // with JavaScript
-    const accountDetails = {
-      amount: 349392,
-      credit_limit: 800000,
-      available_credit: 450608,
-      pending_charges: 0,
-      promo_exp: "10/15/2021"
-    }
+<div id="container"></div>
 
-    const accountOverviewEl = document.createElement('cui-account-overview');
-    accountOverviewEl.setAttribute('details', JSON.stringify(accountDetails));
-
-    document.getElementById("my-container").appendChild(accountOverviewEl);
-  </script>
+<script>
+  const el = document.createElement("cui-account-overview");
+  const accountDetails = {
+    total_balance_cents: 349391,
+    credit_limit_cents: 800000,
+    available_credit_cents: 450608,
+    pending_charges: 0,
+    promo_exclusive_end: "10/15/2021"
+  };
+  el.setAttribute("details", JSON.stringify(accountDetails));
+  document.getElementById("container").appendChild(el);
+</script>
 ```
 
 Since CanopyUI is built from the WebComponents set of standards you may also write HTML markup
 directly.
 
 ```html
-<!-- NOTE: All properties should be passed strings including objects and arrays. -->
-<cui-account-overview
-  details="..."
->
-</cui-account-overview>
+<!-- NOTE: All properties should be passed as strings (including objects and arrays.) -->
+
+<cui-account-overview details="..."></cui-account-overview>
 ```
 
 ## Components
@@ -83,19 +78,20 @@ Refer to the Styling doc for a list of supported CSS properties.
     --cui-color-primary: darkblue;
   }
 </style>
-<cui-account-overview
-  details="..."
->
-</cui-account-overview>
+
+<cui-account-overview details="..."></cui-account-overview>
 ```
 
-## Local Setup
+## Local Development
 
-```
+```bash
+# download the repo
+git clone git@github.com:canopy1/canopy-ui.git
+
 # install package dependencies
 yarn install
 
-# compile typescript
+# compile
 yarn build
 
 # run tests
