@@ -1,15 +1,10 @@
 import { html } from "lit";
-import "./am_schedule";
-// import { AmScheduleItemsProp } from "./am_schedule";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { AmSchedule } from "./am_schedule";
 
-export default {
-  title: "Components/AmSchedule",
-  parameters:{
-    layout: 'padded',
-  },
-};
+<Meta title="Components/AmSchedule" />
 
-const Story = () => {
+export const Default = () => {
   const someAmItems = [
     {
       "line_item_id": 400,
@@ -56,8 +51,7 @@ const Story = () => {
       "am_end_total_balance_cents": 136691,
       "paid_on_time": true
     }
-  ]
-  
+  ];
   return html`
     <cui-am-schedule
       items=${JSON.stringify(someAmItems)}
@@ -66,5 +60,11 @@ const Story = () => {
   `
 }
 
-export const Default = Story.bind({});
+# AmSchedule
+
+<Canvas>
+  <Story name="Default">
+      {Default.bind({})}
+  </Story>
+</Canvas>
 

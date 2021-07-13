@@ -1,0 +1,29 @@
+import { html } from "lit"
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { AccountOverview } from "./account_overview";
+
+<Meta title="Components/AccountOverview" />
+
+export const Default = () => {
+  const details = {
+    amount: 349392,
+    credit_limit: 800000,
+    available_credit: 450608,
+    pending_charges: 0,
+    promo_exp: "10/15/2021"
+  };
+  return html`
+    <cui-account-overview
+      details=${JSON.stringify(details)}
+    >
+    </cui-account-overview>
+  `;
+};
+
+# AccountOverview
+
+<Canvas>
+  <Story name="Default">
+      {Default.bind({})}
+  </Story>
+</Canvas>
