@@ -11,19 +11,12 @@ import { centsToDollars } from "../../utils";
 const headerLabels = ["", "Date", "Amount Due", "Paid", "Interest", "Principal", "End Balance"];
 
 interface AmScheduleItem {
-  "line_item_id": number,
-  "cycle_exclusive_end": string,
   "min_pay_due_at": string,
   "am_min_pay_cents": number,
   "am_cycle_payment_cents": number,
   "am_interest_cents": number,
-  "am_deferred_cents": number,
   "am_principal_cents": number,
-  "am_start_principal_balance_cents": number,
   "am_end_principal_balance_cents": number,
-  "am_start_total_balance_cents": number,
-  "am_end_total_balance_cents": number,
-  "paid_on_time": boolean
 }
 
 export type AmScheduleItemsProp = AmScheduleItem[];
@@ -42,21 +35,31 @@ export class AmSchedule extends LitElement {
   renderTableBody(): TemplateResult<1> {
     return html`
       <tbody>
-        ${this.items.map(i => html`
-          <tr class="${(i.am_cycle_payment_cents >= i.am_min_pay_cents) ? 'cui-am-schedule--row-paid' : ''}">
-            <td>
-              <div class="cui-am-schedule--status-icon">
-                ${checkIconSVG}         
-              </div>
-            </td>
-            <td>${DateTime.fromISO(i.min_pay_due_at).toFormat("M/d/yy")}</td>
-            <td>${centsToDollars(i.am_min_pay_cents)}</td>
-            <td class="cui-am-schedule--cell-paid">${(i.am_cycle_payment_cents > 0) ? centsToDollars(i.am_cycle_payment_cents) : '–'}</td>
-            <td>${centsToDollars(i.am_interest_cents)}</td>
-            <td>${centsToDollars(i.am_principal_cents)}</td>
-            <td>${centsToDollars(i.am_end_principal_balance_cents)}</td>
-          </tr>
-        `)}
+        ${this.items.map(i => {
+          const {
+            am_cycle_payment_cents = 0,
+            am_min_pay_cents = 0,
+            am_interest_cents = 0,
+            am_principal_cents = 0,
+            am_end_principal_balance_cents = 0
+          } = i 
+          
+          return html`
+            <tr class="${(am_cycle_payment_cents >= (am_min_pay_cents)) ? 'cui-am-schedule--row-paid' : ''}">
+              <td>
+                <div class="cui-am-schedule--status-icon">
+                  ${checkIconSVG}         
+                </div>
+              </td>
+              <td>${DateTime.fromISO(i.min_pay_due_at).toFormat("M/d/yy")}</td>
+              <td>${centsToDollars(am_min_pay_cents)}</td>
+              <td class="cui-am-schedule--cell-paid">${(am_cycle_payment_cents > 0) ? centsToDollars(am_cycle_payment_cents) : '–'}</td>
+              <td>${centsToDollars(am_interest_cents)}</td>
+              <td>${centsToDollars(am_principal_cents)}</td>
+              <td>${centsToDollars(am_end_principal_balance_cents)}</td>
+            </tr>
+          `
+        })}
       </tbody>
     `;
   }

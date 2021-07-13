@@ -52,17 +52,17 @@ directly.
 
 ## Available Components
 
-| Component                   | Status |
-| --------------------------- | ------ |
-| `<cui-account-overview>`    | v0.1.0 |
-| `<cui-am-schedule>`         | v0.1.0 |
-| `<cui-external-fields>`     | v0.1.0 |
-| `<cui-payment>`             | v0.1.0 |
-| `<cui-customer-details>`    | TBD    |
-| `<cui-payment-history>`     | TBD    |
-| `<cui-product-details>`     | TBD    |
-| `<cui-statements>`          | TBD    |
-| `<cui-transaction-history>` | TBD    |
+| Component                   | Status | Doc |
+| --------------------------- | ------ | ---- |
+| `<cui-account-overview>`    | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-accountoverview) | 
+| `<cui-am-schedule>`         | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-amschedule) | 
+| `<cui-external-fields>`     | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-externalfields) |
+| `<cui-payment>`             | v0.1.0 | |
+| `<cui-customer-details>`    | TBD    | |
+| `<cui-payment-history>`     | TBD    | |
+| `<cui-product-details>`     | TBD    | |
+| `<cui-statements>`          | TBD    | |
+| `<cui-transaction-history>` | TBD    | |
 
 ## Styling
 

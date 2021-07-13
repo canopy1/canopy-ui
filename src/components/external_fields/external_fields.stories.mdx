@@ -31,8 +31,57 @@ export const Default = () => {
 
 # ExternalFields
 
+List of key-value fields with formatting support.
+
+## Example
+
+```html
+<div id="external-fields-container"></div>
+
+<script>
+  const externalFieldsEl = document.createElement("cui-external-fields");
+  const fields = [
+    { key: "Disbursement Fee", value: 12_00 },
+    { key: "Origination Date", value: "6/14/2020" },
+    { key: "Origination Fee", value: 54_38 },
+    { key: "Discount Amount", value: 939_00 },
+    { key: "Discount Date", value: "2020-08-03T09:10:14+00:00" },
+    { key: "Loan Amount", value: 1000_00 }
+  ];
+  const format = {
+    "Disbursement Fee": "centsToDollars",
+    "Origination Fee": "centsToDollars",
+    "Discount Amount": "centsToDollars",
+    "Discount Date": "M/d/yy",
+    "Loan Amount": "centsToDollars"
+  };
+  externalFieldsEl.setAttribute("fields", JSON.stringify(fields));
+  externalFieldsEl.setAttribute("format", JSON.stringify(format));
+  document.getElementById("external-fields-container").appendChild(externalFieldsEl);
+</script>
+```
+
 <Canvas>
   <Story name="Default">
       {Default.bind({})}
   </Story>
 </Canvas>
+
+## API
+
+### Attributes/Properties
+
+| property | type | default |
+| -------- | ---- | ------- |
+| fields[].key | string | |
+| fields[].value | number, string | |
+| format [key] | string | |
+| format [value] | "centsToDollars", "M/d/yyyy" | |
+
+### Events
+
+*None*
+
+### CSS Custom Properties
+
+*Soon*

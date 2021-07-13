@@ -27,11 +27,26 @@ export const Default = ({ total_balance_cents, credit_limit_cents, available_cre
 
 ## Example
 
+### HTML
 ```html
-<div id="container"></div>
+<cui-account-overview 
+  details='{
+    "total_balance_cents": 349392,
+    "credit_limit_cents": 800000,
+    "available_credit_cents": 450608,
+    "pending_charges": 0,
+    "promo_exclusive_end": "10/15/2021"
+  }'
+>
+</cui-account-overview>
+```
+
+### JavaScript
+```html
+<div id="account-overview-container"></div>
 
 <script>
-  const el = document.createElement("cui-account-overview");
+  const accountOverviewEl = document.createElement("cui-account-overview");
   const accountDetails = {
     total_balance_cents: 349391,
     credit_limit_cents: 800000,
@@ -39,8 +54,8 @@ export const Default = ({ total_balance_cents, credit_limit_cents, available_cre
     pending_charges: 0,
     promo_exclusive_end: "10/15/2021"
   };
-  el.setAttribute("details", JSON.stringify(accountDetails));
-  document.getElementById("container").appendChild(el);
+  accountOverviewEl.setAttribute("details", JSON.stringify(accountDetails));
+  document.getElementById("account-overview-container").appendChild(accountOverviewEl);
 </script>
 ```
 
