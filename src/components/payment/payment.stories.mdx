@@ -69,14 +69,155 @@ export const SubmitError = () => {
 
 # Payment
 
+## Example
+
+### Success
+
+```html
+<div id="payment-container"></div>
+<script>
+  const paymentEl = document.createElement("cui-payment");
+  const paymentMeta = {
+    due_by: "7/15/2021",
+    past_due: 0,
+    fees_due: 32349
+  };
+  const paymentMethods = [
+    { value: "card1", text: "Visa ending 4222", default: true },
+    { value: "card2", text: "Visa ending 4221" }
+  ];
+  const paymentAmounts = [
+    { value: "32349", text: "Minimum Payment Due - $323.49" },
+    { value: "50000", text: "Entire Balance - $500.00", default: true }
+  ];
+  const autopayEnabledConfirmBody = "<p style='text-align: center;'>Your <strong>Visa ending 4222</strong> will be charged <strong>$128.03</strong> on the <strong>3rd of each month</strong>.</p>"
+  const autopayDisabledConfirmBody = "<p style='text-align: center;'><strong>Are you sure you want disable autopay?</strong><br /> You may be charged fees for late or missed payments without autopay.</p>"
+
+  paymentEl.setAttribute('payment-meta', JSON.stringify(paymentMeta));
+  paymentEl.setAttribute('payment-methods', JSON.stringify(paymentMethods));
+  paymentEl.setAttribute('payment-amounts', JSON.stringify(paymentAmounts));
+  paymentEl.setAttribute('autopay-enabled-confirm-body', autopayEnabledConfirmBody);
+  paymentEl.setAttribute('autopay-disabled-confirm-body',autopayDisabledConfirmBody);
+
+  paymentEl.onSubmitPayment = form => new Promise((resolve, reject) => setTimeout(() => {
+    resolve(form);
+  }, 800));
+  paymentEl.onSubmitAutopay = form => new Promise((resolve, reject) => setTimeout(() => {
+    resolve(form);
+  }, 800));
+
+  document.getElementById("payment-container").appendChild(paymentEl);
+</script>
+```
+
 <Canvas>
   <Story name="Default">
       {Default.bind({})}
   </Story>
 </Canvas>
 
+### Error
+
+```html
+<div id="payment-container"></div>
+<script>
+  const paymentEl = document.createElement("cui-payment");
+  const paymentMeta = {
+    due_by: "7/15/2021",
+    past_due: 0,
+    fees_due: 32349
+  }
+  const paymentMethods = [
+    { value: "card1", text: "Visa ending 4222", default: true },
+    { value: "card2", text: "Visa ending 4221" }
+  ];
+  const paymentAmounts = [
+    { value: "32349", text: "Minimum Payment Due - $323.49" },
+    { value: "50000", text: "Entire Balance - $500.00", default: true }
+  ];
+  const autopayEnabledConfirmBody = "<p style='text-align: center;'>Your <strong>Visa ending 4222</strong> will be charged <strong>$128.03</strong> on the <strong>3rd of each month</strong>.</p>"
+  const autopayDisabledConfirmBody = "<p style='text-align: center;'><strong>Are you sure you want disable autopay?</strong><br /> You may be charged fees for late or missed payments without autopay.</p>"
+  paymentEl.setAttribute('payment-meta', JSON.stringify(paymentMeta));
+  paymentEl.setAttribute('payment-methods', JSON.stringify(paymentMethods));
+  paymentEl.setAttribute('payment-amounts', JSON.stringify(paymentAmounts));
+  paymentEl.setAttribute('autopay-enabled-confirm-body', autopayEnabledConfirmBody);
+  paymentEl.setAttribute('autopay-disabled-confirm-body',autopayDisabledConfirmBody);
+  paymentEl.onSubmitPayment = form => new Promise((_, reject) => setTimeout(() => {
+    reject(form);
+  }, 800))
+  paymentEl.onSubmitAutopay = form => new Promise((_, reject) => setTimeout(() => {
+    reject(form);
+  }, 800))
+
+  document.getElementById("payment-container").appendChild(paymentEl);
+</script>
+```
+
 <Canvas>
   <Story name="SubmitError">
       {SubmitError.bind({})}
   </Story>
 </Canvas>
+
+## API
+
+### Attributes/Properties
+
+*NOTE: Input for properties of "string (html)" type should only come from trusted sources.*
+
+| property | type | default |
+| -------- | ---- | ------- |
+| payment-meta.due_by | string | "-" |
+| payment-meta.past_due | number | 0 |
+| payment-meta.fees_due | number | 0 |
+| payment-methods.value | string | |
+| payment-methods.text | string | |
+| payment-methods.default | boolean | false |
+| payment-amounts.value | string | |
+| payment-amounts.text | string | |
+| payment-amounts.default | boolean | false |
+| autopay-enabled | boolean | false |
+| autopay-enabled-confirm-body | string (html) | "-" |
+| autopay-disabled-confirm-body | string (html) | "-" |
+
+#### Methods
+
+**onSubmitPayment**
+
+`(input: PaymentFormState) => Promise<Any>`
+
+Callback that returns a Promise. Rejection of the Promise leads to the payment modal error state;
+when the Promise is resolved the success prompt is shown.
+
+**onSubmitAutopay**
+
+`(input: PaymentFormState) => Promise<Any>`
+
+Callback that returns a Promise. Rejection of the Promise leads to the autopay error message;
+when the Promise is resolved the autopay field is toggled.
+
+#### Types
+
+**PaymentFormState**
+
+| property | type |
+| -------- | ---- |
+| paymentAmount | string |
+| paymentMethod | string |
+| paymentDate | string |
+| autopayEnabled | boolean |
+
+### Events
+
+| event name | target | 
+| ---------- | ------ |
+| step-initial | `cui-payment` |
+| step-payment-form | `cui-payment` |
+| step-payment-confirm | `cui-payment` |
+| step-payment-success | `cui-payment` |
+| step-autopay-confirm | `cui-payment` |
+
+### CSS Custom Properties
+
+*Documentation Soon. Refer to payment.css.ts in the source for reference.*
+
