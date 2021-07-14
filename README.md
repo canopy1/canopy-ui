@@ -9,18 +9,48 @@ yourself.
 
 ## Usage
 
-```bash
-# install
-npm install @canopyinc/ui
+You can load the JavaScript directly into the browser.
+### Browser Setup
 
-# import then bundle with your other JS
-import "@canopyinc/ui"
-
-# load CSS
-<link href="https://unpkg.com/@canopyinc/ui@0.1.2/public/variables.css" rel="stylesheet">
+```html
+<!-- Load JavaScript for CanopyUI -->
+<body>
+  ...
+  <script src="https://unpkg.com/@canopyinc/ui@0.1.4/build/browser.min.js"></script>
+</body>
 ```
 
-Then once the JS is loaded you can start writing with CanopyUI's web components.
+Or include it via a module bundler such as Webpack or Rollup.
+### Node Setup
+
+```bash
+# with npm
+npm install @canopyinc/ui --save
+
+# or yarn
+yarn add @canopyinc/ui
+```
+
+```js
+// index.js (or some entry point in your codebase)
+
+import "@canopyinc/ui";
+```
+
+You will need to include the default CSS theme for CanopyUI as well. 
+### CSS Setup
+
+```html
+<!-- Load default CSS for CanopyUI -->
+<head>
+  ...
+  <link href="https://unpkg.com/@canopyinc/ui@0.1.4/public/variables.css" rel="stylesheet">
+</head>
+```
+
+### Start Writing CanopyUI
+
+Once the JS is loaded you can start writing CanopyUI web components.
 
 ```html
 <div id="container"></div>
@@ -44,7 +74,6 @@ directly.
 
 ```html
 <!-- NOTE: All properties should be passed as strings (including objects and arrays.) -->
-
 <cui-account-overview details="..."></cui-account-overview>
 ```
 
@@ -93,9 +122,6 @@ yarn install
 
 # compile
 yarn build
-
-# run tests
-yarn test
 
 # run storybook server
 yarn storybook

@@ -24,4 +24,9 @@ export const parameters = {
       },
     ],
   },
+  options: {
+    storySort: {
+      order: ['Get Started', 'Components', 'Elements']
+    }
+  }
 }
