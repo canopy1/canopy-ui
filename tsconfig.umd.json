@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
-      "target": "es6",
+      "target": "ES6",
       "outDir": ".build/umd",
       "rootDir": "src",
       "moduleResolution": "node",
-      "module": "commonjs",
+      "module": "UMD",
       "forceConsistentCasingInFileNames": true,
       "inlineSourceMap": false,
   
@@ -17,9 +17,6 @@
       /* Enables emit interoperability between CommonJS and ES Modules via creation of
       namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
       "esModuleInterop": true,
-  
-      /* Include modules imported with .json extension. */
-      "resolveJsonModule": true,
   
       /* Enable all strict type-checking options. */
       "strict": true,
@@ -37,7 +34,7 @@
       "listFiles": false /* Print names of files part of the compilation. */,
       "pretty": true /* Stylize errors and messages using color and context. */,
   
-      "lib": ["es2016", "dom"],
+      "lib": ["ES2016", "dom"],
       "types": ["jest"],
       "typeRoots": ["node_modules/@types"],
       "plugins": [

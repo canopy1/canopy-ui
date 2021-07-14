@@ -11,7 +11,7 @@
   "keywords": [],
   "scripts": {
     "test": "jest",
-    "build": "tsc --project ./tsconfig.cjs.json && tsc --project ./tsconfig.umd.json && tsc --project ./tsconfig.json",
+    "build": "tsc --project ./tsconfig.cjs.json && tsc --project ./tsconfig.json && tsc --project ./tsconfig.umd.json && webpack",
     "lint": "prettier --check 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "lint:fix": "prettier --write 'src/**/*.{ts,tsx}' && eslint 'src/**/*.{ts,tsx}'",
     "storybook": "start-storybook -s public -p 6006",
@@ -52,7 +52,9 @@
     "prettier": "^2.1.1",
     "ts-jest": "^26.5.3",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "webpack": "^5.44.0",
+    "webpack-cli": "^4.7.2"
   },
   "resolutions": {
     "prismjs": "1.24.0",

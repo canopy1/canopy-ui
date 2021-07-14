@@ -17,7 +17,7 @@ npm install @canopyinc/ui
 import "@canopyinc/ui"
 
 # load CSS
-<link href="https://unpkg.com/@canopyinc/ui/public/variables.css" rel="stylesheet'>
+<link href="https://unpkg.com/@canopyinc/ui@0.1.2/public/variables.css" rel="stylesheet">
 ```
 
 Then once the JS is loaded you can start writing with CanopyUI's web components.

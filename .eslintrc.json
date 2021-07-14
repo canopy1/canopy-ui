@@ -5,7 +5,7 @@
     "project": "./tsconfig.json"
   },
   "env": { "es6": true },
-  "ignorePatterns": ["node_modules", ".build"],
+  "ignorePatterns": ["node_modules", ".build", "**/*.js"],
   "plugins": ["import"],
   "extends": [
     "plugin:@typescript-eslint/recommended"

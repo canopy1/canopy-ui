@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "ES6",
     "outDir": ".build/cjs",
     "rootDir": "src",
     "moduleResolution": "node",
-    "module": "commonjs",
+    "module": "CommonJS",
     "forceConsistentCasingInFileNames": true,
     "inlineSourceMap": false,
 
@@ -37,7 +37,7 @@
     "listFiles": false /* Print names of files part of the compilation. */,
     "pretty": true /* Stylize errors and messages using color and context. */,
 
-    "lib": ["es2016", "dom"],
+    "lib": ["ES2016", "dom"],
     "types": ["jest"],
     "typeRoots": ["node_modules/@types"],
     "plugins": [
