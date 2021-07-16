@@ -4,9 +4,6 @@ import { customElement, property } from "lit/decorators.js";
 import { centsToDollars } from "../../utils";
 import { externalFieldsCSS } from "./external_fields.css";
 
-import "../../elements/card/card";
-import "../../elements/list-item/list-item";
-
 interface ExternalField {
   key: string;
   value: string | number | boolean

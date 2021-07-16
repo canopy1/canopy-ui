@@ -16,7 +16,7 @@ You can load the JavaScript directly into the browser.
 <!-- Load JavaScript for CanopyUI -->
 <body>
   ...
-  <script src="https://unpkg.com/@canopyinc/ui@0.1.4/build/browser.min.js"></script>
+  <script src="https://unpkg.com/@canopyinc/ui/build/browser.min.js"></script>
 </body>
 ```
 
@@ -44,7 +44,7 @@ You will need to include the default CSS theme for CanopyUI as well.
 <!-- Load default CSS for CanopyUI -->
 <head>
   ...
-  <link href="https://unpkg.com/@canopyinc/ui@0.1.4/public/variables.css" rel="stylesheet">
+  <link href="https://unpkg.com/@canopyinc/ui/public/variables.css" rel="stylesheet">
 </head>
 ```
 

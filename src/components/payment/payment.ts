@@ -1,16 +1,10 @@
-import { html, LitElement, TemplateResult, svg } from "lit";
+import { html, LitElement, TemplateResult } from "lit";
 import { customElement, state, property } from "lit/decorators.js";
 import { unsafeHTML } from 'lit/directives/unsafe-html.js';
-import { DateTime } from "luxon";
-import { centsToDollars } from "../../utils";
+import { centsToDollars, getToday } from "../../utils";
+import { closeIconSVG } from "../../icons/inline";
+
 import { paymentCSS } from "./payment.css";
-
-// TODO: SVG build pipeline
-// import closeIcon from "../../icons/close-grey.svg";
-
-const closeIconSVG = svg`
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14"><path fill="none" d="M-5-5h24v24H-5z"/><path fill-rule="evenodd" clip-rule="evenodd" fill="#9da7c2" d="M14 1.4L12.6 0 7 5.6 1.4 0 0 1.4 5.6 7 0 12.6 1.4 14 7 8.4l5.6 5.6 1.4-1.4L8.4 7z"/></svg>
-`
 
 // Props
 export interface PaymentMetaProp {
@@ -57,7 +51,7 @@ export class Payment extends LitElement {
       this._form = {
         paymentAmount: (this.paymentAmounts.find(isDefaultOption) ?? this.paymentAmounts[0])?.value,
         paymentMethod: (this.paymentMethods.find(isDefaultOption) ?? this.paymentMethods[0])?.value,
-        paymentDate: getToday(),
+        paymentDate: getToday().toFormat("M/d/yyyy"),
         autopayEnabled: this.autopayEnabled
       }
       this.requestUpdate();
@@ -357,7 +351,7 @@ export class Payment extends LitElement {
     }
   }
 
-  get _modalTitle(): TemplateResult<1> {
+  get _modalHeader(): TemplateResult<1> {
     const title = this._flowType === "payment"
       ? "Make A Payment"
       : this._form.autopayEnabled === true
@@ -377,7 +371,7 @@ export class Payment extends LitElement {
   private get _modal(): TemplateResult<1> {
     return html`
       <div class="modal ${this._step}">
-        ${this._modalTitle}
+        ${this._modalHeader}
         ${this._modalContent}
       </div>
       <div class="modal-overlay" @click=${this._reset}></div>
@@ -444,10 +438,6 @@ export class Payment extends LitElement {
 }
 
 const isDefaultOption = (a: Option) => a.default === true;
-
-const getToday = () => {
-  return DateTime.now().toFormat("M/d/yyyy");
-}
 
 declare global {
   interface HTMLElementTagNameMap {

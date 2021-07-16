@@ -15,7 +15,6 @@ export const cardCSS = css`
 `
 
 @customElement('cui-card')
-
 export class Card extends LitElement {
   static styles = cardCSS;
 

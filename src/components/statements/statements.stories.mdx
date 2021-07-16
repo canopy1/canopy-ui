@@ -1,0 +1,119 @@
+import { html } from "lit"
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { Statements } from "./statements";
+
+<Meta title="Components/Statements" />
+
+export const Default = () => {
+  const statements = [
+    {
+      "statement_id": 1,
+      "cycle_inclusive_start": "2021-05-01T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-05-08T09:42:00+00:00",
+      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    },
+    {
+      "statement_id": 2,
+      "cycle_inclusive_start": "2021-05-08T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-05-15T09:42:00+00:00",
+      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    },
+    {
+      "statement_id": 3,
+      "cycle_inclusive_start": "2021-05-15T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-05-22T09:42:00+00:00",
+      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    },
+    {
+      "statement_id": 4,
+      "cycle_inclusive_start": "2021-05-22T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-05-29T09:42:00+00:00",
+      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    },
+    {
+      "statement_id": 5,
+      "cycle_inclusive_start": "2021-05-29T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-06-05T09:42:00+00:00",
+      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    },
+    {
+      "statement_id": 6,
+      "cycle_inclusive_start": "2021-06-05T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-06-12T09:42:00+00:00",
+      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    },
+    {
+      "statement_id": 7,
+      "cycle_inclusive_start": "2021-06-12T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-06-19T09:42:00+00:00",
+      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    }
+  ];
+  return html`
+    <cui-statements
+      statements=${JSON.stringify(statements)}
+      style="width:300px;"
+    >
+    </cui-statements>
+  `;
+};
+
+# Statements (`cui-statements`)
+
+List of Canopy statements. Clicking one will open an embedded PDF preview for it.
+
+*NOTE: This is an experimental component and may be subject to change.*
+
+## Example
+
+### JavaScript
+
+```html
+<div id="statements-container"></div>
+
+<script>
+  const statementsEl = document.createElement("cui-statements");
+  const statements = [
+    {
+      "statement_id": 1,
+      "cycle_inclusive_start": "2021-05-01T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-05-08T09:42:00+00:00",
+      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    },
+    {
+      "statement_id": 2,
+      "cycle_inclusive_start": "2021-05-08T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-05-15T09:42:00+00:00",
+      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    },
+    // ...
+  ]
+  statementsEl.setAttribute("statements", JSON.stringify(statements));
+  document.getElementById("statements-container").appendChild(statementsEl);
+</script>
+```
+
+<Canvas>
+  <Story name="Default">
+      {Default.bind({})}
+  </Story>
+</Canvas>
+
+## API
+
+### Attributes/Properties
+
+| property | type | default |
+| -------- | ---- | ------- |
+| statements[].statement_id | string | |
+| statements[].cycle_inclusive_start | string | |
+| statements[].cycle_exclusive_end | string | |
+| statements[].statement_pdf_url | string | |
+
+### Events
+
+*None*
+
+### CSS Custom Properties
+
+*Soon*
