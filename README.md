@@ -83,14 +83,14 @@ directly.
 
 | Component                   | Status | Doc |
 | --------------------------- | ------ | ---- |
-| `<cui-account-overview>`    | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-accountoverview) | 
-| `<cui-am-schedule>`         | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-amschedule) | 
-| `<cui-external-fields>`     | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-externalfields) |
-| `<cui-payment>`             | v0.1.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-payment) |
+| `<cui-account-overview>`    | v0.2.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-accountoverview) | 
+| `<cui-am-schedule>`         | v0.2.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-amschedule) | 
+| `<cui-external-fields>`     | v0.2.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-externalfields) |
+| `<cui-payment>`             | v0.2.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-payment) |
+| `<cui-statements>`          | v0.2.0 | [link](https://canopy1.github.io/canopy-ui/?path=/story/components-statements) |
 | `<cui-customer-details>`    | TBD    | |
 | `<cui-payment-history>`     | TBD    | |
 | `<cui-product-details>`     | TBD    | |
-| `<cui-statements>`          | TBD    | |
 | `<cui-transaction-history>` | TBD    | |
 
 ## Styling
