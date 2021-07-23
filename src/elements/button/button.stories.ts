@@ -5,11 +5,16 @@ export default {
   title: "Elements/Button",
 };
 
-export const Default = () => html`
+export const Primary = () => html`
+  <cui-btn>
+    Hello World
+  </cui-btn>
+`
+
+export const Small = () => html`
   <cui-btn
-    icon=""
-    disabled="false"
-    onClick=""
+    color="secondary"
+    size="small"
   >
     Hello World
   </cui-btn>
