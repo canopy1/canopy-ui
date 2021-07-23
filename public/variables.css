@@ -14,9 +14,11 @@
   --cui-background-color-light:   var(--cui-color-white);
   --cui-background-color-faded:   #FBFCFF;
   --cui-background-color-dark:    #0C1B45;
+  --cui-background-color-hover:   #F2F5FD;
   --cui-text-color-body:          #3E4E7A;
   --cui-text-color-headers:       #0C1B45;
   --cui-text-color-light:         #C9CEDE;
+  --cui-row-arrow-color:          var(--cui-color-black);
 
 
   /* Typography */
@@ -28,17 +30,18 @@
   --cui-font-size-lg:             1.25rem;
   --cui-font-size-xl:             1.5rem;
   --cui-font-size-h5:             var(--cui-font-size-xl);
-  --cui-font-size-h4:             2rem;
+  --cui-font-size-h4:             1.5rem;
   --cui-font-size-h3:             2.5rem;
   --cui-font-size-h2:             3rem;
   --cui-font-size-h1:             4rem;
   --cui-font-weight-bold:         700;
   --cui-font-weight-semibold:     500;
-  --cui-line-height-base:         1.5;
+  --cui-line-height-base:         1.42858;
 
   /* Border Radius */
   --cui-border-radius:            16px;
   --cui-border-radius-sm:         8px;
+  --cui-border-radius-xs:         4px;
 
   /* Borders */
   --cui-border-color:             #E1E4F2;
@@ -69,6 +72,7 @@
   --cui-btn-border-width:                       0;
   --cui-btn-border-color:                       transparent;
   --cui-btn-border-style:                       solid;
+  --cui-btn-border-radius:                      var(--cui-border-radius-sm);
   --cui-btn-box-shadow:                         0px 0px 0px 0px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
   --cui-btn-box-shadow-active:                  0px 0px 0px 3px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
   --cui-btn-font-size:                          var(--cui-font-size-base);
@@ -80,6 +84,19 @@
   --cui-btn-secondary-background-color:         var(--cui-background-color-faded);
   --cui-btn-secondary-background-color-hover:   var(--cui-text-color-light);
   --cui-btn-secondary-text-color:               var(--cui-text-color-headers);
+  --cui-btn-sm-font-size:                       var(--cui-font-size-sm);
+  --cui-btn-sm-border-radius:                   var(--cui-border-radius-xs);
+  --cui-btn-sm-padding-horizontal:              var(--cui-spacing-2);
+  --cui-btn-sm-padding-vertical:                0;
+  --cui-btn-sm-height:                          32px;
+
+  /* Card */
+  --cui-card-background-color:        var(--cui-background-color-light);
+  --cui-card-border-radius:           var(--cui-border-radius);
+  --cui-card-box-shadow:              var(--cui-box-shadow);
+  --cui-card-header-border:           var(--cui-border-width) var(--cui-border-style) var(--cui-border-color);
+  --cui-card-header-padding:          8px var(--cui-spacing-4);
+  --cui-card-header-font-size:        var(--cui-font-size-sm);
 
   /* Inputs */
   --cui-input-background-color:       var(--cui-background-color-light);
@@ -118,9 +135,15 @@
 
   /* List Item */
   --cui-li-padding-horizontal:                var(--cui-spacing-4);
-  --cui-li-padding-vertical:                  12px;
+  --cui-li-padding-vertical:                  10px;
   --cui-li-label-font-weight:                 var(--cui-font-weight-semibold);
   --cui-li-even-row-background-color:         var(--cui-background-color-faded);
+  --cui-li-arrow-color:                       var(--cui-row-arrow-color);
+  --cui-li-arrow-opacity:                     .32;
+  --cui-li-arrow-opacity-hover:               .72;
+  --cui-li-transition:                        all 0.2s linear;
+  --cui-li-hover-background-color:            var(--cui-background-color-hover); 
+  --cui-li-row-icon-color:                    var(--cui-color-primary);
 
   /* Stat */
   --cui-stat-label-text-color:                var(--cui-text-color-body);
@@ -140,12 +163,12 @@
   --cui-modal-background-color:               var(--cui-background-color-light);
   --cui-modal-border-radius:                  var(--cui-border-radius);
   --cui-modal-box-shadow:                     0px 6px 32px rgba(5, 16, 46, 0.16);
-  --cui-modal-header-padding:                 12px var(--cui-spacing-4);
+  --cui-modal-header-padding:                 14px var(--cui-spacing-4);
   --cui-modal-header-font-size:               var(--cui-font-size-base);
   --cui-modal-header-font-weight:             var(--cui-font-weight-bold);
   --cui-modal-header-border:                  var(--cui-border-width) var(--cui-border-style) var(--cui-border-color);
-  --cui-modal-max-width:                      360px;
-  --cui-modal-offset-x:                       -180px; /* Half of --cui-modal-max-width and negative */
+  --cui-modal-max-width-sm:                   360px;
+  --cui-modal-max-width-lg:                   960px;
   
   /* Component: Amortization Schedule */
   --cui-am-schedule-status-color-default:     var(--cui-text-color-light);
