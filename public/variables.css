@@ -20,6 +20,13 @@
   --cui-text-color-light:         #C9CEDE;
   --cui-row-arrow-color:          var(--cui-color-black);
 
+  /* Breakpoints */
+  --cui-breakpoint-xs:            0;
+  --cui-breakpoint-sm:            576px;
+  --cui-breakpoint-md:            768px;
+  --cui-breakpoint-lg:            992px;
+  --cui-breakpoint-xl:            1200px;
+  --cui-breakpoint-xxl:           1400px;
 
   /* Typography */
   --cui-font-family-base:         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";

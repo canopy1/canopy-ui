@@ -15,7 +15,7 @@ export const paymentDetailsCSS = css`
   slot[name="top"] {
     border-bottom: var(--cui-border-width) var(--cui-border-color) var(--cui-border-style);
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto; 
     column-gap: var(--cui-spacing-4);
     padding: var(--cui-spacing-5);
@@ -23,7 +23,7 @@ export const paymentDetailsCSS = css`
 
   slot[name="bottom"] {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto; 
     column-gap: var(--cui-spacing-4);
     padding: var(--cui-spacing-4) var(--cui-spacing-5);

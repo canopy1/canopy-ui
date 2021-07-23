@@ -44,11 +44,7 @@ export class CardHeader extends LitElement {
   static styles = cardHeaderCSS;
 
   @property({ attribute: 'title', type: String })
-<<<<<<< HEAD
   public title = '';
-=======
-  public name = '';
->>>>>>> 27d99b76c19490ffd6436ebef7a68c41cb6d12a3
 
   render(): TemplateResult<1> {
     return html`

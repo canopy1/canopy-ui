@@ -66,15 +66,24 @@ export class AccountOverview extends LitElement {
     // Appears if no element with attr slot "top" given.
     const defaultTop = html`
       ${ total_balance_cents !== undefined ? html`<cui-stat size="large" label="Current Balance" value="${total_balance_cents}" currency=true></cui-stat>` : null }
-      ${ credit_limit_cents && html`<cui-stat size="large" label="Credit Limit" value="${credit_limit_cents}" currency=true></cui-stat>`}
+      ${ available_credit_cents !== undefined ? html`<cui-stat size="large" label="Available Credit" value="${available_credit_cents}" currency=true ></cui-stat>` : null }
+      ${ credit_limit_cents !== undefined ? html`<cui-stat size="large" label="Credit Limit" value="${credit_limit_cents}" currency=true></cui-stat>` : null }
+      ${ principal_cents !== undefined ? html`<cui-stat size="large" label="Principal Balance" value="${principal_cents}" currency=true></cui-stat>` : null }
+      ${ total_paid_to_date_cents !== undefined ? html`<cui-stat size="large" label="Total Paid to Date" value="${total_paid_to_date_cents}" currency=true ></cui-stat>` : null }
     `;
 
     // Appears if no element with attr slot "bottom" given.
     const defaultBottom = html`
-      ${ available_credit_cents && html`<cui-stat size="small" label="Available Credit" value="${available_credit_cents}" currency=true></cui-stat>`}
-      ${ pending_charges !== undefined ? html`<cui-stat size="small" label="Pending Charges" value="${pending_charges}" currency=true></cui-stat>` : null }
-      ${ interest_balance_cents !== undefined ? html`<cui-stat size="small" label="Interest Balance" value="${interest_balance_cents}" currency=true></cui-stat>` : null }
-      ${ am_interest_balance_cents && html`<cui-stat size="small" label="Interest Balance" value="${am_interest_balance_cents}" currency=true></cui-stat>`}
+      ${ pending_charges !== undefined ? html`<cui-stat size="small" label="Pending Charges" value="${pending_charges}" currency=true ></cui-stat>` : null }
+      ${ total_interest_paid_to_date_cents !== undefined ? html`<cui-stat size="small" label="Interest Paid to Date" value="${total_interest_paid_to_date_cents}" currency=true ></cui-stat>` : null }
+      ${ interest_balance_cents !== undefined ? html`<cui-stat size="small" label="Interest Balance" value="${interest_balance_cents}" currency=true ></cui-stat>` : null }
+      ${ am_interest_balance_cents !== undefined ? html`<cui-stat size="small" label="Interest Balance" value="${am_interest_balance_cents}" currency=true ></cui-stat>` : null }
+      ${ deferred_interest_balance_cents !== undefined ? html`<cui-stat size="small" label="Deferred Int. Balance" value="${deferred_interest_balance_cents}" currency=true ></cui-stat>` : null }
+      ${ am_deferred_interest_balance_cents !== undefined ? html`<cui-stat size="small" label="Deferred Int. Balance" value="${am_deferred_interest_balance_cents}" currency=true ></cui-stat>` : null }
+      ${ max_approved_credit_limit_cents !== undefined ? html`<cui-stat size="small" label="Max Approved Limit" value="${max_approved_credit_limit_cents}" currency=true ></cui-stat>` : null }
+      ${ interest_rate_percent !== undefined ? html`<cui-stat size="small" label="Interest Rate" value="${interest_rate_percent}%" ></cui-stat>` : null }
+      ${ open_to_buy_cents !== undefined ? html`<cui-stat size="small" label="Interest Rate" value="${open_to_buy_cents}" currency=true ></cui-stat>` : null }
+      ${ total_payoff_cents !== undefined ? html`<cui-stat size="small" label="Interest Rate" value="${total_payoff_cents}" currency=true ></cui-stat>` : null }
     `;
 
     return html`

@@ -1,4 +1,4 @@
-import { html } from "lit"
+import { html } from "lit";
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { ExternalFields } from "./external_fields";
 
@@ -11,20 +11,17 @@ export const Default = () => {
     { key: "Origination Fee", value: 54_38 },
     { key: "Discount Amount", value: 939_00 },
     { key: "Discount Date", value: "2020-08-03T09:10:14+00:00" },
-    { key: "Loan Amount", value: 1000_00 }
+    { key: "Loan Amount", value: 1000_00 },
   ];
   const format = {
     "Disbursement Fee": "centsToDollars",
     "Origination Fee": "centsToDollars",
     "Discount Amount": "centsToDollars",
     "Discount Date": "M/d/yy",
-    "Loan Amount": "centsToDollars"
+    "Loan Amount": "centsToDollars",
   };
   return html`
-    <cui-external-fields
-      fields=${JSON.stringify(fields)}
-      format=${JSON.stringify(format)}
-    >
+    <cui-external-fields fields=${JSON.stringify(fields)} format=${JSON.stringify(format)} style="width: 300px">
     </cui-external-fields>
   `;
 };
@@ -48,14 +45,14 @@ List of key-value fields with formatting support.
     { key: "Origination Fee", value: 54_38 },
     { key: "Discount Amount", value: 939_00 },
     { key: "Discount Date", value: "2020-08-03T09:10:14+00:00" },
-    { key: "Loan Amount", value: 1000_00 }
+    { key: "Loan Amount", value: 1000_00 },
   ];
   const format = {
     "Disbursement Fee": "centsToDollars",
     "Origination Fee": "centsToDollars",
     "Discount Amount": "centsToDollars",
     "Discount Date": "M/d/yy",
-    "Loan Amount": "centsToDollars"
+    "Loan Amount": "centsToDollars",
   };
   externalFieldsEl.setAttribute("fields", JSON.stringify(fields));
   externalFieldsEl.setAttribute("format", JSON.stringify(format));
@@ -64,26 +61,24 @@ List of key-value fields with formatting support.
 ```
 
 <Canvas>
-  <Story name="Default">
-      {Default.bind({})}
-  </Story>
+  <Story name="Default">{Default.bind({})}</Story>
 </Canvas>
 
 ## API
 
 ### Attributes/Properties
 
-| property | type | default |
-| -------- | ---- | ------- |
-| fields[].key | string | |
-| fields[].value | number, string | |
-| format [key] | string | |
-| format [value] | "centsToDollars", "M/d/yyyy" | |
+| property       | type                         | default |
+| -------------- | ---------------------------- | ------- |
+| fields[].key   | string                       |         |
+| fields[].value | number, string               |         |
+| format [key]   | string                       |         |
+| format [value] | "centsToDollars", "M/d/yyyy" |         |
 
 ### Events
 
-*None*
+_None_
 
 ### CSS Custom Properties
 
-*Soon*
+_Soon_

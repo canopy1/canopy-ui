@@ -1,4 +1,4 @@
-import { html } from "lit"
+import { html } from "lit";
 import { Meta, Story, Canvas } from "@storybook/addon-docs";
 import { Statements } from "./statements";
 
@@ -7,62 +7,56 @@ import { Statements } from "./statements";
 export const Default = () => {
   const statements = [
     {
-      "statement_id": 1,
-      "cycle_inclusive_start": "2021-05-01T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-08T09:42:00+00:00",
-      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      statement_id: 1,
+      cycle_inclusive_start: "2021-05-01T09:42:00+00:00",
+      cycle_exclusive_end: "2021-05-08T09:42:00+00:00",
+      statement_pdf_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
-      "statement_id": 2,
-      "cycle_inclusive_start": "2021-05-08T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-15T09:42:00+00:00",
-      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      statement_id: 2,
+      cycle_inclusive_start: "2021-05-08T09:42:00+00:00",
+      cycle_exclusive_end: "2021-05-15T09:42:00+00:00",
+      statement_pdf_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
-      "statement_id": 3,
-      "cycle_inclusive_start": "2021-05-15T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-22T09:42:00+00:00",
-      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      statement_id: 3,
+      cycle_inclusive_start: "2021-05-15T09:42:00+00:00",
+      cycle_exclusive_end: "2021-05-22T09:42:00+00:00",
+      statement_pdf_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
-      "statement_id": 4,
-      "cycle_inclusive_start": "2021-05-22T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-29T09:42:00+00:00",
-      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      statement_id: 4,
+      cycle_inclusive_start: "2021-05-22T09:42:00+00:00",
+      cycle_exclusive_end: "2021-05-29T09:42:00+00:00",
+      statement_pdf_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
-      "statement_id": 5,
-      "cycle_inclusive_start": "2021-05-29T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-06-05T09:42:00+00:00",
-      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      statement_id: 5,
+      cycle_inclusive_start: "2021-05-29T09:42:00+00:00",
+      cycle_exclusive_end: "2021-06-05T09:42:00+00:00",
+      statement_pdf_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
-      "statement_id": 6,
-      "cycle_inclusive_start": "2021-06-05T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-06-12T09:42:00+00:00",
-      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      statement_id: 6,
+      cycle_inclusive_start: "2021-06-05T09:42:00+00:00",
+      cycle_exclusive_end: "2021-06-12T09:42:00+00:00",
+      statement_pdf_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
-      "statement_id": 7,
-      "cycle_inclusive_start": "2021-06-12T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-06-19T09:42:00+00:00",
-      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-    }
+      statement_id: 7,
+      cycle_inclusive_start: "2021-06-12T09:42:00+00:00",
+      cycle_exclusive_end: "2021-06-19T09:42:00+00:00",
+      statement_pdf_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    },
   ];
-  return html`
-    <cui-statements
-      statements=${JSON.stringify(statements)}
-      style="width:300px;"
-    >
-    </cui-statements>
-  `;
+  return html` <cui-statements statements=${JSON.stringify(statements)} style="width:300px;"> </cui-statements> `;
 };
 
 # Statements (`cui-statements`)
 
 List of Canopy statements. Clicking one will open an embedded PDF preview for it.
 
-*NOTE: This is an experimental component and may be subject to change.*
+_NOTE: This is an experimental component and may be subject to change._
 
 ## Example
 
@@ -75,45 +69,61 @@ List of Canopy statements. Clicking one will open an embedded PDF preview for it
   const statementsEl = document.createElement("cui-statements");
   const statements = [
     {
-      "statement_id": 1,
-      "cycle_inclusive_start": "2021-05-01T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-08T09:42:00+00:00",
-      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      statement_id: 1,
+      cycle_inclusive_start: "2021-05-01T09:42:00+00:00",
+      cycle_exclusive_end: "2021-05-08T09:42:00+00:00",
+      statement_pdf_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     {
-      "statement_id": 2,
-      "cycle_inclusive_start": "2021-05-08T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-15T09:42:00+00:00",
-      "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      statement_id: 2,
+      cycle_inclusive_start: "2021-05-08T09:42:00+00:00",
+      cycle_exclusive_end: "2021-05-15T09:42:00+00:00",
+      statement_pdf_url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
     },
     // ...
-  ]
+  ];
   statementsEl.setAttribute("statements", JSON.stringify(statements));
   document.getElementById("statements-container").appendChild(statementsEl);
 </script>
 ```
 
 <Canvas>
-  <Story name="Default">
-      {Default.bind({})}
-  </Story>
+  <Story name="Default">{Default.bind({})}</Story>
 </Canvas>
 
 ## API
 
 ### Attributes/Properties
 
-| property | type | default |
-| -------- | ---- | ------- |
-| statements[].statement_id | string | |
-| statements[].cycle_inclusive_start | string | |
-| statements[].cycle_exclusive_end | string | |
-| statements[].statement_pdf_url | string | |
+| property                           | type   | default |
+| ---------------------------------- | ------ | ------- |
+| statements[].statement_id          | string |         |
+| statements[].cycle_inclusive_start | string |         |
+| statements[].cycle_exclusive_end   | string |         |
+| statements[].statement_pdf_url     | string |         |
 
 ### Events
 
-*None*
+_None_
 
 ### CSS Custom Properties
 
-*Soon*
+| property                           |
+| ---------------------------------- |
+| --cui-spacing-1                    |
+| --cui-spacing-2                    |
+| --cui-spacing-3                    |
+| --cui-border-radius-sm             |
+| --cui-background-color-faded       |
+| --cui-btn-transition               |
+| --cui-background-color-hover       |
+| --cui-color-black                  |
+| --cui-text-color-light             |
+| --cui-font-family-base             |
+| --cui-font-size-base               |
+| --cui-text-color-body              |
+| --cui-line-height-base             |
+| --cui-li-padding-vertical          |
+| --cui-li-even-row-background-color |
+| --cui-li-row-icon-color            |
+| --cui-modal-max-width-lg           |

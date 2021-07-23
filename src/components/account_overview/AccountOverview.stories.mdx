@@ -4,12 +4,39 @@ import { AccountOverview } from "./account_overview";
 
 <Meta title="Components/AccountOverview" component="cui-account-overview" />
 
-export const Default = ({ total_balance_cents, credit_limit_cents, available_credit_cents, pending_charges }) => {
+export const Default = ({
+  total_balance_cents,
+  principal_cents,
+  interest_balance_cents,
+  am_interest_balance_cents,
+  deferred_interest_balance_cents,
+  am_deferred_interest_balance_cents,
+  total_paid_to_date_cents,
+  total_interest_paid_to_date_cents,
+  credit_limit_cents,
+  max_approved_credit_limit_cents,
+  interest_rate_percent,
+  available_credit_cents,
+  pending_charges,
+  open_to_buy_cents,
+  total_payoff_cents,
+}) => {
   const details = {
     total_balance_cents,
+    principal_cents,
+    interest_balance_cents,
+    am_interest_balance_cents,
+    deferred_interest_balance_cents,
+    am_deferred_interest_balance_cents,
+    total_paid_to_date_cents,
+    total_interest_paid_to_date_cents,
     credit_limit_cents,
+    max_approved_credit_limit_cents,
+    interest_rate_percent,
     available_credit_cents,
     pending_charges,
+    open_to_buy_cents,
+    total_payoff_cents,
   };
   return html`
     <cui-account-overview details=${JSON.stringify(details)} style="min-width: 900px;"> </cui-account-overview>
@@ -29,6 +56,7 @@ export const Default = ({ total_balance_cents, credit_limit_cents, available_cre
     "credit_limit_cents": 800000,
     "available_credit_cents": 450608,
     "pending_charges": 0,
+    "interest_rate_percent": 8.99
   }'
 >
 </cui-account-overview>
@@ -46,6 +74,7 @@ export const Default = ({ total_balance_cents, credit_limit_cents, available_cre
     credit_limit_cents: 800000,
     available_credit_cents: 450608,
     pending_charges: 0,
+    interest_rate_percent: 8.99,
   };
   accountOverviewEl.setAttribute("details", JSON.stringify(accountDetails));
   document.getElementById("account-overview-container").appendChild(accountOverviewEl);
@@ -54,12 +83,25 @@ export const Default = ({ total_balance_cents, credit_limit_cents, available_cre
 
 <Canvas>
   <Story
-    name="Default"
+    name="Revolving Example"
     args={{
       total_balance_cents: 349392,
       credit_limit_cents: 800000,
       available_credit_cents: 450608,
       pending_charges: 0,
+      interest_rate_percent: 8.99,
+    }}
+  >
+    {Default.bind({})}
+  </Story>
+  <Story
+    name="Installment Example"
+    args={{
+      principal_cents: 422083,
+      am_interest_balance_cents: 41293,
+      total_paid_to_date_cents: 90726,
+      total_interest_paid_to_date_cents: 12809,
+      interest_rate_percent: 15.99,
     }}
   >
     {Default.bind({})}
@@ -70,12 +112,23 @@ export const Default = ({ total_balance_cents, credit_limit_cents, available_cre
 
 ### Attributes/Properties
 
-| property                       | type   | default |
-| ------------------------------ | ------ | ------- |
-| details.total_balance_cents    | number | 0       |
-| details.credit_limit_cents     | number | 0       |
-| details.available_credit_cents | number | 0       |
-| details.pending_charges        | number | 0       |
+| property                                   | type   | default   |
+| ------------------------------------------ | ------ | --------- |
+| details.total_balance_cents                | number | undefined |
+| details.principal_cents                    | number | undefined |
+| details.interest_balance_cents             | number | undefined |
+| details.am_interest_balance_cents          | number | undefined |
+| details.deferred_interest_balance_cents    | number | undefined |
+| details.am_deferred_interest_balance_cents | number | undefined |
+| details.total_paid_to_date_cents           | number | undefined |
+| details.total_interest_paid_to_date_cents  | number | undefined |
+| details.credit_limit_cents                 | number | undefined |
+| details.max_approved_credit_limit_cents    | number | undefined |
+| details.interest_rate_percent              | number | undefined |
+| details.available_credit_cents             | number | undefined |
+| details.pending_charges                    | number | undefined |
+| details.open_to_buy_cents                  | number | undefined |
+| details.total_payoff_cents                 | number | undefined |
 
 ### Events
 

@@ -5,10 +5,8 @@ const demoDashboardCSS = css`
   #DashboardDemo {
     background-color: #fff;
     color: var(--cui-text-color-body);
-    display: grid;
     font-family: var(--cui-font-family-base);
     font-size: var(--cui-font-size-base);
-    grid-template-columns: 1fr 3fr;
     line-height: var(--cui-line-height-base);
     min-height: 100vh;
   }
@@ -24,23 +22,23 @@ const demoDashboardCSS = css`
   }
 
   .sidebar .content {
-    padding: 24px;
+    padding: 12px 12px 24px;
   }
 
   .main .header {
-    padding: 0 48px;
+    padding: 0 12px;
   }
 
   .main .content {
-    padding: 48px;
+    padding: 48px 12px;
   }
 
   .header {
     align-items: center;
     border-bottom: 1px solid #E1E4F2;
     display: flex;
-    height: 64px;
-    padding: 0 24px;
+    height: 48px;
+    padding: 0 16px;
   }
 
   cui-payment {
@@ -54,16 +52,77 @@ const demoDashboardCSS = css`
   cui-account-overview {
     margin-bottom: 48px;
   }
+
+  @media only screen and (min-width: 768px) {
+    #DashboardDemo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .header {
+      height: 64px;
+      padding: 0 24px;
+    }
+
+    .sidebar .content {
+      padding: 24px;
+    }
+
+    .main .header {
+      padding: 0 24px;
+    }
+
+    .main .content {
+      padding: 24px;
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    #DashboardDemo {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .main .header {
+      padding: 0 48px;
+    }
+
+    .main .content {
+      padding: 48px;
+    }
+  }
+
+  @media only screen and (min-width: 1400px) {
+    #DashboardDemo {
+      grid-template-columns: 1fr 3fr;
+    }
+  }
 `
 
 export default {
-  title: "Demos/Dashboard",
+  title: 'Demos/Dashboard',
   parameters:{
-    layout:'fullscreen',
+    layout: 'fullscreen',
   },
+  argTypes: {
+    PrimaryColor: {
+      control: { type: 'color' }
+    },
+    ButtonHoverColor: {
+      control: { type: 'color' }
+    },
+    AltBackgroundColor: {
+      control: { type: 'color' }
+    },
+    BorderRadius: {
+      control: { type: 'number' }
+    },
+    Logo: {
+      control: { type: 'file' }
+    }
+  }
 };
 
-export const InstallmentLoan = () => {
+const Template = ({ PrimaryColor, BorderRadius, AltBackgroundColor, ButtonHoverColor, Logo }) => {
 
   const paymentMeta = {
     due_by: "8/20/2021",
@@ -86,7 +145,6 @@ export const InstallmentLoan = () => {
     { key: "Origination Date", value: "5/20/2020" },
     { key: "Origination Fee", value: 0 },
     { key: "Discount Amount", value: 939_00 },
-    { key: "Discount Date", value: "2020-08-03T09:10:14+00:00" },
     { key: "Loan Amount", value: 5000_00 },
     { key: "Interest Rate", value: "15.99%" },
   ];
@@ -243,10 +301,21 @@ export const InstallmentLoan = () => {
 
   return html`
     <style>${demoDashboardCSS}</style>
+    <style>
+      :root {
+        --cui-color-primary: ${PrimaryColor};
+        --cui-btn-background-color-hover: ${ButtonHoverColor};
+        --cui-border-radius: ${BorderRadius}px;
+      }
+
+      .sidebar {
+        background-color: ${AltBackgroundColor};
+      }
+    </style>
     <div id="DashboardDemo">
       <div class="sidebar">
         <div class="header">
-          <img src=${DashboardLogo} alt="Bank.io" height="20" />
+          <img src=${Logo} alt="Bank.io" height="20" />
         </div>
         <div class="content">
           <cui-payment
@@ -276,8 +345,11 @@ export const InstallmentLoan = () => {
         <div class="content">
           <cui-account-overview
             details='{
-              "total_balance_cents": 422083,
-              "am_interest_balance_cents": 392830,
+              "principal_cents": 422083,
+              "am_interest_balance_cents": 41293,
+              "total_paid_to_date_cents": 90726,
+              "total_interest_paid_to_date_cents": 12809,
+              "interest_rate_percent": 15.99
             }'
             class="cui-no-card"
           >
@@ -289,4 +361,13 @@ export const InstallmentLoan = () => {
       </div>
     </div>
   `
+};
+
+export const InstallmentLoan = Template.bind({});
+InstallmentLoan.args = {
+   PrimaryColor: '#4867FF',
+   ButtonHoverColor: '#443CF8',
+   AltBackgroundColor: '#F2F5FD',
+   BorderRadius: 16,
+   Logo: DashboardLogo
 };
