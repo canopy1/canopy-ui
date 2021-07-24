@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import DashboardLogo from "./assets/dashboard-logo.svg";
+import { dashboardLogoSVG } from "../icons/inline"
 
 const demoDashboardCSS = css`
   #DashboardDemo {
@@ -315,7 +315,7 @@ const Template = ({ PrimaryColor, BorderRadius, AltBackgroundColor, ButtonHoverC
     <div id="DashboardDemo">
       <div class="sidebar">
         <div class="header">
-          <img src=${Logo} alt="Bank.io" height="20" />
+          ${dashboardLogoSVG}
         </div>
         <div class="content">
           <cui-payment
@@ -368,6 +368,5 @@ InstallmentLoan.args = {
    PrimaryColor: '#4867FF',
    ButtonHoverColor: '#443CF8',
    AltBackgroundColor: '#F2F5FD',
-   BorderRadius: 16,
-   Logo: DashboardLogo
+   BorderRadius: 16
 };
