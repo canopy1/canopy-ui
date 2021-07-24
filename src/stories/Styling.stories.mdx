@@ -11,188 +11,187 @@ CanopyUI leverages CSS Variables for easy style customization without the need o
 ```css
 :root {
   /* Colors */
-  --cui-color-primary: #4867ff;
-  --cui-color-primary-lighten: #68adff;
-  --cui-color-primary-darken: #443cf8;
-  --cui-color-secondary: #00c4ff;
-  --cui-color-success: #00bd7e;
-  --cui-color-warning: #fa8c16;
-  --cui-color-danger: #ff434e;
-  --cui-color-danger-lighten: #ffccc7;
-  --cui-color-black: #05102e;
-  --cui-color-white: #ffffff;
+  --cui-color-primary:            #4867FF;
+  --cui-color-primary-lighten:    #68ADFF;
+  --cui-color-primary-darken:     #443CF8;
+  --cui-color-secondary:          #00C4FF;
+  --cui-color-success:            #00BD7E;
+  --cui-color-warning:            #FA8C16;
+  --cui-color-danger:             #FF434E;
+  --cui-color-danger-lighten:     #FFCCC7;
+  --cui-color-black:              #05102E;
+  --cui-color-white:              #ffffff;
 
-  --cui-background-color-light: var(--cui-color-white);
-  --cui-background-color-faded: #fbfcff;
-  --cui-background-color-dark: #0c1b45;
-  --cui-background-color-hover: #f2f5fd;
-  --cui-text-color-body: #3e4e7a;
-  --cui-text-color-headers: #0c1b45;
-  --cui-text-color-light: #c9cede;
-  --cui-row-arrow-color: var(--cui-color-black);
+  --cui-background-color-light:   var(--cui-color-white);
+  --cui-background-color-faded:   #FBFCFF;
+  --cui-background-color-dark:    #0C1B45;
+  --cui-background-color-hover:   #F2F5FD;
+  --cui-text-color-body:          #3E4E7A;
+  --cui-text-color-headers:       #0C1B45;
+  --cui-text-color-light:         #C9CEDE;
+  --cui-row-arrow-color:          var(--cui-color-black);
 
   /* Breakpoints */
-  --cui-breakpoint-xs: 0;
-  --cui-breakpoint-sm: 576px;
-  --cui-breakpoint-md: 768px;
-  --cui-breakpoint-lg: 992px;
-  --cui-breakpoint-xl: 1200px;
-  --cui-breakpoint-xxl: 1400px;
+  --cui-breakpoint-xs:            0;
+  --cui-breakpoint-sm:            576px;
+  --cui-breakpoint-md:            768px;
+  --cui-breakpoint-lg:            992px;
+  --cui-breakpoint-xl:            1200px;
+  --cui-breakpoint-xxl:           1400px;
 
   /* Typography */
-  --cui-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --cui-font-family-headers: var(--cui-font-family-base);
-  --cui-font-size-base: 14px;
-  --cui-font-size-xs: 0.625rem;
-  --cui-font-size-sm: 0.75rem;
-  --cui-font-size-lg: 1.25rem;
-  --cui-font-size-xl: 1.5rem;
-  --cui-font-size-h5: var(--cui-font-size-xl);
-  --cui-font-size-h4: 1.5rem;
-  --cui-font-size-h3: 2.5rem;
-  --cui-font-size-h2: 3rem;
-  --cui-font-size-h1: 4rem;
-  --cui-font-weight-bold: 700;
-  --cui-font-weight-semibold: 500;
-  --cui-line-height-base: 1.42858;
+  --cui-font-family-base:         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --cui-font-family-headers:      var(--cui-font-family-base);
+  --cui-font-size-base:           14px;
+  --cui-font-size-xs:             .625rem;
+  --cui-font-size-sm:             .75rem;
+  --cui-font-size-lg:             1.25rem;
+  --cui-font-size-xl:             1.5rem;
+  --cui-font-size-h5:             var(--cui-font-size-xl);
+  --cui-font-size-h4:             1.5rem;
+  --cui-font-size-h3:             2.5rem;
+  --cui-font-size-h2:             3rem;
+  --cui-font-size-h1:             4rem;
+  --cui-font-weight-bold:         700;
+  --cui-font-weight-semibold:     500;
+  --cui-line-height-base:         1.42858;
 
   /* Border Radius */
-  --cui-border-radius: 16px;
-  --cui-border-radius-sm: 8px;
-  --cui-border-radius-xs: 4px;
+  --cui-border-radius:            16px;
+  --cui-border-radius-sm:         8px;
+  --cui-border-radius-xs:         4px;
 
   /* Borders */
-  --cui-border-color: #e1e4f2;
-  --cui-border-color-active: var(--cui-color-primary-lighten);
-  --cui-border-style: solid;
-  --cui-border-width: 1px;
+  --cui-border-color:             #E1E4F2;
+  --cui-border-color-active:      var(--cui-color-primary-lighten);
+  --cui-border-style:             solid;
+  --cui-border-width:             1px;
 
   /* Box Shadow */
-  --cui-box-shadow: 0px 4px 16px rgba(5, 16, 46, 0.04);
-  --cui-box-shadow-sm: 0px 2px 0px rgba(5, 16, 46, 0.02);
-  --cui-box-shadow-lg: 0px 6px 32px rgba(5, 16, 46, 0.04);
+  --cui-box-shadow:               0px 4px 16px rgba(5, 16, 46, 0.04);
+  --cui-box-shadow-sm:            0px 2px 0px rgba(5, 16, 46, 0.02);
+  --cui-box-shadow-lg:            0px 6px 32px rgba(5, 16, 46, 0.04);
 
   /* Spacing */
-  --cui-spacing-1: 4px;
-  --cui-spacing-2: 8px;
-  --cui-spacing-3: 16px;
-  --cui-spacing-4: 24px;
-  --cui-spacing-5: 32px;
-  --cui-spacing-6: 48px;
-  --cui-spacing-7: 56px;
-  --cui-spacing-8: 64px;
-  --cui-spacing-9: 72px;
+  --cui-spacing-1:                4px;
+  --cui-spacing-2:                8px;
+  --cui-spacing-3:                16px;
+  --cui-spacing-4:                24px;
+  --cui-spacing-5:                32px;
+  --cui-spacing-6:                48px;
+  --cui-spacing-7:                56px;
+  --cui-spacing-8:                64px;
+  --cui-spacing-9:                72px;
 
   /* Button */
-  --cui-btn-background-color: var(--cui-color-primary);
-  --cui-btn-background-color-hover: var(--cui-color-primary-darken);
-  --cui-btn-text-color: var(--cui-color-white);
-  --cui-btn-border-width: 0;
-  --cui-btn-border-color: transparent;
-  --cui-btn-border-style: solid;
-  --cui-btn-border-radius: var(--cui-border-radius-sm);
-  --cui-btn-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
-  --cui-btn-box-shadow-active: 0px 0px 0px 3px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
-  --cui-btn-font-size: var(--cui-font-size-base);
-  --cui-btn-height: 40px;
-  --cui-btn-outline: none;
-  --cui-btn-padding-horizontal: var(--cui-spacing-3);
-  --cui-btn-padding-vertical: var(--cui-spacing-2);
-  --cui-btn-transition: all 0.2s ease;
-  --cui-btn-secondary-background-color: var(--cui-background-color-faded);
-  --cui-btn-secondary-background-color-hover: var(--cui-text-color-light);
-  --cui-btn-secondary-text-color: var(--cui-text-color-headers);
-  --cui-btn-sm-font-size: var(--cui-font-size-sm);
-  --cui-btn-sm-border-radius: var(--cui-border-radius-xs);
-  --cui-btn-sm-padding-horizontal: var(--cui-spacing-2);
-  --cui-btn-sm-padding-vertical: 0;
-  --cui-btn-sm-height: 32px;
+  --cui-btn-background-color:                   var(--cui-color-primary);
+  --cui-btn-background-color-hover:             var(--cui-color-primary-darken);
+  --cui-btn-text-color:                         var(--cui-color-white);
+  --cui-btn-border-width:                       0;
+  --cui-btn-border-color:                       transparent;
+  --cui-btn-border-style:                       solid;
+  --cui-btn-border-radius:                      var(--cui-border-radius-sm);
+  --cui-btn-box-shadow:                         0px 0px 0px 0px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
+  --cui-btn-box-shadow-active:                  0px 0px 0px 3px rgba(0, 0, 0, 0.12), var(--cui-box-shadow-sm);
+  --cui-btn-font-size:                          var(--cui-font-size-base);
+  --cui-btn-height:                             40px;
+  --cui-btn-outline:                            none;
+  --cui-btn-padding-horizontal:                 var(--cui-spacing-3);
+  --cui-btn-padding-vertical:                   var(--cui-spacing-2);
+  --cui-btn-transition:                         all 0.2s ease;
+  --cui-btn-secondary-background-color:         var(--cui-background-color-faded);
+  --cui-btn-secondary-background-color-hover:   var(--cui-text-color-light);
+  --cui-btn-secondary-text-color:               var(--cui-text-color-headers);
+  --cui-btn-sm-font-size:                       var(--cui-font-size-sm);
+  --cui-btn-sm-border-radius:                   var(--cui-border-radius-xs);
+  --cui-btn-sm-padding-horizontal:              var(--cui-spacing-2);
+  --cui-btn-sm-padding-vertical:                0;
+  --cui-btn-sm-height:                          32px;
 
   /* Card */
-  --cui-card-background-color: var(--cui-background-color-light);
-  --cui-card-border-radius: var(--cui-border-radius);
-  --cui-card-box-shadow: var(--cui-box-shadow);
-  --cui-card-header-border: var(--cui-border-width) var(--cui-border-style) var(--cui-border-color);
-  --cui-card-header-padding: 8px var(--cui-spacing-4);
-  --cui-card-header-font-size: var(--cui-font-size-sm);
+  --cui-card-background-color:        var(--cui-background-color-light);
+  --cui-card-border-radius:           var(--cui-border-radius);
+  --cui-card-box-shadow:              var(--cui-box-shadow);
+  --cui-card-header-border:           var(--cui-border-width) var(--cui-border-style) var(--cui-border-color);
+  --cui-card-header-padding:          8px var(--cui-spacing-4);
+  --cui-card-header-font-size:        var(--cui-font-size-sm);
 
   /* Inputs */
-  --cui-input-background-color: var(--cui-background-color-light);
-  --cui-input-border-color: var(--cui-border-color);
-  --cui-input-border-color-active: var(--cui-border-color-active);
-  --cui-input-border-style: var(--cui-border-style);
-  --cui-input-border-width: var(--cui-border-width);
-  --cui-input-border-radius: var(--cui-border-radius-sm);
-  --cui-input-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.04), var(--cui-box-shadow-sm);
-  --cui-input-box-shadow-active: 0px 0px 0px 3px rgba(0, 0, 0, 0.04), var(--cui-box-shadow-sm);
-  --cui-input-font-size: var(--cui-font-size-base);
-  --cui-input-height: 40px;
-  --cui-input-line-height: var(--cui-input-height);
-  --cui-input-padding-horizontal: var(--cui-spacing-3);
-  --cui-input-padding-vertical: 0;
-  --cui-input-text-color: var(--cui-text-color-body);
-  --cui-input-placeholder-color: var(--cui-text-color-light);
-  --cui-input-transition: all 0.2s ease;
+  --cui-input-background-color:       var(--cui-background-color-light);
+  --cui-input-border-color:           var(--cui-border-color);
+  --cui-input-border-color-active:    var(--cui-border-color-active);
+  --cui-input-border-style:           var(--cui-border-style);
+  --cui-input-border-width:           var(--cui-border-width);
+  --cui-input-border-radius:          var(--cui-border-radius-sm);
+  --cui-input-box-shadow:             0px 0px 0px 0px rgba(0, 0, 0, 0.04), var(--cui-box-shadow-sm);
+  --cui-input-box-shadow-active:      0px 0px 0px 3px rgba(0, 0, 0, 0.04), var(--cui-box-shadow-sm);
+  --cui-input-font-size:              var(--cui-font-size-base);
+  --cui-input-height:                 40px;
+  --cui-input-line-height:            var(--cui-input-height);
+  --cui-input-padding-horizontal:     var(--cui-spacing-3);
+  --cui-input-padding-vertical:       0;
+  --cui-input-text-color:             var(--cui-text-color-body);
+  --cui-input-placeholder-color:      var(--cui-text-color-light);
+  --cui-input-transition:             all 0.2s ease;
 
   /* Tables */
-  --cui-table-background-color: var(--cui-background-color-light);
-  --cui-table-even-row-background-color: var(--cui-background-color-faded);
-  --cui-table-border-color: var(--cui-border-color);
-  --cui-table-border-color-active: var(--cui-border-color-active);
-  --cui-table-border-style: var(--cui-border-style);
-  --cui-table-border-width: var(--cui-border-width);
-  --cui-table-border-radius: var(--cui-border-radius);
-  --cui-table-box-shadow: var(--cui-box-shadow);
-  --cui-table-header-background-color: var(--cui-background-color-faded);
-  --cui-table-header-font-size: var(--cui-font-size-sm);
-  --cui-table-header-font-weight: var(--cui-font-weight-bold);
-  --cui-table-header-border-bottom: var(--cui-table-border-width) var(--cui-table-border-style) var(--cui-table-border-color);
-  --cui-table-header-cell-padding-vertical: var(--cui-spacing-2);
-  --cui-table-cell-padding-horizontal: var(--cui-spacing-3);
-  --cui-table-cell-padding-vertical: var(--cui-spacing-3);
+  --cui-table-background-color:               var(--cui-background-color-light);
+  --cui-table-even-row-background-color:      var(--cui-background-color-faded);
+  --cui-table-border-color:                   var(--cui-border-color);
+  --cui-table-border-color-active:            var(--cui-border-color-active);
+  --cui-table-border-style:                   var(--cui-border-style);
+  --cui-table-border-width:                   var(--cui-border-width);
+  --cui-table-border-radius:                  var(--cui-border-radius);
+  --cui-table-box-shadow:                     var(--cui-box-shadow);
+  --cui-table-header-background-color:        var(--cui-background-color-faded);
+  --cui-table-header-font-size:               var(--cui-font-size-sm);
+  --cui-table-header-font-weight:             var(--cui-font-weight-bold);
+  --cui-table-header-border-bottom:           var(--cui-table-border-width) var(--cui-table-border-style) var(--cui-table-border-color);
+  --cui-table-header-cell-padding-vertical:   var(--cui-spacing-2);
+  --cui-table-cell-padding-horizontal:        var(--cui-spacing-3);
+  --cui-table-cell-padding-vertical:          var(--cui-spacing-3);
 
   /* List Item */
-  --cui-li-padding-horizontal: var(--cui-spacing-4);
-  --cui-li-padding-vertical: 10px;
-  --cui-li-label-font-weight: var(--cui-font-weight-semibold);
-  --cui-li-even-row-background-color: var(--cui-background-color-faded);
-  --cui-li-arrow-color: var(--cui-row-arrow-color);
-  --cui-li-arrow-opacity: 0.32;
-  --cui-li-arrow-opacity-hover: 0.72;
-  --cui-li-transition: all 0.2s linear;
-  --cui-li-hover-background-color: var(--cui-background-color-hover);
-  --cui-li-row-icon-color: var(--cui-color-primary);
+  --cui-li-padding-horizontal:                var(--cui-spacing-4);
+  --cui-li-padding-vertical:                  10px;
+  --cui-li-label-font-weight:                 var(--cui-font-weight-semibold);
+  --cui-li-even-row-background-color:         var(--cui-background-color-faded);
+  --cui-li-arrow-color:                       var(--cui-row-arrow-color);
+  --cui-li-arrow-opacity:                     .32;
+  --cui-li-arrow-opacity-hover:               .72;
+  --cui-li-transition:                        all 0.2s linear;
+  --cui-li-hover-background-color:            var(--cui-background-color-hover); 
+  --cui-li-row-icon-color:                    var(--cui-color-primary);
 
   /* Stat */
-  --cui-stat-label-text-color: var(--cui-text-color-body);
-  --cui-stat-label-font-size: var(--cui-font-size-base);
-  --cui-stat-label-font-size-small: var(--cui-font-size-sm);
-  --cui-stat-label-font-weight: var(--cui-font-weight-semibold);
-  --cui-stat-data-text-color: var(--cui-color-primary);
-  --cui-stat-data-text-color-small: var(--cui-text-color-headers);
-  --cui-stat-data-font-weight: var(--cui-font-weight-bold);
-  --cui-stat-data-font-weight-small: normal;
-  --cui-stat-data-font-size: var(--cui-font-size-h5);
-  --cui-stat-data-font-size-small: var(--cui-font-size-base);
-  --cui-stat-data-font-size-large: var(--cui-font-size-h4);
+  --cui-stat-label-text-color:                var(--cui-text-color-body);
+  --cui-stat-label-font-size:                 var(--cui-font-size-base);
+  --cui-stat-label-font-size-small:           var(--cui-font-size-sm);
+  --cui-stat-label-font-weight:               var(--cui-font-weight-semibold);
+  --cui-stat-data-text-color:                 var(--cui-color-primary);
+  --cui-stat-data-text-color-small:           var(--cui-text-color-headers);
+  --cui-stat-data-font-weight:                var(--cui-font-weight-bold);
+  --cui-stat-data-font-weight-small:          normal;
+  --cui-stat-data-font-size:                  var(--cui-font-size-h5);
+  --cui-stat-data-font-size-small:            var(--cui-font-size-base);
+  --cui-stat-data-font-size-large:            var(--cui-font-size-h4);
 
   /* Modals */
-  --cui-modal-overlay-background: rgba(27, 43, 89, 0.8);
-  --cui-modal-background-color: var(--cui-background-color-light);
-  --cui-modal-border-radius: var(--cui-border-radius);
-  --cui-modal-box-shadow: 0px 6px 32px rgba(5, 16, 46, 0.16);
-  --cui-modal-header-padding: 14px var(--cui-spacing-4);
-  --cui-modal-header-font-size: var(--cui-font-size-base);
-  --cui-modal-header-font-weight: var(--cui-font-weight-bold);
-  --cui-modal-header-border: var(--cui-border-width) var(--cui-border-style) var(--cui-border-color);
-  --cui-modal-max-width-sm: 360px;
-  --cui-modal-max-width-lg: 960px;
-
+  --cui-modal-overlay-background:             rgba(27, 43, 89, 0.8);
+  --cui-modal-background-color:               var(--cui-background-color-light);
+  --cui-modal-border-radius:                  var(--cui-border-radius);
+  --cui-modal-box-shadow:                     0px 6px 32px rgba(5, 16, 46, 0.16);
+  --cui-modal-header-padding:                 14px var(--cui-spacing-4);
+  --cui-modal-header-font-size:               var(--cui-font-size-base);
+  --cui-modal-header-font-weight:             var(--cui-font-weight-bold);
+  --cui-modal-header-border:                  var(--cui-border-width) var(--cui-border-style) var(--cui-border-color);
+  --cui-modal-max-width-sm:                   360px;
+  --cui-modal-max-width-lg:                   960px;
+  
   /* Component: Amortization Schedule */
-  --cui-am-schedule-status-color-default: var(--cui-text-color-light);
-  --cui-am-schedule-status-color-success: var(--cui-color-success);
-  --cui-am-schedule-status-icon-size: 16px;
+  --cui-am-schedule-status-color-default:     var(--cui-text-color-light);
+  --cui-am-schedule-status-color-success:     var(--cui-color-success);
+  --cui-am-schedule-status-icon-size:         16px;
 }
 ```
 
