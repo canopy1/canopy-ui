@@ -1,14 +1,17 @@
 import { css } from "lit";
-import { modalCSS } from "../payment/payment.css";
+import { modalCSS } from "../../elements/modal/modal";
 
 const paginationCSS = css`
   .pagination-btn-set {
-    display: flex;
     align-items: center;
+    display: flex;
+    margin-right: -16px;
   }
 
   .page-state {
+    font-weight: normal;
     margin: 0 var(--cui-spacing-1);
+    letter-spacing: 0.25rem;
   }
 
   .icon-btn {
@@ -20,6 +23,11 @@ const paginationCSS = css`
     border-radius: var(--cui-border-radius-sm);
     cursor: pointer;
     background-color: var(--cui-background-color-faded);
+    transition: var(--cui-btn-transition);
+  }
+
+  .icon-btn:hover {
+    background-color: var(--cui-background-color-hover);
   }
 
   .icon-btn[disabled] {
@@ -45,20 +53,9 @@ export const statementsCSS = css`
     font-size: var(--cui-font-size-base);
     color: var(--cui-text-color-body);
     display: block;
+    line-height: var(--cui-line-height-base);
     width: 100%;
   }
-
-  .card-header {
-    align-items: center;
-    border-bottom: var(--cui-modal-header-border);
-    color: var(--cui-text-color-headers);
-    display: flex;
-    font-weight: var(--cui-font-weight-semibold);
-    justify-content: space-between;
-    padding: var(--cui-modal-header-padding);
-  }
-
-  ${paginationCSS}
 
   ul {
     padding: 0;
@@ -66,42 +63,43 @@ export const statementsCSS = css`
     min-height: calc(calc(var(--cui-li-padding-vertical) * 2 + 20px)* 6);
   }
 
-  li {
+  cui-list-item div {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    padding: var(--cui-li-padding-vertical) var(--cui-li-padding-horizontal);
   }
 
-  li > span {
-    display: flex;
-    align-items: center;
-  }
-
-  li > span:nth-child(2) {
-    cursor: pointer;
-  }
-
-  .date-line > svg {
-    margin-right: var(--cui-spacing-2);
-  }
-
-  li:nth-child(2n+1) {
+  cui-list-item:nth-of-type(2n) {
     background-color: var(--cui-li-even-row-background-color);
   }
 
+  .cui-list-row-icon {
+    align-items: center;
+    display: flex;
+    height: 20px;
+    justify-content: center;
+    margin-left: -4px;
+    margin-right: var(--cui-spacing-2);
+    width: 20px;
+  }
+
+  .cui-list-row-icon svg path {
+    fill: var(--cui-li-row-icon-color);
+  }
+
+  ${paginationCSS}
   ${modalCSS}
 
   .modal {
-    height: calc(100% - 80px);
-    min-width: 960px;
-    transform: translate(-50%, -50%);
+    height: 100%;
+    max-height: 90vh;
+    max-width: var(--cui-modal-max-width-lg);
+    overflow: hidden;
+    width: 90%;
   }
 
   .modal-header-btns {
-    display: inline-flex;
     align-items: center;
+    display: inline-flex;
+    margin: -4px 0;
   }
 
   .modal-header-btns > *:first-child {
@@ -113,25 +111,13 @@ export const statementsCSS = css`
     cursor: pointer;
   }
 
-  .download-btn {
-    padding: var(--cui-spacing-2) var(--cui-spacing-3);
-    border-radius: var(--cui-border-radius-sm);
-    border: 2px solid var(--cui-text-color-light);
-    background-color: var(--cui-color-white);
-    font-weight: var(--cui-font-weight-bold);
-    color: var(--cui-text-color-body);
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
-  }
-
-  .download-btn svg {
-    margin-right: var(--cui-spacing-2);
+  a[download] svg {
+    margin-right: var(--cui-spacing-1);
   }
 
   iframe {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 48px);
     border: none;
   }
 `

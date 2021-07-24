@@ -12,4 +12,8 @@ export const externalFieldsCSS = css`
     margin: 0;
     width: 100%;
   }
+
+  cui-list-item:nth-of-type(2n) {
+    background-color: var(--cui-li-even-row-background-color);
+  }
 `

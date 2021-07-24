@@ -1,8 +1,8 @@
 import { html, LitElement, TemplateResult } from "lit";
 import { customElement, state, property } from "lit/decorators.js";
-import { statementsCSS } from "./statements.css";
 import { closeIconSVG, rightArrowSVG, fileSVG, leftArrowSVG, downloadSVG } from "../../icons/inline";
 import { fromISO } from "../../utils";
+import { statementsCSS } from "./statements.css";
 
 interface StatementsItem {
   statement_id: string,
@@ -75,8 +75,8 @@ export class Statements extends LitElement {
         <div class="modal-header">
           <strong>Account Statement: ${startDate} - ${endDate}</strong>
           <span class="modal-header-btns">
-            <a href=${pdfUrl} download>
-              <button class="download-btn">${downloadSVG}Download PDF</button>
+            <a href=${pdfUrl} target="_blank" download>
+              <cui-btn size="small" color="secondary">${downloadSVG} Download PDF</cui-btn>
             </a>
             <button class="close-icon" @click=${this._closePreview}>
               ${closeIconSVG}
@@ -114,12 +114,11 @@ export class Statements extends LitElement {
   render(): TemplateResult<1> {
     return html`
       <cui-card>
-        <div class="card-header">
-          <span>Account Statements</span>
+        <cui-card-header title="Account Statements">
           ${this._pagination}
-        </div>
+        </cui-card-header>
         <ul>
-          ${this.statements.slice((this._currentPage * 6), (this._currentPage + 1) * 6).map(s => {
+          ${this.statements.slice((this._currentPage * 6), (this._currentPage + 1) * 6).map((s, index) => {
             const startDate = (
               fromISO(s.cycle_inclusive_start)
                 .minus({ seconds: 1 })
@@ -131,10 +130,12 @@ export class Statements extends LitElement {
                 .toFormat("LLL d, yyyy")
             ) || "_";
             return html`
-              <li>
-                <span class="date-line">${fileSVG}${startDate} - ${endDate}</span>
-                <span @click=${() => this._openPreview(s.statement_id)}>${rightArrowSVG}</span>
-              </li>
+              <cui-list-item
+                @click=${() => this._openPreview(s.statement_id)}
+                clickable
+              >
+                <div><span class="cui-list-row-icon">${fileSVG}</span>${startDate} - ${endDate}</div>
+              </cui-list-item>
             `;
           })}
         </ul>

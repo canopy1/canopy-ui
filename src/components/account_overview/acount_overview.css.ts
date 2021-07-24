@@ -9,13 +9,13 @@ export const paymentDetailsCSS = css`
     display: block;
     font-family: var(--cui-font-family-base);
     font-size: var(--cui-font-size-base);
-    width: 900px; /* TODO: Make Responsive */
+    width: 100%;
   }
 
   slot[name="top"] {
     border-bottom: var(--cui-border-width) var(--cui-border-color) var(--cui-border-style);
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto; 
     column-gap: var(--cui-spacing-4);
     padding: var(--cui-spacing-5);
@@ -23,10 +23,24 @@ export const paymentDetailsCSS = css`
 
   slot[name="bottom"] {
     display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto; 
     column-gap: var(--cui-spacing-4);
     padding: var(--cui-spacing-4) var(--cui-spacing-5);
+  }
+
+  :host(.cui-no-card) {
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  :host(.cui-no-card) slot[name="top"] {
+    padding: 0 0 var(--cui-spacing-5);
+  }
+
+  :host(.cui-no-card) slot[name="bottom"] {
+    padding: var(--cui-spacing-4) 0 0;
   }
 `;
 

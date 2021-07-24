@@ -8,10 +8,8 @@ export const buttonCSS = css`
 
   button {
     background-color: var(--cui-btn-background-color);
-    border-color: var(--cui-btn-border-color);
-    border-style: var(--cui-btn-border-style);
-    border-width: var(--cui-btn-border-width);
-    border-radius: var(--cui-border-radius-sm);
+    border: var(--cui-btn-border-width) var(--cui-btn-border-style) var(--cui-btn-border-color);
+    border-radius: var(--cui-btn-border-radius);
     box-shadow: var(--cui-btn-box-shadow);
     color: var(--cui-btn-text-color);
     cursor: pointer;
@@ -47,6 +45,17 @@ export const buttonCSS = css`
   button.cui-btn-secondary:hover {
     background-color: var(--cui-btn-secondary-background-color-hover);
   }
+
+  button.cui-btn-small {
+    border-radius: var(--cui-btn-sm-border-radius);
+    font-size: var(--cui-btn-sm-font-size);
+    min-height: var(--cui-btn-sm-height);
+    padding: var(--cui-btn-sm-padding-vertical) var(--cui-btn-sm-padding-horizontal);
+  }
+
+  button.cui-btn-small span {
+    padding: var(--cui-btn-sm-padding-vertical) var(--cui-btn-sm-padding-horizontal);
+  }
 `
 
 @customElement('cui-btn')
@@ -66,19 +75,19 @@ export class Button extends LitElement {
   @property({ attribute: 'color', type: ["primary", "secondary"] })
   public color = 'primary';
 
+  @property({ attribute: 'size', type: ["default", "small"] })
+  public size = 'default';
+
   @property({ attribute: 'class', type: String })
   public class = '';
 
   @property({ attribute: 'disabled', type: String })
   public disabled = 'false';
 
-  @property({ attribute: 'icon', type: String })
-  public icon = '';
-
   render(): TemplateResult<1> {
     return html`
       <button
-        class="cui-btn ${this.color === 'secondary' ? 'cui-btn-secondary': null } ${this.class}"
+        class="cui-btn ${this.color === 'secondary' ? 'cui-btn-secondary': null } ${this.size === 'small' ? 'cui-btn-small': null } ${this.class}"
         icon="${this.icon}"
         name="${this.name}"
         value="${this.value}"
