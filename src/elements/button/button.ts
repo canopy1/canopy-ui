@@ -88,7 +88,6 @@ export class Button extends LitElement {
     return html`
       <button
         class="cui-btn ${this.color === 'secondary' ? 'cui-btn-secondary': null } ${this.size === 'small' ? 'cui-btn-small': null } ${this.class}"
-        icon="${this.icon}"
         name="${this.name}"
         value="${this.value}"
         type="${this.type}"

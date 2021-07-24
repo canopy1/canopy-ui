@@ -118,7 +118,7 @@ export class Statements extends LitElement {
           ${this._pagination}
         </cui-card-header>
         <ul>
-          ${this.statements.slice((this._currentPage * 6), (this._currentPage + 1) * 6).map((s, index) => {
+          ${this.statements.slice((this._currentPage * 6), (this._currentPage + 1) * 6).map((s) => {
             const startDate = (
               fromISO(s.cycle_inclusive_start)
                 .minus({ seconds: 1 })
