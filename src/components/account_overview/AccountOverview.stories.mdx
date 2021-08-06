@@ -49,6 +49,8 @@ export const Default = ({
 
 ### HTML
 
+#### Basic
+
 ```html
 <cui-account-overview
   details='{
@@ -62,7 +64,39 @@ export const Default = ({
 </cui-account-overview>
 ```
 
+#### Custom
+
+```html
+<cui-account-overview
+  details='{
+    "total_balance_cents": {
+      label: "Balance",
+      size: "large",
+      value: 349392,
+    },
+    "credit_limit_cents": {
+      label: "Limit",
+      size: "large",
+      value: 800000,
+    },
+    "available_credit_cents": {
+      size: "large",
+      value: 450608,
+    },
+    "pending_charges": {
+      size: "large",
+      value: 0,
+    },
+    "interest_balance_cents": 1198,
+    "interest_rate_percent": value: 8.99,
+  }'
+>
+</cui-account-overview>
+```
+
 ### JavaScript
+
+#### Basic
 
 ```html
 <div id="account-overview-container"></div>
@@ -70,7 +104,7 @@ export const Default = ({
 <script>
   const accountOverviewEl = document.createElement("cui-account-overview");
   const accountDetails = {
-    total_balance_cents: 349391,
+    total_balance_cents: 349392,
     credit_limit_cents: 800000,
     available_credit_cents: 450608,
     pending_charges: 0,
@@ -81,13 +115,61 @@ export const Default = ({
 </script>
 ```
 
+#### Custom
+
+```html
+<div id="account-overview-custom-container"></div>
+
+<script>
+  const accountOverviewEl = document.createElement("cui-account-overview-custom");
+  const accountDetails = {
+    total_balance_cents: {
+      label: "Balance",
+      size: "large",
+      value: 349392,
+    },
+    credit_limit_cents: {
+      size: "large",
+      value: 800000,
+    },
+    available_credit_cents: 450608,
+    pending_charges: 0,
+    interest_rate_percent: 8.99,
+  };
+  accountOverviewEl.setAttribute("details", JSON.stringify(accountDetails));
+  document.getElementById("account-overview-custom-container").appendChild(accountOverviewEl);
+</script>
+```
+
 <Canvas>
   <Story
-    name="Revolving Example"
+    name="Basic Revolving Example"
     args={{
       total_balance_cents: 349392,
-      credit_limit_cents: 800000,
       available_credit_cents: 450608,
+      pending_charges: 0,
+      interest_rate_percent: 8.99,
+    }}
+  >
+    {Default.bind({})}
+  </Story>
+  <Story
+    name="Custom Revolving Example"
+    args={{
+      total_balance_cents: {
+        label: "Current Balance",
+        size: "large",
+        value: 349392,
+      },
+      credit_limit_cents: {
+        size: "large",
+        value: 800000,
+      },
+      available_credit_cents: {
+        size: "large",
+        value: 450608,
+      },
+      interest_balance_cents: 1198,
       pending_charges: 0,
       interest_rate_percent: 8.99,
     }}
@@ -97,10 +179,18 @@ export const Default = ({
   <Story
     name="Installment Example"
     args={{
-      principal_cents: 422083,
-      am_interest_balance_cents: 41293,
-      total_paid_to_date_cents: 90726,
+      principal_cents: {
+        label: "Principal Balance",
+        size: "large",
+        value: 422083,
+      },
+      total_paid_to_date_cents: {
+        label: "Total to Date",
+        size: "large",
+        value: 90726,
+      },
       total_interest_paid_to_date_cents: 12809,
+      am_interest_balance_cents: 41293,
       interest_rate_percent: 15.99,
     }}
   >
