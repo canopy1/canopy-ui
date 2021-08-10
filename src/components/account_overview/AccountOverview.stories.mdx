@@ -17,7 +17,7 @@ export const Default = ({
   max_approved_credit_limit_cents,
   interest_rate_percent,
   available_credit_cents,
-  pending_charges,
+  pending_charges_cents,
   open_to_buy_cents,
   total_payoff_cents,
 }) => {
@@ -34,7 +34,7 @@ export const Default = ({
     max_approved_credit_limit_cents,
     interest_rate_percent,
     available_credit_cents,
-    pending_charges,
+    pending_charges_cents,
     open_to_buy_cents,
     total_payoff_cents,
   };
@@ -51,13 +51,15 @@ export const Default = ({
 
 #### Basic
 
+AccountOverview details can be set by providing the desired details and their corresponding values.
+
 ```html
 <cui-account-overview
   details='{
     "total_balance_cents": 349392,
     "credit_limit_cents": 800000,
     "available_credit_cents": 450608,
-    "pending_charges": 0,
+    "pending_charges_cents": 0,
     "interest_rate_percent": 8.99
   }'
 >
@@ -65,6 +67,10 @@ export const Default = ({
 ```
 
 #### Custom
+
+This example leverages the property object of each AccountOverview detail. Notice that the `label` name,
+`size`, and `value` can all be customized. For `size`, pick between `"small"` and `"large"`.
+Leaving out the `label` property sets the label name to its default value.
 
 ```html
 <cui-account-overview
@@ -83,12 +89,12 @@ export const Default = ({
       size: "large",
       value: 450608,
     },
-    "pending_charges": {
+    "pending_charges_cents": {
       size: "large",
       value: 0,
     },
     "interest_balance_cents": 1198,
-    "interest_rate_percent": value: 8.99,
+    "interest_rate_percent": 8.99,
   }'
 >
 </cui-account-overview>
@@ -97,6 +103,8 @@ export const Default = ({
 ### JavaScript
 
 #### Basic
+
+AccountOverview details can be set by providing the desired details and their corresponding values.
 
 ```html
 <div id="account-overview-container"></div>
@@ -107,7 +115,7 @@ export const Default = ({
     total_balance_cents: 349392,
     credit_limit_cents: 800000,
     available_credit_cents: 450608,
-    pending_charges: 0,
+    pending_charges_cents: 0,
     interest_rate_percent: 8.99,
   };
   accountOverviewEl.setAttribute("details", JSON.stringify(accountDetails));
@@ -116,6 +124,10 @@ export const Default = ({
 ```
 
 #### Custom
+
+This example leverages the property object of each AccountOverview detail. Notice that the `label` name,
+`size`, and `value` can all be customized. For `size`, pick between `"small"` and `"large"`.
+Leaving out the `label` property sets the label name to its default value.
 
 ```html
 <div id="account-overview-custom-container"></div>
@@ -133,7 +145,7 @@ export const Default = ({
       value: 800000,
     },
     available_credit_cents: 450608,
-    pending_charges: 0,
+    pending_charges_cents: 0,
     interest_rate_percent: 8.99,
   };
   accountOverviewEl.setAttribute("details", JSON.stringify(accountDetails));
@@ -147,7 +159,7 @@ export const Default = ({
     args={{
       total_balance_cents: 349392,
       available_credit_cents: 450608,
-      pending_charges: 0,
+      pending_charges_cents: 0,
       interest_rate_percent: 8.99,
     }}
   >
@@ -170,7 +182,7 @@ export const Default = ({
         value: 450608,
       },
       interest_balance_cents: 1198,
-      pending_charges: 0,
+      pending_charges_cents: 0,
       interest_rate_percent: 8.99,
     }}
   >
@@ -216,7 +228,7 @@ export const Default = ({
 | details.max_approved_credit_limit_cents    | number | undefined |
 | details.interest_rate_percent              | number | undefined |
 | details.available_credit_cents             | number | undefined |
-| details.pending_charges                    | number | undefined |
+| details.pending_charges_cents              | number | undefined |
 | details.open_to_buy_cents                  | number | undefined |
 | details.total_payoff_cents                 | number | undefined |
 

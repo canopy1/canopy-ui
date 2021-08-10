@@ -10,6 +10,7 @@ yourself.
 ## Usage
 
 You can load the JavaScript directly into the browser.
+
 ### Browser Setup
 
 ```html
@@ -21,6 +22,7 @@ You can load the JavaScript directly into the browser.
 ```
 
 Or include it via a module bundler such as Webpack or Rollup.
+
 ### Node Setup
 
 ```bash
@@ -37,14 +39,15 @@ yarn add @canopyinc/ui
 import "@canopyinc/ui";
 ```
 
-You will need to include the default CSS theme for CanopyUI as well. 
+You will need to include the default CSS theme for CanopyUI as well.
+
 ### CSS Setup
 
 ```html
 <!-- Load default CSS for CanopyUI -->
 <head>
   ...
-  <link href="https://unpkg.com/@canopyinc/ui/public/variables.css" rel="stylesheet">
+  <link href="https://unpkg.com/@canopyinc/ui/public/variables.css" rel="stylesheet" />
 </head>
 ```
 
@@ -61,8 +64,8 @@ Once the JS is loaded you can start writing CanopyUI web components.
     total_balance_cents: 349391,
     credit_limit_cents: 800000,
     available_credit_cents: 450608,
-    pending_charges: 0,
-    promo_exclusive_end: "10/15/2021"
+    pending_charges_cents: 0,
+    promo_exclusive_end: "10/15/2021",
   };
   el.setAttribute("details", JSON.stringify(accountDetails));
   document.getElementById("container").appendChild(el);
@@ -81,17 +84,17 @@ directly.
 
 ## Available Components
 
-| Component                   | Status | Doc |
-| --------------------------- | ------ | ---- |
-| `<cui-account-overview>`    | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-accountoverview) | 
-| `<cui-am-schedule>`         | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-amschedule) | 
-| `<cui-external-fields>`     | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-externalfields) |
-| `<cui-payment>`             | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-payment) |
-| `<cui-statements>`          | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/story/components-statements) |
-| `<cui-customer-details>`    | TBD    | |
-| `<cui-payment-history>`     | TBD    | |
-| `<cui-product-details>`     | TBD    | |
-| `<cui-transaction-history>` | TBD    | |
+| Component                   | Status | Doc                                                                                |
+| --------------------------- | ------ | ---------------------------------------------------------------------------------- |
+| `<cui-account-overview>`    | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-accountoverview) |
+| `<cui-am-schedule>`         | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-amschedule)      |
+| `<cui-external-fields>`     | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-externalfields)  |
+| `<cui-payment>`             | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/docs/components-payment)         |
+| `<cui-statements>`          | v0.3.0 | [link](https://canopy1.github.io/canopy-ui/?path=/story/components-statements)     |
+| `<cui-customer-details>`    | TBD    |                                                                                    |
+| `<cui-payment-history>`     | TBD    |                                                                                    |
+| `<cui-product-details>`     | TBD    |                                                                                    |
+| `<cui-transaction-history>` | TBD    |                                                                                    |
 
 ## Styling
 
