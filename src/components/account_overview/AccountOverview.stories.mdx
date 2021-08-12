@@ -68,8 +68,8 @@ AccountOverview details can be set by providing the desired details and their co
 
 #### Custom
 
-Each AccountOverview detail property can be configured with an object to customize the property's `label`, `size`, and `value`, for example.
-For `size`, pick between `"small"` and `"large"`. Leaving out the `label` property sets the label name to its default value.
+Each AccountOverview detail property can be configured with an object to customize the property's `label` and `value`.
+Leaving out the `label` property sets the label name to its default value.
 
 ```html
 <cui-account-overview
@@ -124,8 +124,8 @@ AccountOverview details can be set by providing the desired details and their co
 
 #### Custom
 
-Each AccountOverview detail property can be configured with an object to customize the property's `label`, `size`, and `value`, for example.
-For `size`, pick between `"small"` and `"large"`. Leaving out the `label` property sets the label name to its default value.
+Each AccountOverview detail property can be configured with an object to customize the property's `label` and `value`.
+Leaving out the `label` property sets the label name to its default value.
 
 ```html
 <div id="account-overview-custom-container"></div>
@@ -135,7 +135,6 @@ For `size`, pick between `"small"` and `"large"`. Leaving out the `label` proper
   const accountDetails = {
     total_balance_cents: {
       label: "Balance",
-      size: "large",
       value: 349392,
     },
     credit_limit_cents: {
@@ -168,15 +167,12 @@ For `size`, pick between `"small"` and `"large"`. Leaving out the `label` proper
     args={{
       total_balance_cents: {
         label: "Current Balance",
-        size: "large",
         value: 349392,
       },
       credit_limit_cents: {
-        size: "large",
         value: 800000,
       },
       available_credit_cents: {
-        size: "large",
         value: 450608,
       },
       interest_balance_cents: 1198,
@@ -191,12 +187,10 @@ For `size`, pick between `"small"` and `"large"`. Leaving out the `label` proper
     args={{
       principal_cents: {
         label: "Principal Balance",
-        size: "large",
         value: 422083,
       },
       total_paid_to_date_cents: {
         label: "Total to Date",
-        size: "large",
         value: 90726,
       },
       total_interest_paid_to_date_cents: 12809,

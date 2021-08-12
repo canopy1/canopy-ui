@@ -5,7 +5,6 @@ import { paymentDetailsCSS } from "./acount_overview.css";
 interface AccountOverviewPropObject {
   value: number;
   label?: string;
-  size?: "small" | "large";
 }
 
 type RenderStatParam = number | AccountOverviewPropObject;
@@ -54,13 +53,25 @@ export class AccountOverview extends LitElement {
     total_payoff_cents: undefined,
   };
 
-  private _renderStat(placeholder: string, currency: boolean, prop?: RenderStatParam) {
+  private _renderStat(
+    placeholder: string,
+    currency: boolean,
+    position: "primary" | "secondary",
+    prop?: RenderStatParam
+  ) {
     if (typeof prop === "number") {
-      return html` <cui-stat size="small" label=${placeholder} value="${prop}" ?currency=${currency}></cui-stat> `;
+      return html`
+        <cui-stat
+          size=${position === "primary" ? "large" : "small"}
+          label=${placeholder}
+          value="${prop}"
+          ?currency=${currency}
+        ></cui-stat>
+      `;
     } else if (prop === Object(prop) && prop !== null && prop !== undefined) {
       return html`
         <cui-stat
-          size=${!prop.size ? "small" : prop.size}
+          size=${position === "primary" ? "large" : "small"}
           label=${prop.label ? prop.label : placeholder}
           value="${prop.value}"
           ?currency=${currency}
@@ -91,26 +102,26 @@ export class AccountOverview extends LitElement {
     // Appears if no element with attr slot "top" given.
 
     const defaultTop = html`
-      ${this._renderStat("Current Balance", true, total_balance_cents)}
-      ${this._renderStat("Available Credit", true, available_credit_cents)}
-      ${this._renderStat("Credit Limit", true, credit_limit_cents)}
-      ${this._renderStat("Principal Balance", true, principal_cents)}
-      ${this._renderStat("Total Paid to Date", true, total_paid_to_date_cents)}
+      ${this._renderStat("Current Balance", true, "primary", total_balance_cents)}
+      ${this._renderStat("Available Credit", true, "primary", available_credit_cents)}
+      ${this._renderStat("Credit Limit", true, "primary", credit_limit_cents)}
+      ${this._renderStat("Principal Balance", true, "primary", principal_cents)}
+      ${this._renderStat("Total Paid to Date", true, "primary", total_paid_to_date_cents)}
     `;
 
     // Appears if no element with attr slot "bottom" given.
 
     const defaultBottom = html`
-      ${this._renderStat("Pending Charges", true, pending_charges_cents)}
-      ${this._renderStat("Interest Paid to Date", true, total_interest_paid_to_date_cents)}
-      ${this._renderStat("Interest Balance", true, interest_balance_cents)}
-      ${this._renderStat("Interest Balance", true, am_interest_balance_cents)}
-      ${this._renderStat("Deferred Int. Balance", true, deferred_interest_balance_cents)}
-      ${this._renderStat("Deferred Int. Balance", true, am_deferred_interest_balance_cents)}
-      ${this._renderStat("Max Approved Limit", true, max_approved_credit_limit_cents)}
-      ${this._renderStat("Interest Rate", false, interest_rate_percent)}
-      ${this._renderStat("Interest Rate", false, open_to_buy_cents)}
-      ${this._renderStat("Interest Rate", false, total_payoff_cents)}
+      ${this._renderStat("Pending Charges", true, "secondary", pending_charges_cents)}
+      ${this._renderStat("Interest Paid to Date", true, "secondary", total_interest_paid_to_date_cents)}
+      ${this._renderStat("Interest Balance", true, "secondary", interest_balance_cents)}
+      ${this._renderStat("Interest Balance", true, "secondary", am_interest_balance_cents)}
+      ${this._renderStat("Deferred Int. Balance", true, "secondary", deferred_interest_balance_cents)}
+      ${this._renderStat("Deferred Int. Balance", true, "secondary", am_deferred_interest_balance_cents)}
+      ${this._renderStat("Max Approved Limit", true, "secondary", max_approved_credit_limit_cents)}
+      ${this._renderStat("Interest Rate", false, "secondary", interest_rate_percent)}
+      ${this._renderStat("Interest Rate", false, "secondary", open_to_buy_cents)}
+      ${this._renderStat("Interest Rate", false, "secondary", total_payoff_cents)}
     `;
 
     return html`
