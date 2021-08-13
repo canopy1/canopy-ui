@@ -78,22 +78,14 @@ Leaving out the `label` property sets the label name to its default value.
   details='{
     "total_balance_cents": {
       label: "Balance",
-      size: "large",
       value: 349392,
     },
     "credit_limit_cents": {
       label: "Limit",
-      size: "large",
       value: 800000,
     },
-    "available_credit_cents": {
-      size: "large",
-      value: 450608,
-    },
-    "pending_charges_cents": {
-      size: "large",
-      value: 0,
-    },
+    "available_credit_cents": 450608,
+    "pending_charges_cents": 0,
     "interest_balance_cents": 1198,
     "interest_rate_percent": 8.99,
   }'
@@ -142,7 +134,7 @@ Leaving out the `label` property sets the label name to its default value.
       value: 349392,
     },
     credit_limit_cents: {
-      size: "large",
+      label: "Limit",
       value: 800000,
     },
     available_credit_cents: 450608,
@@ -172,7 +164,7 @@ Leaving out the `label` property sets the label name to its default value.
     name="Custom Revolving Example"
     args={{
       total_balance_cents: {
-        label: "Current Balance",
+        label: "Balance",
         value: 349392,
       },
       credit_limit_cents: {
@@ -180,6 +172,7 @@ Leaving out the `label` property sets the label name to its default value.
         value: 800000,
       },
       available_credit_cents: {
+        label: "Credit",
         value: 450608,
       },
       interest_balance_cents: 1198,
@@ -197,7 +190,7 @@ Leaving out the `label` property sets the label name to its default value.
         value: 422083,
       },
       total_paid_to_date_cents: {
-        label: "Total to Date",
+        label: "Paid to Date",
         value: 90726,
       },
       total_interest_paid_to_date_cents: 12809,
