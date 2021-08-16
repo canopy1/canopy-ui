@@ -28,9 +28,11 @@ export const Default = () => {
 
 # ExternalFields (`cui-external-fields`)
 
-List of key-value fields with formatting support.
+List of key-value fields with formatting support. The key is used as the row's label and can be anything you want it to be.
 
 ## Example
+
+<br />
 
 ### JavaScript
 
@@ -51,7 +53,7 @@ List of key-value fields with formatting support.
     "Disbursement Fee": "centsToDollars",
     "Origination Fee": "centsToDollars",
     "Discount Amount": "centsToDollars",
-    "Discount Date": "M/d/yy",
+    "Discount Date": "m/d/yy",
     "Loan Amount": "centsToDollars",
   };
   externalFieldsEl.setAttribute("fields", JSON.stringify(fields));
@@ -73,7 +75,7 @@ List of key-value fields with formatting support.
 | fields[].key   | string                       |         |
 | fields[].value | number, string               |         |
 | format [key]   | string                       |         |
-| format [value] | "centsToDollars", "M/d/yyyy" |         |
+| format [value] | "centsToDollars", "m/d/yyyy" |         |
 
 ### Events
 
@@ -81,4 +83,8 @@ _None_
 
 ### CSS Custom Properties
 
-_Soon_
+| property                           |
+| ---------------------------------- |
+| --cui-li-even-row-background-color |
+
+This component consists of CanopyUI's [Card](/docs/elements-card--default) and [List Item](/docs/elements-list-item--default) elements. To customize the css variables for these elements, see `--cui-card-` and `--cui-li-` prefixed variables in the variables.css file.

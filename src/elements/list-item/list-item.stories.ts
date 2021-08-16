@@ -14,4 +14,4 @@ export const Default = () => html`
       <cui-list-item alt label="Interest Rate">9.25%</cui-list-item>
     <ul>
   </cui-card>
-`
+`;
