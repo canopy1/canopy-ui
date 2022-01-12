@@ -1,0 +1,115 @@
+import { html } from "lit";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { TransactionHistory } from "./transaction_history";
+
+<Meta title="Components/TransactionHistory" />
+
+export const Default = () => {
+  const someTransactionItems = [
+    {
+      created_at: "2022-01-02T09:10:14+00:00",
+      description: "Target #9283 Atlanta",
+      line_item_status: "PENDING",
+      line_item_type: "CHARGE",
+      original_amount_cents: 18325,
+    },
+    {
+      created_at: "2021-12-15T09:10:14+00:00",
+      description: "Autopay",
+      line_item_status: "POSTED",
+      line_item_type: "PAYMENT",
+      original_amount_cents: -20000,
+    },
+    {
+      created_at: "2021-12-11T09:10:14+00:00",
+      description: "Verizon Wireless Bill Pay",
+      line_item_status: "VALID",
+      line_item_type: "CHARGE",
+      original_amount_cents: 9283,
+    },
+    {
+      created_at: "2021-11-28T09:10:14+00:00",
+      description: "Olive Garden 9483",
+      line_item_status: "VALID",
+      line_item_type: "CHARGE",
+      original_amount_cents: 39847,
+    },
+  ];
+  return html` <cui-transaction-history items=${JSON.stringify(someTransactionItems)}> </cui-transaction-history> `;
+};
+
+# TransactionHistory (`cui-transaction-history`)
+
+## Example
+
+### JavaScript
+
+```html
+<div id="transaction-history-container"></div>
+<script>
+  const TransactionHistoryEl = document.createElement("cui-transaction-history");
+  const historyItems = [
+    {
+      created_at: "2018-07-20T09:10:14+00:00",
+      description: "Target #9283 Atlanta",
+      line_item_status: "VALID",
+      original_amount_cents: 84000,
+    },
+    {
+      created_at: "2018-08-20T09:10:14+00:00",
+      description: "Target #9283 Atlanta",
+      line_item_status: "VALID",
+      original_amount_cents: 18325,
+    },
+    {
+      created_at: "2018-09-20T09:10:14+00:00",
+      description: "Target #9283 Atlanta",
+      line_item_status: "VALID",
+      original_amount_cents: 18325,
+    },
+  ];
+  TransactionHistoryEl.setAttribute("items", JSON.stringify(historyItems));
+  document.getElementById("transaction-history-container").appendChild(TransactionHistoryEl);
+</script>
+```
+
+<Canvas>
+  <Story name="Default">{Default.bind({})}</Story>
+</Canvas>
+
+## API
+
+| property                      | type   | default |
+| ----------------------------- | ------ | ------- |
+| items[].created_at            | string |         |
+| items[].description           | string |         |
+| items[].line_item_status      | string | 0       |
+| items[].original_amount_cents | number | 0       |
+
+### Attributes/Properties
+
+### Events
+
+_None_
+
+### CSS Custom Properties
+
+| property                                 |
+| ---------------------------------------- |
+| --cui-font-family-base                   |
+| --cui-font-size-base                     |
+| --cui-table-background-color             |
+| --cui-table-border-color                 |
+| --cui-table-border-radius                |
+| --cui-table-border-style                 |
+| --cui-table-border-width                 |
+| --cui-table-box-shadow                   |
+| --cui-table-cell-padding-horizontal      |
+| --cui-table-cell-padding-vertical        |
+| --cui-table-even-row-background-color    |
+| --cui-table-header-background-color      |
+| --cui-table-header-border-bottom         |
+| --cui-table-header-cell-padding-vertical |
+| --cui-table-header-font-size             |
+| --cui-table-header-font-weight           |
+| --cui-text-color-body                    |

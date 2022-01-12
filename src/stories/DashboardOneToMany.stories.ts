@@ -21,8 +21,13 @@ const demoDashboardCSS = css`
     background-color: #F2F5FD;
   }
 
+  .sidebar .header {
+    background-color: var(--cui-color-primary);
+    justify-content: center;
+  }
+
   .sidebar .content {
-    padding: 12px 12px 24px;
+    padding: 24px 12px;
   }
 
   .main .header {
@@ -37,11 +42,15 @@ const demoDashboardCSS = css`
     align-items: center;
     border-bottom: 1px solid #E1E4F2;
     display: flex;
-    height: 48px;
+    height: 56px;
     padding: 0 16px;
   }
 
   cui-payment {
+    margin-bottom: 24px;
+  }
+
+  cui-loans-list {
     margin-bottom: 24px;
   }
 
@@ -57,6 +66,11 @@ const demoDashboardCSS = css`
     #DashboardDemo {
       display: grid;
       grid-template-columns: 1fr 1fr;
+    }
+
+    .sidebar .header {
+      background-color: transparent;
+      justify-content: start;
     }
 
     .header {
@@ -128,178 +142,137 @@ export default {
 const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, ButtonBorderRadius, ButtonHoverColor, Logo }) => {
 
   const paymentMeta = {
-    due_by: "8/20/2021",
+    due_by: "1/15/2022",
     past_due: 0,
-    fees_due: 45363
+    fees_due: 0
   };
   const paymentMethods = [
     { value: "card1", text: "Visa ending 4222", default: true },
     { value: "card2", text: "Visa ending 4221" }
   ];
   const paymentAmounts = [
-    { value: "45363", text: "Minimum Payment Due - $453.63" },
+    { value: "5678", text: "Minimum Payment Due - $56.78" },
     { value: "422083", text: "Entire Balance - $4,220.83", default: true }
   ];
   const autopayEnabled = false;
-  const autopayEnabledConfirmBody = "<p style='text-align: center;'>Your <strong>Visa ending 4222</strong> will be charged <strong>$128.03</strong> on the <strong>3rd of each month</strong>.</p>"
+  const autopayEnabledConfirmBody = "<p style='text-align: center;'>Your <strong>Visa ending 4222</strong> will be charged <strong>$56.78</strong> on the <strong>3rd of each month</strong>.</p>"
   const autopayDisabledConfirmBody = "<p style='text-align: center;'><strong>Are you sure you want disable autopay?</strong><br /> You may be charged fees for late or missed payments without autopay.</p>"
 
-  const externalFields = [
-    { key: "Origination Date", value: "5/20/2020" },
-    { key: "Origination Fee", value: 0 },
-    { key: "Discount Amount", value: 939_00 },
-    { key: "Loan Amount", value: 5000_00 },
-    { key: "Interest Rate", value: "15.99%" },
+  const loansList = [
+    { key: "BNPL Loan #02938", value: 18238 },
+    { key: "BNPL Loan #02945", value: 9377 },
+    { key: "BNPL Loan #02990", value: 42913 },
   ];
-  const externalFormat = {
-    "Origination Fee": "centsToDollars",
-    "Discount Amount": "centsToDollars",
-    "Discount Date": "M/d/yy",
-    "Loan Amount": "centsToDollars"
-  };
 
   const statements = [
     {
       "statement_id": 1,
-      "cycle_inclusive_start": "2021-05-01T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-08T09:42:00+00:00",
+      "cycle_inclusive_start": "2022-01-02T09:42:00+00:00",
+      "cycle_exclusive_end": "2022-01-08T09:42:00+00:00",
       "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
     },
     {
       "statement_id": 2,
-      "cycle_inclusive_start": "2021-05-08T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-15T09:42:00+00:00",
+      "cycle_inclusive_start": "2021-12-26T09:42:00+00:00",
+      "cycle_exclusive_end": "2022-01-01T09:42:00+00:00",
       "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
     },
     {
       "statement_id": 3,
-      "cycle_inclusive_start": "2021-05-15T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-22T09:42:00+00:00",
+      "cycle_inclusive_start": "2021-12-19T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-12-25T09:42:00+00:00",
       "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
     },
     {
       "statement_id": 4,
-      "cycle_inclusive_start": "2021-05-22T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-05-29T09:42:00+00:00",
+      "cycle_inclusive_start": "2021-12-12T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-12-18T09:42:00+00:00",
       "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
     },
     {
       "statement_id": 5,
-      "cycle_inclusive_start": "2021-05-29T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-06-05T09:42:00+00:00",
+      "cycle_inclusive_start": "2021-12-05T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-12-11T09:42:00+00:00",
       "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
     },
     {
       "statement_id": 6,
-      "cycle_inclusive_start": "2021-06-05T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-06-12T09:42:00+00:00",
+      "cycle_inclusive_start": "2021-11-28T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-12-04T09:42:00+00:00",
       "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
     },
     {
       "statement_id": 7,
-      "cycle_inclusive_start": "2021-06-12T09:42:00+00:00",
-      "cycle_exclusive_end": "2021-06-19T09:42:00+00:00",
+      "cycle_inclusive_start": "2021-11-21T09:42:00+00:00",
+      "cycle_exclusive_end": "2021-11-27T09:42:00+00:00",
       "statement_pdf_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
     }
   ];
 
-  const AmItems = [
+  const transactionItems = [
     {
-      "min_pay_due_at": "2021-06-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 45363,
-      "am_interest_cents": 6662,
-      "am_principal_cents": 38701,
-      "am_end_principal_balance_cents": 461299,
+      created_at: "2022-01-08T09:10:14+00:00",
+      description: "Autopay",
+      line_item_status: "POSTED",
+      line_item_type: "PAYMENT",
+      original_amount_cents: -5678,
     },
     {
-      "min_pay_due_at": "2021-07-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 45363,
-      "am_interest_cents": 6147,
-      "am_principal_cents": 39216,
-      "am_end_principal_balance_cents": 422083,
+      created_at: "2022-01-03T09:10:14+00:00",
+      description: "BNPL Loan #02938",
+      line_item_status: "VALID",
+      line_item_type: "CHARGE",
+      original_amount_cents: 20000,
     },
     {
-      "min_pay_due_at": "2021-08-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 5624,
-      "am_principal_cents": 39739,
-      "am_end_principal_balance_cents": 382344,
+      created_at: "2022-01-01T09:10:14+00:00",
+      description: "Autopay",
+      line_item_status: "POSTED",
+      line_item_type: "PAYMENT",
+      original_amount_cents: -5678,
     },
     {
-      "min_pay_due_at": "2021-09-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 5095,
-      "am_principal_cents": 40268,
-      "am_end_principal_balance_cents": 342076,
+      created_at: "2021-12-27T09:10:14+00:00",
+      description: "Autopay",
+      line_item_status: "POSTED",
+      line_item_type: "PAYMENT",
+      original_amount_cents: -5678,
     },
     {
-      "min_pay_due_at": "2021-10-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 4558,
-      "am_principal_cents": 40805,
-      "am_end_principal_balance_cents": 301271,
+      created_at: "2021-12-18T09:10:14+00:00",
+      description: "BNPL Loan #02945",
+      line_item_status: "VALID",
+      line_item_type: "CHARGE",
+      original_amount_cents: 12500,
     },
     {
-      "min_pay_due_at": "2021-11-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 4014,
-      "am_principal_cents": 41349,
-      "am_end_principal_balance_cents": 259923,
+      created_at: "2021-12-11T09:10:14+00:00",
+      description: "Autopay",
+      line_item_status: "POSTED",
+      line_item_type: "PAYMENT",
+      original_amount_cents: -5678,
     },
     {
-      "min_pay_due_at": "2021-12-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 3463,
-      "am_principal_cents": 41900,
-      "am_end_principal_balance_cents": 218023,
+      created_at: "2021-12-04T09:10:14+00:00",
+      description: "Autopay",
+      line_item_status: "POSTED",
+      line_item_type: "PAYMENT",
+      original_amount_cents: -5678,
     },
     {
-      "min_pay_due_at": "2022-01-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 2905,
-      "am_principal_cents": 42458,
-      "am_end_principal_balance_cents": 175565,
+      created_at: "2021-11-29T09:10:14+00:00",
+      description: "One-time Payment",
+      line_item_status: "POSTED",
+      line_item_type: "PAYMENT",
+      original_amount_cents: -10000,
     },
     {
-      "min_pay_due_at": "2022-02-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 2339,
-      "am_principal_cents": 43024,
-      "am_end_principal_balance_cents": 132541,
+      created_at: "2021-11-28T09:10:14+00:00",
+      description: "BNPL Loan #02990",
+      line_item_status: "VALID",
+      line_item_type: "CHARGE",
+      original_amount_cents: 55000,
     },
-    {
-      "min_pay_due_at": "2022-03-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 1766,
-      "am_principal_cents": 43597,
-      "am_end_principal_balance_cents": 88944,
-    },
-    {
-      "min_pay_due_at": "2022-04-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 1185,
-      "am_principal_cents": 44178,
-      "am_end_principal_balance_cents": 44767,
-    },
-    {
-      "min_pay_due_at": "2022-05-20T09:10:14+00:00",
-      "am_min_pay_cents": 45363,
-      "am_cycle_payment_cents": 0,
-      "am_interest_cents": 597,
-      "am_principal_cents": 44766,
-      "am_end_principal_balance_cents": 0,
-    }
   ];
 
   return html`
@@ -331,11 +304,10 @@ const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, But
             autopay-disabled-confirm-body=${autopayDisabledConfirmBody}
           >
           </cui-payment>
-          <cui-external-fields
-            fields=${JSON.stringify(externalFields)}
-            format=${JSON.stringify(externalFormat)}
+          <cui-loans-list
+            fields=${JSON.stringify(loansList)}
           >
-          </cui-external-fields>
+          </cui-loans-list>
           <cui-statements
             statements=${JSON.stringify(statements)}
           >
@@ -349,17 +321,16 @@ const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, But
         <div class="content">
           <cui-account-overview
             details='{
-              "principal_cents": 422083,
-              "am_interest_balance_cents": 41293,
-              "total_paid_to_date_cents": 90726,
-              "total_interest_paid_to_date_cents": 12809,
+              "principal_cents": 70528,
+              "total_paid_to_date_cents": 38390,
+              "total_interest_paid_to_date_cents": 2809,
               "interest_rate_percent": 15.99
             }'
             class="cui-no-card"
           >
           </cui-account-overview>
-          <h4>Amortization Schedule</h4>
-          <cui-am-schedule items=${JSON.stringify(AmItems)}>
+          <h4>Transaction History</h4>
+          <cui-transaction-history items=${JSON.stringify(transactionItems)}></cui-transaction-history>
           </cui-am-schedule>
         </div>
       </div>
@@ -367,11 +338,11 @@ const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, But
   `
 };
 
-export const InstallmentLoan = Template.bind({});
-InstallmentLoan.args = {
-   PrimaryColor: '#4867FF',
-   ButtonHoverColor: '#443CF8',
-   AltBackgroundColor: '#F2F5FD',
-   ContainerBorderRadius: 16,
-   ButtonBorderRadius: 8
+export const MultiloanAccount = Template.bind({});
+MultiloanAccount.args = {
+  PrimaryColor: '#4867FF',
+  ButtonHoverColor: '#443CF8',
+  AltBackgroundColor: '#F2F5FD',
+  ContainerBorderRadius: 16,
+  ButtonBorderRadius: 8
 };

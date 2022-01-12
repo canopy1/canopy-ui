@@ -181,5 +181,9 @@
   --cui-am-schedule-status-color-default:     var(--cui-text-color-light);
   --cui-am-schedule-status-color-success:     var(--cui-color-success);
   --cui-am-schedule-status-icon-size:         16px;
+
+  /* Component: Transaction History */
+  --cui-transaction-history--line-item-status--pending-color:   var(--cui-color-warning);
+  --cui-transaction-history--cell-paid-text-color:              var(--cui-color-success);
 }
 
