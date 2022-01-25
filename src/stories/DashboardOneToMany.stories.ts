@@ -69,7 +69,7 @@ const demoDashboardCSS = css`
     }
 
     .sidebar .header {
-      background-color: transparent;
+      background-color: transparent !important;
       justify-content: start;
     }
 
@@ -127,6 +127,9 @@ export default {
     AltBackgroundColor: {
       control: { type: 'color' }
     },
+    MobileHeaderColor: {
+      control: { type: 'color' }
+    },
     ContainerBorderRadius: {
       control: { type: 'number' }
     },
@@ -139,7 +142,7 @@ export default {
   }
 };
 
-const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, ButtonBorderRadius, ButtonHoverColor, Logo }) => {
+const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, ButtonBorderRadius, ButtonHoverColor, Logo = dashboardLogoSVG, MobileHeaderColor }) => {
 
   const paymentMeta = {
     due_by: "1/15/2022",
@@ -288,11 +291,15 @@ const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, But
       .sidebar {
         background-color: ${AltBackgroundColor};
       }
+
+      .sidebar .header {
+        background-color: ${MobileHeaderColor};
+      }
     </style>
     <div id="DashboardDemo">
       <div class="sidebar">
         <div class="header">
-          ${dashboardLogoSVG}
+          ${Logo}
         </div>
         <div class="content">
           <cui-payment
@@ -343,6 +350,7 @@ MultiloanAccount.args = {
   PrimaryColor: '#4867FF',
   ButtonHoverColor: '#443CF8',
   AltBackgroundColor: '#F2F5FD',
+  MobileHeaderColor: '#68ADFF',
   ContainerBorderRadius: 16,
   ButtonBorderRadius: 8
 };

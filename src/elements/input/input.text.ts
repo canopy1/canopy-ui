@@ -44,6 +44,9 @@ export class inputText extends LitElement {
   @property({ attribute: 'class', type: String })
   public class = '';
 
+  @property({ attribute: 'type', type: String })
+  public type = 'text';
+
   @property({ attribute: 'name', type: String })
   public name = '';
 
@@ -66,7 +69,7 @@ export class inputText extends LitElement {
     return html`
       <input
         class="${this.class}"
-        type="text"
+        type="${this.type}"
         name="${this.name}"
         value="${this.value}"
         placeholder="${this.placeholder}"

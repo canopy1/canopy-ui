@@ -4,91 +4,56 @@ import { dashboardLogoSVG } from "../icons/inline";
 
 const demoDashboardCSS = css`
   #DashboardDemo {
+    align-items: center;
     background-color: #fff;
     color: var(--cui-text-color-body);
+    display: flex;
     font-family: var(--cui-font-family-base);
     font-size: var(--cui-font-size-base);
+    justify-content: center;
     line-height: var(--cui-line-height-base);
-    min-height: 100vh;
+    min-height: calc(100vh - 64px);
+    padding: 32px 16px;
+    width: calc(100% - 32px);
+  }
+
+  a {
+    color: var(--cui-color-primary);
+    display: inline-block;
+    padding: 4px;
+    text-decoration: none;
   }
 
   h4 {
     color: var(--cui-text-color-headers);
     font-size: var(--cui-font-size-h4);
+    margin-bottom: 16px;
+    margin-top: 0;
+  }
+
+  .auth-container {
+    max-width: 320px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .auth-container cui-card {
     margin-bottom: 24px;
+    padding: 16px 24px 24px;
+    width: calc(100% - 48px);
   }
 
-  .sidebar {
-    background-color: #f2f5fd;
+  .logo-container {
+    text-align: center;
+    margin-bottom: 32px;
   }
 
-  .sidebar .header {
-    background-color: var(--cui-color-primary);
-    justify-content: center;
-  }
-
-  .sidebar .content {
-    padding: 24px 12px;
-  }
-
-  .main .header {
-    padding: 0 12px;
-  }
-
-  .main .content {
-    padding: 48px 12px;
-  }
-
-  .header {
-    align-items: center;
-    border-bottom: 1px solid #e1e4f2;
-    display: flex;
-    height: 56px;
-    padding: 0 16px;
-  }
-
-  cui-payment {
-    margin-bottom: 24px;
-  }
-
-  cui-loans-list {
-    margin-bottom: 24px;
-  }
-
-  cui-external-fields {
-    margin-bottom: 24px;
-  }
-
-  cui-account-overview {
-    margin-bottom: 48px;
+  cui-input-text {
+    margin-bottom: 16px;
   }
 
   @media only screen and (min-width: 768px) {
     #DashboardDemo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    .sidebar .header {
-      background-color: transparent;
-      justify-content: start;
-    }
-
-    .header {
-      height: 64px;
-      padding: 0 24px;
-    }
-
-    .sidebar .content {
-      padding: 24px;
-    }
-
-    .main .header {
-      padding: 0 24px;
-    }
-
-    .main .content {
-      padding: 24px;
     }
   }
 
@@ -146,9 +111,49 @@ const Template = ({
   AltBackgroundColor,
   ButtonBorderRadius,
   ButtonHoverColor,
-  Logo,
+  Logo = dashboardLogoSVG,
 }) => {
-  return html`<button data-sb-kind="Demos/Dashboard" data-sb-story="Multiloan Account V 2">Login</button>`;
+  return html`
+    <style>${demoDashboardCSS}</style>
+    <style>
+      :root {
+        --cui-color-primary: ${PrimaryColor};
+        --cui-btn-background-color-hover: ${ButtonHoverColor};
+        --cui-border-radius: ${ContainerBorderRadius}px;
+        --cui-btn-border-radius: ${ButtonBorderRadius}px;
+      }
+
+      #DashboardDemo {
+        background-color: ${AltBackgroundColor};
+      }
+    </style>
+    <div id="DashboardDemo">
+      <div class="auth-container">
+        <div class="logo-container">
+          ${Logo}
+        </div>
+        <cui-card>
+          <h4>Account Login</h4>
+          <cui-input-text
+            name="email"
+            value=""
+            placeholder="Email Address"
+          >
+          </cui-input-text>
+          <cui-input-text
+            type="password"
+            name="password"
+            value=""
+            placeholder="Password"
+          >
+          </cui-input-text>
+          <cui-btn data-sb-kind="Demos/Dashboard" data-sb-story="Multiloan Account V 2">Login</cui-btn>
+        </cui-card>
+        <a href="#">Register A New Account</a><br />
+        <a href="#">Forgot Password?</a>
+      </div>
+    </div>
+  `;
 };
 
 export const Login = Template.bind({});
