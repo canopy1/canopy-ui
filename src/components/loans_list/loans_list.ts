@@ -16,7 +16,6 @@ export interface LoansListFormatProp {
 }
 
 @customElement("cui-loans-list")
-
 export class LoansList extends LitElement {
   static styles = loansListCSS;
 

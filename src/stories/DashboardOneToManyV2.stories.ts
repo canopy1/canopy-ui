@@ -1,62 +1,71 @@
-// import { html } from "lit";
-// import { defaults } from "./defaults";
-// import { Dashboard } from "../organisms/dashboard/dashboard";
 
-// export default {
-//   title: "Demos/Dashboard",
-//   parameters: {
-//     layout: "fullscreen",
-//   },
-//   argTypes: {
-//     PrimaryColor: {
-//       control: { type: "color" },
-//     },
-//     ButtonHoverColor: {
-//       control: { type: "color" },
-//     },
-//     AltBackgroundColor: {
-//       control: { type: "color" },
-//     },
-//     ContainerBorderRadius: {
-//       control: { type: "number" },
-//     },
-//     ButtonBorderRadius: {
-//       control: { type: "number" },
-//     },
-//     logoUrl: {
-//       control: { type: "string" },
-//     },
-//   },
-// };
+import { html } from "lit";
+import { defaults } from "./defaults";
+import { Dashboard } from "../organisms/dashboard/dashboard";
 
-// const Template = ({
-//   PrimaryColor,
-//   ContainerBorderRadius,
-//   AltBackgroundColor,
-//   ButtonBorderRadius,
-//   ButtonHoverColor,
-//   logoUrl,
-// }) => {
-//   return html`
-//     <meta title="Organisms/Dashboard" />
-//     <style>
-//       :root {
-//         --cui-color-primary: ${PrimaryColor};
-//         --cui-btn-background-color-hover: ${ButtonHoverColor};
-//         --cui-border-radius: ${ContainerBorderRadius}px;
-//         --cui-btn-border-radius: ${ButtonBorderRadius}px;
-//       }
+export default {
+  title: "Demos/Dashboard",
+  parameters: {
+    layout: "fullscreen",
+  },
+  argTypes: {
+    PrimaryColor: {
+      control: { type: "color" },
+    },
+    ButtonHoverColor: {
+      control: { type: "color" },
+    },
+    AltBackgroundColor: {
+      control: { type: "color" },
+    },
+    ContainerBorderRadius: {
+      control: { type: "number" },
+    },
+    ButtonBorderRadius: {
+      control: { type: "number" },
+    },
+    logoUrl: {
+      control: { type: "string" },
+    },
+  },
+};
 
-//       .sidebar {
-//         background-color: ${AltBackgroundColor};
-//       }
-//     </style>
-//     <h1>hello</h1>
-//     <cui-dashboard logoUrl=${logoUrl}></cui-dashboard>
-//   `;
-// };
+const Template = ({
+  PrimaryColor,
+  ContainerBorderRadius,
+  AltBackgroundColor,
+  ButtonBorderRadius,
+  ButtonHoverColor,
+  logoUrl,
+}) => {
+  console.log({
+    PrimaryColor,
+    ContainerBorderRadius,
+    AltBackgroundColor,
+    ButtonBorderRadius,
+    ButtonHoverColor,
+    logoUrl,
+  });
+  return html`
+    <meta title="Organisms/Dashboard" />
+    <style>
+      :root {
+        --cui-color-primary: ${PrimaryColor};
+        --cui-btn-background-color-hover: ${ButtonHoverColor};
+        --cui-border-radius: ${ContainerBorderRadius}px;
+        --cui-btn-border-radius: ${ButtonBorderRadius}px;
+      }
 
-// export const MultiloanAccountV2 = Template.bind({});
-// MultiloanAccountV2.args = {
-//   ...defaults,
-// };
+      .sidebar {
+        background-color: ${AltBackgroundColor};
+      }
+    </style>
+    <h1>hello</h1>
+    <cui-dashboard logoUrl=${logoUrl}></cui-dashboard>
+  `;
+};
+
+export const MultiloanAccountV2 = Template.bind({});
+MultiloanAccountV2.args = {
+  ...defaults,
+};
