@@ -133,7 +133,7 @@ const Template = ({
           ${Logo}
         </div>
         <cui-card>
-          <h4>Register</h4>
+          <h4>Register New Account</h4>
           <cui-input-text
             name="email"
             value=""
@@ -164,7 +164,7 @@ const Template = ({
             required
           >
           </cui-input-text>
-          <cui-btn data-sb-kind="Demos" data-sb-story="Login">Register</cui-btn>
+          <cui-btn data-sb-kind="Demos" data-sb-story="Login">Register Account</cui-btn>
         </cui-card>
       </div>
     </div>

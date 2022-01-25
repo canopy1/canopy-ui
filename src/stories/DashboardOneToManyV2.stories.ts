@@ -11,8 +11,17 @@ const demoDashboardCSS = css`
     min-height: 100vh;
   }
 
-  h4 {
+  h1, h2, h3, h4, h5 {
     color: var(--cui-text-color-headers);
+    margin-top: 0;
+  }
+
+  h1 {
+    font-size: var(--cui-font-size-h4);
+    margin-bottom: 20px;
+  }
+
+  h4 {
     font-size: var(--cui-font-size-h4);
     margin-bottom: 24px;
   }
@@ -35,7 +44,7 @@ const demoDashboardCSS = css`
   }
 
   .main .content {
-    padding: 48px 12px;
+    padding: 24px 12px 48px;
   }
 
   .header {
@@ -92,6 +101,11 @@ const demoDashboardCSS = css`
   }
 
   @media only screen and (min-width: 992px) {
+    h1 {
+      font-size: var(--cui-font-size-h3);
+      margin-bottom: 28px;
+    }
+
     #DashboardDemo {
       grid-template-columns: 1fr 2fr;
     }
@@ -101,7 +115,7 @@ const demoDashboardCSS = css`
     }
 
     .main .content {
-      padding: 48px;
+      padding: 24px 48px 48px;
     }
   }
 
@@ -148,9 +162,9 @@ const Template = ({
   Logo,
 }) => {
   const loansList = [
-    { id: 1, key: "BNPL Loan #02938", value: 18238 },
-    { id: 2, key: "BNPL Loan #02945", value: 9377 },
-    { id: 3, key: "BNPL Loan #02990", value: 42913 },
+    { id: 1, key: "All Loans", value: 27615 },
+    { id: 2, key: "BNPL Loan #02938", value: 18238 },
+    { id: 3, key: "BNPL Loan #02945", value: 9377 },
   ];
 
   const {
@@ -208,9 +222,10 @@ const Template = ({
           <span>Account #0293874032</span>
         </div>
         <div class="content">
+          <h1>All Loans</h1>
           <cui-account-overview
             details='{
-              "principal_cents": 70528,
+              "principal_cents": 27615,
               "total_paid_to_date_cents": 38390,
               "total_interest_paid_to_date_cents": 2809,
               "interest_rate_percent": 15.99
@@ -218,7 +233,7 @@ const Template = ({
             class="cui-no-card"
           >
           </cui-account-overview>
-          <h4>Transaction History</h4>
+          <h4>All Transactions</h4>
           <cui-transaction-history items=${JSON.stringify(transactionItems)}></cui-transaction-history>
           </cui-am-schedule>
         </div>
@@ -308,13 +323,6 @@ function mockLoan() {
       line_item_status: "POSTED",
       line_item_type: "PAYMENT",
       original_amount_cents: -5678,
-    },
-    {
-      created_at: "2022-01-03T09:10:14+00:00",
-      description: "BNPL Loan #02938",
-      line_item_status: "VALID",
-      line_item_type: "CHARGE",
-      original_amount_cents: 20000,
     },
     {
       created_at: "2022-01-01T09:10:14+00:00",

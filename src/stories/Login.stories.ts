@@ -170,7 +170,7 @@ const Template = ({
           </cui-input-text>
           <cui-btn @click=${(e) => handleClick(e)} >Login</cui-btn>
         </cui-card>
-        <a data-sb-kind="Demos" data-sb-story="Register" href="#">Register A New Account</a><br />
+        <a data-sb-kind="Demos" data-sb-story="Register" href="#">Register New Account</a><br />
         <a data-sb-kind="Demos" data-sb-story="Password Reminder"href="#">Forgot Password?</a>
       </div>
     </div>
