@@ -1,6 +1,5 @@
 import { linkTo } from "@storybook/addon-links";
 import { html, css, render } from "lit";
-import { dashboardLogoSVG } from "../icons/inline";
 import { defaults } from './defaults';
 
 const demoDashboardCSS = css`
@@ -23,6 +22,10 @@ const demoDashboardCSS = css`
     display: inline-block;
     padding: 4px;
     text-decoration: none;
+  }
+
+  img {
+    width: 150px;
   }
 
   h4 {
@@ -100,8 +103,8 @@ export default {
     ButtonBorderRadius: {
       control: { type: "number" },
     },
-    Logo: {
-      control: { type: "file" },
+    logoUrl: {
+      control: { type: "string" },
     },
   },
 };
@@ -112,7 +115,7 @@ const Template = ({
   AltBackgroundColor,
   ButtonBorderRadius,
   ButtonHoverColor,
-  Logo = dashboardLogoSVG,
+  logoUrl,
 }) => {
 
   let email = "";
@@ -146,7 +149,7 @@ const Template = ({
     <div id="DashboardDemo">
       <div class="auth-container">
         <div class="logo-container">
-          ${Logo}
+          <img src="${logoUrl}" />
         </div>
         <cui-card>
           <h4>Account Login</h4>

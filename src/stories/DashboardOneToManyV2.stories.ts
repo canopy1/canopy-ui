@@ -1,5 +1,4 @@
 import { html, css } from "lit";
-import { dashboardLogoSVG } from "../icons/inline";
 import { defaults } from './defaults';
 
 const demoDashboardCSS = css`
@@ -16,6 +15,10 @@ const demoDashboardCSS = css`
     color: var(--cui-text-color-headers);
     font-size: var(--cui-font-size-h4);
     margin-bottom: 24px;
+  }
+
+  img {
+    width: 150px;
   }
 
   .sidebar {
@@ -134,8 +137,8 @@ export default {
     ButtonBorderRadius: {
       control: { type: "number" },
     },
-    Logo: {
-      control: { type: "file" },
+    logoUrl: {
+      control: { type: "string" },
     },
   },
 };
@@ -146,7 +149,7 @@ const Template = ({
   AltBackgroundColor,
   ButtonBorderRadius,
   ButtonHoverColor,
-  Logo,
+  logoUrl,
 }) => {
   const loansList = [
     { id: 1, key: "BNPL Loan #02938", value: 18238 },
@@ -182,7 +185,7 @@ const Template = ({
     <div id="DashboardDemo">
       <div class="sidebar">
         <div class="header">
-          ${dashboardLogoSVG}
+          <img src="${logoUrl}" />
         </div>
         <div class="content">
           <cui-payment

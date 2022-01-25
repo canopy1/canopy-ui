@@ -1,5 +1,4 @@
 import { html, css } from "lit";
-import { dashboardLogoSVG } from "../icons/inline"
 import { defaults } from './defaults';
 
 const demoDashboardCSS = css`
@@ -16,6 +15,10 @@ const demoDashboardCSS = css`
     color: var(--cui-text-color-headers);
     font-size: var(--cui-font-size-h4);
     margin-bottom: 24px;
+  }
+
+  img {
+    width: 150px;
   }
 
   .sidebar {
@@ -137,13 +140,13 @@ export default {
     ButtonBorderRadius: {
       control: { type: 'number' }
     },
-    Logo: {
-      control: { type: 'file' }
+    logoUrl: {
+      control: { type: 'string' }
     }
   }
 };
 
-const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, ButtonBorderRadius, ButtonHoverColor, Logo = dashboardLogoSVG, MobileHeaderColor }) => {
+const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, ButtonBorderRadius, ButtonHoverColor, logoUrl, MobileHeaderColor }) => {
 
   const paymentMeta = {
     due_by: "1/15/2022",
@@ -300,7 +303,7 @@ const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, But
     <div id="DashboardDemo">
       <div class="sidebar">
         <div class="header">
-          ${Logo}
+          <img src="${logoUrl}/>
         </div>
         <div class="content">
           <cui-payment

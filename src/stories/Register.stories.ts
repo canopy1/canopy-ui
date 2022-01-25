@@ -25,6 +25,10 @@ const demoDashboardCSS = css`
     text-decoration: none;
   }
 
+  img {
+    width: 150px;
+  }
+
   h4 {
     color: var(--cui-text-color-headers);
     font-size: var(--cui-font-size-h4);
@@ -100,8 +104,8 @@ export default {
     ButtonBorderRadius: {
       control: { type: "number" },
     },
-    Logo: {
-      control: { type: "file" },
+    logoUrl: {
+      control: { type: "string" },
     },
   },
 };
@@ -112,7 +116,7 @@ const Template = ({
   AltBackgroundColor,
   ButtonBorderRadius,
   ButtonHoverColor,
-  Logo = dashboardLogoSVG,
+  logoUrl,
 }) => {
   return html`
     <style>${demoDashboardCSS}</style>
@@ -131,7 +135,7 @@ const Template = ({
     <div id="DashboardDemo">
       <div class="auth-container">
         <div class="logo-container">
-          ${Logo}
+          <img src="${logoUrl}"/>
         </div>
         <cui-card>
           <h4>Register</h4>
