@@ -1,7 +1,6 @@
-
 import { html } from "lit";
 import { defaults } from "./defaults";
-import { Dashboard } from "../organisms/dashboard/dashboard";
+import "../organisms/dashboard/dashboard"
 
 export default {
   title: "Demos/Dashboard",
@@ -47,7 +46,6 @@ const Template = ({
     logoUrl,
   });
   return html`
-    <meta title="Organisms/Dashboard" />
     <style>
       :root {
         --cui-color-primary: ${PrimaryColor};

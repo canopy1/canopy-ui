@@ -139,7 +139,7 @@ const demoDashboardCSS = css`
 export class Dashboard extends LitElement {
   static styles = paymentDetailsCSS;
 
-  @property({ attribute: "logoURL", type: String })
+  @property({ attribute: "logoUrl", type: String })
   public logoUrl =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Flexport_logo.svg/440px-Flexport_logo.svg.png";
 
