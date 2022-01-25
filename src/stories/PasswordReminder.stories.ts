@@ -79,7 +79,7 @@ const demoDashboardCSS = css`
 `;
 
 export default {
-  title: "Demos/Login",
+  title: "Demos",
   parameters: {
     layout: "fullscreen",
   },
@@ -113,11 +113,6 @@ const Template = ({
   ButtonHoverColor,
   Logo = dashboardLogoSVG,
 }) => {
-  let email = "";
-
-  const handleClick = (e) => {
-    linkTo("Demos/Dashboard", "Multiloan Account V 2")()
-  }
   return html`
     <style>${demoDashboardCSS}</style>
     <style>
@@ -138,33 +133,23 @@ const Template = ({
           ${Logo}
         </div>
         <cui-card>
-          <h4>Account Login</h4>
+          <h4>Send Password Reminder</h4>
           <cui-input-text
             name="email"
-            value="${email}"
+            value=""
             placeholder="Email Address"
             required
           >
           </cui-input-text>
-          <cui-input-text
-            type="password"
-            name="password"
-            value=""
-            placeholder="Password"
-            required
-          >
-          </cui-input-text>
-          <cui-btn @click=${(e) => handleClick(e)} >Login</cui-btn>
+          <cui-btn data-sb-kind="Demos" data-sb-story="Login">Send Reminder</cui-btn>
         </cui-card>
-        <a data-sb-kind="Demos" data-sb-story="Register" href="#">Register A New Account</a><br />
-        <a data-sb-kind="Demos" data-sb-story="Password Reminder"href="#">Forgot Password?</a>
       </div>
     </div>
   `;
 };
 
-export const Login = Template.bind({});
-Login.args = {
+export const PasswordReminder = Template.bind({});
+PasswordReminder.args = {
   PrimaryColor: "#4867FF",
   ButtonHoverColor: "#443CF8",
   AltBackgroundColor: "#F2F5FD",
