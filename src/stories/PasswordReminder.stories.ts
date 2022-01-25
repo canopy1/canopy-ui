@@ -1,6 +1,7 @@
 import { linkTo } from "@storybook/addon-links";
 import { html, css } from "lit";
 import { dashboardLogoSVG } from "../icons/inline";
+import { defaults } from './defaults';
 
 const demoDashboardCSS = css`
   #DashboardDemo {
@@ -150,9 +151,5 @@ const Template = ({
 
 export const PasswordReminder = Template.bind({});
 PasswordReminder.args = {
-  PrimaryColor: "#4867FF",
-  ButtonHoverColor: "#443CF8",
-  AltBackgroundColor: "#F2F5FD",
-  ContainerBorderRadius: 16,
-  ButtonBorderRadius: 8,
+  ...defaults,
 };
