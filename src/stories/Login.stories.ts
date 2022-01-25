@@ -1,5 +1,5 @@
 import { linkTo } from "@storybook/addon-links";
-import { html, css } from "lit";
+import { html, css, render } from "lit";
 import { dashboardLogoSVG } from "../icons/inline";
 
 const demoDashboardCSS = css`
@@ -113,11 +113,23 @@ const Template = ({
   ButtonHoverColor,
   Logo = dashboardLogoSVG,
 }) => {
+
   let email = "";
+  let password = "";
 
   const handleClick = (e) => {
-    linkTo("Demos/Dashboard", "Multiloan Account V 2")()
+    console.log(email, password)
+
+    if (email === "hello@flexport.com" && password === "password") {
+      linkTo("Demos/Dashboard", "Multiloan Account V 2")();
+      console.log('logging in...')
+      return;
+    }
+
+    console.log('invalid credentials...')
+    linkTo("Demos/InvalidLogin", "Invalid Login")();
   }
+
   return html`
     <style>${demoDashboardCSS}</style>
     <style>
@@ -143,13 +155,15 @@ const Template = ({
             name="email"
             value="${email}"
             placeholder="Email Address"
+            @change="${e => { email = e.detail.value; }}"
             required
           >
           </cui-input-text>
           <cui-input-text
             type="password"
             name="password"
-            value=""
+            value="${password}"
+            @change="${e => { password = e.detail.value; }}"
             placeholder="Password"
             required
           >
