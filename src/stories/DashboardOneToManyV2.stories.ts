@@ -147,6 +147,96 @@ const Template = ({
   ButtonHoverColor,
   Logo,
 }) => {
+  const loansList = [
+    { id: 1, key: "BNPL Loan #02938", value: 18238 },
+    { id: 2, key: "BNPL Loan #02945", value: 9377 },
+    { id: 3, key: "BNPL Loan #02990", value: 42913 },
+  ];
+
+  const {
+    autopayDisabledConfirmBody,
+    autopayEnabled,
+    autopayEnabledConfirmBody,
+    paymentAmounts,
+    paymentMeta,
+    paymentMethods,
+    statements,
+    transactionItems,
+  } = mockLoan();
+
+  return html`
+    <style>${demoDashboardCSS}</style>
+    <style>
+      :root {
+        --cui-color-primary: ${PrimaryColor};
+        --cui-btn-background-color-hover: ${ButtonHoverColor};
+        --cui-border-radius: ${ContainerBorderRadius}px;
+        --cui-btn-border-radius: ${ButtonBorderRadius}px;
+      }
+
+      .sidebar {
+        background-color: ${AltBackgroundColor};
+      }
+    </style>
+    <div id="DashboardDemo">
+      <div class="sidebar">
+        <div class="header">
+          ${dashboardLogoSVG}
+        </div>
+        <div class="content">
+          <cui-payment
+            payment-meta=${JSON.stringify(paymentMeta)}
+            payment-methods=${JSON.stringify(paymentMethods)}
+            payment-amounts=${JSON.stringify(paymentAmounts)}
+            ${autopayEnabled ? "autopay-enabled" : ""}
+            autopay-enabled-confirm-body=${autopayEnabledConfirmBody}
+            autopay-disabled-confirm-body=${autopayDisabledConfirmBody}
+          >
+          </cui-payment>
+          <cui-loans-list
+            fields=${JSON.stringify(loansList)}
+          >
+          </cui-loans-list>
+          <cui-statements
+            statements=${JSON.stringify(statements)}
+          >
+          </cui-statements>
+        </div>
+      </div>
+      <div class="main">
+        <div class="header">
+          <span>Account #0293874032</span>
+        </div>
+        <div class="content">
+          <cui-account-overview
+            details='{
+              "principal_cents": 70528,
+              "total_paid_to_date_cents": 38390,
+              "total_interest_paid_to_date_cents": 2809,
+              "interest_rate_percent": 15.99
+            }'
+            class="cui-no-card"
+          >
+          </cui-account-overview>
+          <h4>Transaction History</h4>
+          <cui-transaction-history items=${JSON.stringify(transactionItems)}></cui-transaction-history>
+          </cui-am-schedule>
+        </div>
+      </div>
+    </div>
+  `;
+};
+
+export const MultiloanAccountV2 = Template.bind({});
+MultiloanAccountV2.args = {
+  PrimaryColor: "#4867FF",
+  ButtonHoverColor: "#443CF8",
+  AltBackgroundColor: "#F2F5FD",
+  ContainerBorderRadius: 16,
+  ButtonBorderRadius: 8,
+};
+
+function mockLoan() {
   const paymentMeta = {
     due_by: "1/15/2022",
     past_due: 0,
@@ -165,12 +255,6 @@ const Template = ({
     "<p style='text-align: center;'>Your <strong>Visa ending 4222</strong> will be charged <strong>$56.78</strong> on the <strong>3rd of each month</strong>.</p>";
   const autopayDisabledConfirmBody =
     "<p style='text-align: center;'><strong>Are you sure you want disable autopay?</strong><br /> You may be charged fees for late or missed payments without autopay.</p>";
-
-  const loansList = [
-    { key: "BNPL Loan #02938", value: 18238 },
-    { key: "BNPL Loan #02945", value: 9377 },
-    { key: "BNPL Loan #02990", value: 42913 },
-  ];
 
   const statements = [
     {
@@ -283,74 +367,14 @@ const Template = ({
     },
   ];
 
-  return html`
-    <style>${demoDashboardCSS}</style>
-    <style>
-      :root {
-        --cui-color-primary: ${PrimaryColor};
-        --cui-btn-background-color-hover: ${ButtonHoverColor};
-        --cui-border-radius: ${ContainerBorderRadius}px;
-        --cui-btn-border-radius: ${ButtonBorderRadius}px;
-      }
-
-      .sidebar {
-        background-color: ${AltBackgroundColor};
-      }
-    </style>
-    <div id="DashboardDemo">
-      <div class="sidebar">
-        <div class="header">
-          ${dashboardLogoSVG}
-        </div>
-        <div class="content">
-          <cui-payment
-            payment-meta=${JSON.stringify(paymentMeta)}
-            payment-methods=${JSON.stringify(paymentMethods)}
-            payment-amounts=${JSON.stringify(paymentAmounts)}
-            ${autopayEnabled ? "autopay-enabled" : ""}
-            autopay-enabled-confirm-body=${autopayEnabledConfirmBody}
-            autopay-disabled-confirm-body=${autopayDisabledConfirmBody}
-          >
-          </cui-payment>
-          <cui-loans-list
-            fields=${JSON.stringify(loansList)}
-          >
-          </cui-loans-list>
-          <cui-statements
-            statements=${JSON.stringify(statements)}
-          >
-          </cui-statements>
-        </div>
-      </div>
-      <div class="main">
-        <div class="header">
-          <span>Account #0293874032</span>
-        </div>
-        <div class="content">
-          <cui-account-overview
-            details='{
-              "principal_cents": 70528,
-              "total_paid_to_date_cents": 38390,
-              "total_interest_paid_to_date_cents": 2809,
-              "interest_rate_percent": 15.99
-            }'
-            class="cui-no-card"
-          >
-          </cui-account-overview>
-          <h4>Transaction History</h4>
-          <cui-transaction-history items=${JSON.stringify(transactionItems)}></cui-transaction-history>
-          </cui-am-schedule>
-        </div>
-      </div>
-    </div>
-  `;
-};
-
-export const MultiloanAccountV2 = Template.bind({});
-MultiloanAccountV2.args = {
-  PrimaryColor: "#4867FF",
-  ButtonHoverColor: "#443CF8",
-  AltBackgroundColor: "#F2F5FD",
-  ContainerBorderRadius: 16,
-  ButtonBorderRadius: 8,
-};
+  return {
+    paymentMeta,
+    paymentMethods,
+    paymentAmounts,
+    statements,
+    transactionItems,
+    autopayEnabled,
+    autopayEnabledConfirmBody,
+    autopayDisabledConfirmBody,
+  };
+}
