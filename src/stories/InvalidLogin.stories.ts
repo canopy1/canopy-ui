@@ -1,6 +1,5 @@
 import { linkTo } from "@storybook/addon-links";
-import { html, css } from "lit";
-import { dashboardLogoSVG } from "../icons/inline";
+import { html, css, render } from "lit";
 import { defaults } from './defaults';
 
 const demoDashboardCSS = css`
@@ -84,7 +83,7 @@ const demoDashboardCSS = css`
 `;
 
 export default {
-  title: "Demos/Register",
+  title: "Demos/InvalidLogin",
   parameters: {
     layout: "fullscreen",
   },
@@ -118,6 +117,21 @@ const Template = ({
   ButtonHoverColor,
   logoUrl,
 }) => {
+
+  let email = "";
+  let password = "";
+
+  const handleClick = (e) => {
+    console.log(email, password)
+
+    if (email === "hello@flexport.com" && password === "password") {
+      linkTo("Demos/Dashboard", "Multiloan Account V 2")();
+      return;
+    }
+
+    linkTo("Demos/InvalidLogin", "Invalid Login")();
+  }
+
   return html`
     <style>${demoDashboardCSS}</style>
     <style>
@@ -135,48 +149,38 @@ const Template = ({
     <div id="DashboardDemo">
       <div class="auth-container">
         <div class="logo-container">
-          <img src="${logoUrl}"/>
+          <img src="${logoUrl}" />
         </div>
         <cui-card>
-          <h4>Register New Account</h4>
+          <h4>Account Login</h4>
+          <div class="error">Invalid username or password.</div>
           <cui-input-text
             name="email"
-            value=""
+            value="${email}"
             placeholder="Email Address"
+            @change="${e => { email = e.detail.value; }}"
             required
           >
           </cui-input-text>
           <cui-input-text
             type="password"
             name="password"
-            value=""
+            value="${password}"
+            @change="${e => { password = e.detail.value; }}"
             placeholder="Password"
             required
           >
           </cui-input-text>
-          <cui-input-text
-            name="account-number"
-            value=""
-            placeholder="Account Number"
-            required
-          >
-          </cui-input-text>
-          <cui-input-text
-            type="password"
-            name="ssn"
-            value=""
-            placeholder="SSN"
-            required
-          >
-          </cui-input-text>
-          <cui-btn data-sb-kind="Demos" data-sb-story="Login">Register Account</cui-btn>
+          <cui-btn @click=${(e) => handleClick(e)} >Login</cui-btn>
         </cui-card>
+        <a data-sb-kind="Demos" data-sb-story="Register" href="#">Register A New Account</a><br />
+        <a data-sb-kind="Demos" data-sb-story="Password Reminder"href="#">Forgot Password?</a>
       </div>
     </div>
   `;
 };
 
-export const Register = Template.bind({});
-Register.args = {
+export const InvalidLogin = Template.bind({});
+InvalidLogin.args = {
   ...defaults,
 };

@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { dashboardLogoSVG } from "../icons/inline";
+import { defaults } from './defaults';
 
 const demoDashboardCSS = css`
   #DashboardDemo {
@@ -24,6 +24,10 @@ const demoDashboardCSS = css`
   h4 {
     font-size: var(--cui-font-size-h4);
     margin-bottom: 24px;
+  }
+
+  img {
+    width: 150px;
   }
 
   .sidebar {
@@ -147,8 +151,8 @@ export default {
     ButtonBorderRadius: {
       control: { type: "number" },
     },
-    Logo: {
-      control: { type: "file" },
+    logoUrl: {
+      control: { type: "string" },
     },
   },
 };
@@ -159,7 +163,7 @@ const Template = ({
   AltBackgroundColor,
   ButtonBorderRadius,
   ButtonHoverColor,
-  Logo,
+  logoUrl,
 }) => {
   const loansList = [
     { id: 1, key: "All Loans", value: 27615 },
@@ -195,7 +199,7 @@ const Template = ({
     <div id="DashboardDemo">
       <div class="sidebar">
         <div class="header">
-          ${dashboardLogoSVG}
+          <img src="${logoUrl}" />
         </div>
         <div class="content">
           <cui-payment
@@ -244,11 +248,7 @@ const Template = ({
 
 export const MultiloanAccountV2 = Template.bind({});
 MultiloanAccountV2.args = {
-  PrimaryColor: "#4867FF",
-  ButtonHoverColor: "#443CF8",
-  AltBackgroundColor: "#F2F5FD",
-  ContainerBorderRadius: 16,
-  ButtonBorderRadius: 8,
+  ...defaults,
 };
 
 function mockLoan() {

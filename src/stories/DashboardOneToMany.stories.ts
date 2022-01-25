@@ -1,5 +1,5 @@
 import { html, css } from "lit";
-import { dashboardLogoSVG } from "../icons/inline"
+import { defaults } from './defaults';
 
 const demoDashboardCSS = css`
   #DashboardDemo {
@@ -15,6 +15,10 @@ const demoDashboardCSS = css`
     color: var(--cui-text-color-headers);
     font-size: var(--cui-font-size-h4);
     margin-bottom: 24px;
+  }
+
+  img {
+    width: 150px;
   }
 
   .sidebar {
@@ -114,7 +118,7 @@ const demoDashboardCSS = css`
 
 export default {
   title: 'Demos/Dashboard',
-  parameters:{
+  parameters: {
     layout: 'fullscreen',
   },
   argTypes: {
@@ -136,13 +140,13 @@ export default {
     ButtonBorderRadius: {
       control: { type: 'number' }
     },
-    Logo: {
-      control: { type: 'file' }
+    logoUrl: {
+      control: { type: 'string' }
     }
   }
 };
 
-const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, ButtonBorderRadius, ButtonHoverColor, Logo = dashboardLogoSVG, MobileHeaderColor }) => {
+const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, ButtonBorderRadius, ButtonHoverColor, logoUrl, MobileHeaderColor }) => {
 
   const paymentMeta = {
     due_by: "1/15/2022",
@@ -299,7 +303,7 @@ const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, But
     <div id="DashboardDemo">
       <div class="sidebar">
         <div class="header">
-          ${Logo}
+          <img src="${logoUrl}/>
         </div>
         <div class="content">
           <cui-payment
@@ -347,10 +351,5 @@ const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, But
 
 export const MultiloanAccount = Template.bind({});
 MultiloanAccount.args = {
-  PrimaryColor: '#4867FF',
-  ButtonHoverColor: '#443CF8',
-  AltBackgroundColor: '#F2F5FD',
-  MobileHeaderColor: '#68ADFF',
-  ContainerBorderRadius: 16,
-  ButtonBorderRadius: 8
+  ...defaults,
 };
