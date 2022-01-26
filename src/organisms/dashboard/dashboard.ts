@@ -147,14 +147,23 @@ export class Dashboard extends LitElement {
     mockLoan({
       key: "All Loans",
       value: 27615,
+      paidToDate: 38390,
+      interestToDate: 2809,
+      interestRate: null,
     }),
     mockLoan({
       key: "BNPL Loan #02938",
       value: 18238,
+      paidToDate: 34608,
+      interestToDate: 2297,
+      interestRate: 12,
     }),
     mockLoan({
       key: "BNPL Loan #02945",
       value: 9377,
+      paidToDate: 3782,
+      interestToDate: 512,
+      interestRate: 6.50,
     }),
   ];
 
@@ -184,9 +193,9 @@ export class Dashboard extends LitElement {
 
     const accountDetails = {
       principal_cents: loanMeta.value,
-      total_paid_to_date_cents: 38390,
-      total_interest_paid_to_date_cents: 2809,
-      interest_rate_percent: 15.99,
+      total_paid_to_date_cents: loanMeta.paidToDate,
+      total_interest_paid_to_date_cents: loanMeta.interestToDate,
+      interest_rate_percent: loanMeta.interestRate,
     };
 
     console.log(accountDetails);
@@ -224,7 +233,7 @@ export class Dashboard extends LitElement {
             <span>Account #0293874032</span>
           </div>
           <div class="content">
-            <h1>All Loans</h1>
+            <h1>${loanMeta.key}</h1>
             <cui-account-overview
               .details=${accountDetails}
               class="cui-no-card"
@@ -246,10 +255,13 @@ declare global {
   }
 }
 
-function mockLoan({ key, value }: { key: string; value: number }) {
+function mockLoan({ key, value, paidToDate, interestToDate, interestRate }: { key: string; value: number, paidToDate: number, interestToDate: number, interestRate: number }) {
   const loanMeta = {
     key,
     value,
+    paidToDate,
+    interestToDate,
+    interestRate
   };
 
   const paymentMeta = {
@@ -368,10 +380,10 @@ function mockLoan({ key, value }: { key: string; value: number }) {
     },
     {
       created_at: "2021-11-28T09:10:14+00:00",
-      description: "BNPL Loan #02990",
+      description: "BNPL Loan #02938",
       line_item_status: "VALID",
       line_item_type: "CHARGE",
-      original_amount_cents: 55000,
+      original_amount_cents: 50000,
     },
   ];
 

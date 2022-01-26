@@ -1,9 +1,8 @@
-import { linkTo } from "@storybook/addon-links";
 import { html } from "lit";
 import { flexportVars, defaultControls, demoDashboardCSS } from './defaults';
 
 export default {
-  title: "Flexport Demo/Register",
+  title: "Flexport Demo/Auth",
   parameters: {
     layout: "fullscreen",
   },

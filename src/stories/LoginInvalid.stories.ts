@@ -3,7 +3,7 @@ import { html } from "lit";
 import { flexportVars, defaultControls, demoDashboardCSS } from './defaults';
 
 export default {
-  title: "Flexport Demo",
+  title: "Flexport Demo/Auth",
   parameters: {
     layout: "fullscreen",
   },
@@ -47,7 +47,7 @@ const Template = ({
     }
 
     console.log('invalid credentials...')
-    linkTo("Flexport Demo", "Invalid Login")();
+    linkTo("Flexport Demo/Auth", "Login Invalid")();
   }
 
   return html`
@@ -111,14 +111,14 @@ const Template = ({
           </cui-input-text>
           <cui-btn @click=${(e) => handleClick(e)} >Login</cui-btn>
         </cui-card>
-        <a data-sb-kind="Flexport Demo" data-sb-story="Register" href="#">Register New Account</a><br />
-        <a data-sb-kind="Flexport Demo" data-sb-story="Forgot Password"href="#">Forgot Password?</a>
+        <a data-sb-kind="Flexport Demo/Auth" data-sb-story="Register" href="#">Register New Account</a><br />
+        <a data-sb-kind="Flexport Demo/Auth" data-sb-story="Forgot Password"href="#">Forgot Password?</a>
       </div>
     </div>
   `;
 };
 
-export const InvalidLogin = Template.bind({});
-InvalidLogin.args = {
+export const LoginInvalid = Template.bind({});
+LoginInvalid.args = {
   ...flexportVars,
 };
