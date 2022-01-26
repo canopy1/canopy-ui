@@ -50,11 +50,11 @@ const Template = ({
         background-color: ${AltBackgroundColor};
       }
     </style>
-    <cui-dashboard selected-loan-index=${0} logo-url=${logoUrl}></cui-dashboard>
+    <cui-dashboard selected-loan-index=${1} logo-url=${logoUrl}></cui-dashboard>
   `;
 };
 
-export const MultiloanAccountV2 = Template.bind({});
-MultiloanAccountV2.args = {
+export const MultiloanAccountV2L2 = Template.bind({});
+MultiloanAccountV2L2.args = {
   ...flexportVars,
 };

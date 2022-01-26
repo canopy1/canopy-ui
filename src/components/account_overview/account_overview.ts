@@ -99,6 +99,8 @@ export class AccountOverview extends LitElement {
     const open_to_buy_cents = this.details?.open_to_buy_cents;
     const total_payoff_cents = this.details?.total_payoff_cents;
 
+    console.log({ principal_cents });
+
     // Appears if no element with attr slot "top" given.
 
     const defaultTop = html`
