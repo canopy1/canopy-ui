@@ -37,14 +37,6 @@ const Template = ({
   ButtonHoverColor,
   logoUrl,
 }) => {
-  console.log({
-    PrimaryColor,
-    ContainerBorderRadius,
-    AltBackgroundColor,
-    ButtonBorderRadius,
-    ButtonHoverColor,
-    logoUrl,
-  });
   return html`
     <style>
       :root {
@@ -58,7 +50,6 @@ const Template = ({
         background-color: ${AltBackgroundColor};
       }
     </style>
-    <h1>hello</h1>
     <cui-dashboard logoUrl=${logoUrl}></cui-dashboard>
   `;
 };

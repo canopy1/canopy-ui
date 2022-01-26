@@ -1,5 +1,5 @@
 import { html, LitElement, TemplateResult, css } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, state } from "lit/decorators.js";
 import { paymentDetailsCSS } from "./dashboard.css";
 
 const demoDashboardCSS = css`
@@ -143,6 +143,9 @@ export class Dashboard extends LitElement {
   public logoUrl =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Flexport_logo.svg/440px-Flexport_logo.svg.png";
 
+  @state()
+  private selectedLoan = mockLoan();
+
   render(): TemplateResult<1> {
     const loansList = [
       { id: 1, key: "All Loans", value: 27615 },
@@ -159,7 +162,7 @@ export class Dashboard extends LitElement {
       paymentMethods,
       statements,
       transactionItems,
-    } = mockLoan();
+    } = this.selectedLoan;
 
     return html`
       <style>${demoDashboardCSS}</style>
