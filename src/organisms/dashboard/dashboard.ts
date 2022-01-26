@@ -144,16 +144,27 @@ export class Dashboard extends LitElement {
     "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Flexport_logo.svg/440px-Flexport_logo.svg.png";
 
   @state()
-  private selectedLoan = mockLoan();
+  private selectedLoan = 1;
+
+  @state()
+  private loans = [
+    mockLoan({
+      key: "All Loans",
+      value: 27615,
+    }),
+    mockLoan({
+      key: "BNPL Loan #02938",
+      value: 18238,
+    }),
+    mockLoan({
+      key: "BNPL Loan #02945",
+      value: 9377,
+    }),
+  ];
 
   render(): TemplateResult<1> {
-    const loansList = [
-      { id: 1, key: "All Loans", value: 27615 },
-      { id: 2, key: "BNPL Loan #02938", value: 18238 },
-      { id: 3, key: "BNPL Loan #02945", value: 9377 },
-    ];
-
     const {
+      loanMeta,
       autopayDisabledConfirmBody,
       autopayEnabled,
       autopayEnabledConfirmBody,
@@ -162,7 +173,7 @@ export class Dashboard extends LitElement {
       paymentMethods,
       statements,
       transactionItems,
-    } = this.selectedLoan;
+    } = this.loans[this.selectedLoan];
 
     return html`
       <style>${demoDashboardCSS}</style>
@@ -182,7 +193,11 @@ export class Dashboard extends LitElement {
             >
             </cui-payment>
             <cui-loans-list
-              fields=${JSON.stringify(loansList)}
+              @onItemClick=${(e: CustomEvent<{ itemIndex: number }>) => {
+                this.selectedLoan = e.detail.itemIndex;
+                this.requestUpdate();
+              }}
+              fields=${JSON.stringify(this.loans.map((l) => l.loanMeta))}
             >
             </cui-loans-list>
             <cui-statements
@@ -199,7 +214,7 @@ export class Dashboard extends LitElement {
             <h1>All Loans</h1>
             <cui-account-overview
               details='{
-                "principal_cents": 27615,
+                "principal_cents": ${loanMeta.value},
                 "total_paid_to_date_cents": 38390,
                 "total_interest_paid_to_date_cents": 2809,
                 "interest_rate_percent": 15.99
@@ -223,7 +238,12 @@ declare global {
   }
 }
 
-function mockLoan() {
+function mockLoan({ key, value }: { key: string; value: number }) {
+  const loanMeta = {
+    key,
+    value,
+  };
+
   const paymentMeta = {
     due_by: "1/15/2022",
     past_due: 0,
@@ -356,5 +376,6 @@ function mockLoan() {
     autopayEnabled,
     autopayEnabledConfirmBody,
     autopayDisabledConfirmBody,
+    loanMeta,
   };
 }

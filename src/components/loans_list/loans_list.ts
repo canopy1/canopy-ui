@@ -1,5 +1,5 @@
 import { html, LitElement, TemplateResult } from "lit";
-import { customElement, property } from "lit/decorators.js";
+import { customElement, property, eventOptions } from "lit/decorators.js";
 import { centsToDollars } from "../../utils";
 import { loansListCSS } from "./loans_list.css";
 
@@ -22,11 +22,14 @@ export class LoansList extends LitElement {
   @property({ attribute: "fields", type: Array })
   public fields: LoansListProp = [];
 
-  @property({ attribute: "onClick", type: Function })
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  public onClick: Function =
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    () => {};
+  private onClick(idx: number) {
+    const event = new CustomEvent("onItemClick", {
+      detail: {
+        itemIndex: idx,
+      },
+    });
+    this.dispatchEvent(event);
+  }
 
   render(): TemplateResult<1> {
     return html`
@@ -34,14 +37,13 @@ export class LoansList extends LitElement {
         <cui-card-header title="My Loans">Balance</cui-card-header>
         <ul>
           ${this.fields.map(
-            (f) =>
+            (f, idx) =>
               html`
                 <cui-list-item
                   label="${f.key}"
                   clickable
                   @click=${() => {
-                    console.log(f)
-                    this.onClick(f);
+                    this.onClick(idx);
                   }}
                 >
                   ${centsToDollars(f.value)}
