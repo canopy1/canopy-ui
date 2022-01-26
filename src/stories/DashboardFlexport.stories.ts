@@ -1,9 +1,9 @@
 import { html } from "lit";
-import { flexportVars, defaultControls } from './defaults';
-import "../organisms/dashboard/dashboard"
+import { flexportVars, defaultControls } from "./defaults";
+import "../organisms/dashboard/dashboard";
 
 export default {
-  title: "Flexport Demo",
+  title: "Flexport Demo/Dashboard",
   parameters: {
     layout: "fullscreen",
   },
@@ -60,11 +60,11 @@ const Template = ({
         --cui-input-placeholder-color: ${InputPlaceholderTextColor};
       }
     </style>
-    <cui-dashboard logoUrl=${logoUrl} altBackgroundColor=${AltBackgroundColor}></cui-dashboard>
+    <cui-dashboard selected-loan-index=${0} logo-url=${logoUrl}></cui-dashboard>
   `;
 };
 
-export const Dashboard = Template.bind({});
-Dashboard.args = {
+export const Index = Template.bind({});
+Index.args = {
   ...flexportVars,
 };

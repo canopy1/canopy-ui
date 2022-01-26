@@ -1,6 +1,7 @@
 import { html, LitElement, TemplateResult, css } from "lit";
-import { customElement, property, state } from "lit/decorators.js";
+import { customElement, property } from "lit/decorators.js";
 import { paymentDetailsCSS } from "./dashboard.css";
+import { linkTo } from "@storybook/addon-links";
 
 const demoDashboardCSS = css`
   #DashboardDemo {
@@ -138,14 +139,11 @@ export class Dashboard extends LitElement {
   @property({ attribute: "logoUrl", type: String })
   public logoUrl = "/flexport-logo.png";
 
-  @property({ attribute: "altBackgroundColor", type: String })
-  public altBackgroundColor = "var(--cui-background-color-alt)";
+  @property({ attribute: "selected-loan-index" })
+  public selectedLoanIdx?: number;
 
-  @state()
-  private selectedLoan = 1;
-
-  @state()
-  private loans = [
+  @property()
+  private _loans = [
     mockLoan({
       key: "All Loans",
       value: 27615,
@@ -160,6 +158,17 @@ export class Dashboard extends LitElement {
     }),
   ];
 
+  private handleLoanClick(e: CustomEvent<{ itemIndex: number }>) {
+    const idx = e.detail.itemIndex;
+    if (idx === 0) {
+      linkTo("Flexport Demo/Dashboard", "Index")();
+    } else if (idx === 1) {
+      linkTo("Flexport Demo/Dashboard", "Loan 1")();
+    } else if (idx === 2) {
+      linkTo("Flexport Demo/Dashboard", "Loan 2")();
+    }
+  }
+
   render(): TemplateResult<1> {
     const {
       loanMeta,
@@ -171,7 +180,16 @@ export class Dashboard extends LitElement {
       paymentMethods,
       statements,
       transactionItems,
-    } = this.loans[this.selectedLoan];
+    } = this._loans[this.selectedLoanIdx];
+
+    const accountDetails = {
+      principal_cents: loanMeta.value,
+      total_paid_to_date_cents: 38390,
+      total_interest_paid_to_date_cents: 2809,
+      interest_rate_percent: 15.99,
+    };
+
+    console.log(accountDetails);
 
     return html`
       <style>${demoDashboardCSS}</style>
@@ -191,11 +209,8 @@ export class Dashboard extends LitElement {
             >
             </cui-payment>
             <cui-loans-list
-              @onItemClick=${(e: CustomEvent<{ itemIndex: number }>) => {
-                this.selectedLoan = e.detail.itemIndex;
-                this.requestUpdate();
-              }}
-              fields=${JSON.stringify(this.loans.map((l) => l.loanMeta))}
+              @onItemClick=${this.handleLoanClick}
+              fields=${JSON.stringify(this._loans.map((l) => l.loanMeta))}
             >
             </cui-loans-list>
             <cui-statements
@@ -211,12 +226,7 @@ export class Dashboard extends LitElement {
           <div class="content">
             <h1>All Loans</h1>
             <cui-account-overview
-              details='{
-                "principal_cents": ${loanMeta.value},
-                "total_paid_to_date_cents": 38390,
-                "total_interest_paid_to_date_cents": 2809,
-                "interest_rate_percent": 15.99
-              }'
+              .details=${accountDetails}
               class="cui-no-card"
             >
             </cui-account-overview>

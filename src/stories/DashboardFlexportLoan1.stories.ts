@@ -1,9 +1,9 @@
-import { linkTo } from "@storybook/addon-links";
 import { html } from "lit";
-import { flexportVars, defaultControls, demoDashboardCSS } from './defaults';
+import { flexportVars, defaultControls } from "./defaults";
+import "../organisms/dashboard/dashboard";
 
 export default {
-  title: "Flexport Demo/Register",
+  title: "Flexport Demo/Dashboard",
   parameters: {
     layout: "fullscreen",
   },
@@ -14,13 +14,13 @@ export default {
 
 const Template = ({
   AltBackgroundColor,
-  AuthBgImgUrl,
   BaseFontSize,
   ButtonBorderRadius,
   ButtonFontSize,
   ButtonHeight,
   ButtonHoverColor,
   ContainerBorderRadius,
+  DangerColor,
   InputBorderColor,
   InputBorderWidth,
   InputHeight,
@@ -29,15 +29,18 @@ const Template = ({
   InputBorderFocusColor,
   logoUrl,
   PrimaryColor,
+  SuccessColor,
   TextBody,
   TextDark,
 }) => {
   return html`
-    <style>${demoDashboardCSS}</style>
     <style>
       :root {
         --cui-text-color-body: ${TextBody};
         --cui-color-primary: ${PrimaryColor};
+        --cui-color-danger: ${DangerColor};
+        --cui-color-success: ${SuccessColor};
+        --cui-background-color-alt: ${AltBackgroundColor};
         --cui-btn-background-color-hover: ${ButtonHoverColor};
         --cui-border-radius: ${ContainerBorderRadius}px;
         --cui-btn-border-radius: ${ButtonBorderRadius}px;
@@ -56,60 +59,12 @@ const Template = ({
         --cui-input-height: ${InputHeight}px;
         --cui-input-placeholder-color: ${InputPlaceholderTextColor};
       }
-
-      #DashboardDemo {
-        background-color: ${AltBackgroundColor};
-        background-image: url(${AuthBgImgUrl});
-        background-size: 80%;
-        background-position: bottom right;
-        background-repeat: no-repeat;
-      }
     </style>
-    <div id="DashboardDemo">
-      <div class="auth-container">
-        <div class="logo-container">
-          <img src="${logoUrl}"/>
-        </div>
-        <cui-card>
-          <h4>Register New Account</h4>
-          <cui-input-text
-            name="email"
-            value=""
-            placeholder="Email Address"
-            required
-          >
-          </cui-input-text>
-          <cui-input-text
-            type="password"
-            name="password"
-            value=""
-            placeholder="Password"
-            required
-          >
-          </cui-input-text>
-          <cui-input-text
-            name="account-number"
-            value=""
-            placeholder="Account Number"
-            required
-          >
-          </cui-input-text>
-          <cui-input-text
-            type="password"
-            name="ssn"
-            value=""
-            placeholder="SSN"
-            required
-          >
-          </cui-input-text>
-          <cui-btn data-sb-kind="Demos" data-sb-story="Login">Register Account</cui-btn>
-        </cui-card>
-      </div>
-    </div>
+    <cui-dashboard selected-loan-index=${1} logo-url=${logoUrl}></cui-dashboard>
   `;
 };
 
-export const Register = Template.bind({});
-Register.args = {
+export const Loan1 = Template.bind({});
+Loan1.args = {
   ...flexportVars,
 };
