@@ -11,11 +11,18 @@ export const ListItemCSS = css`
     line-height: var(--cui-line-height-base);
   }
 
-  li {
+  li, li > div {
     display: flex;
     justify-content: space-between;
+  }
+
+  li {
     list-style: none;
     padding: var(--cui-li-padding-vertical) var(--cui-li-padding-horizontal);
+  }
+
+  li > div {
+    width: 100%;
   }
 
   li > strong {
@@ -48,6 +55,10 @@ export const ListItemCSS = css`
   li.cui-li-clickable:hover span.cui-list-item-arrow {
     opacity: var(--cui-li-arrow-opacity-hover);
   }
+
+  li.cui-li-clickable label {
+    pointer-events: none;
+  }
 `
 
 @customElement('cui-list-item')
@@ -67,8 +78,10 @@ export class ListItem extends LitElement {
   render(): TemplateResult<1> {
     return html`
       <li class="${this.clickable && 'cui-li-clickable'}">
-        ${this.label && html`<label>${this.label}</label>`}
-        ${this.label && html`<strong>`}<slot></slot>${this.label && html`</strong>`}
+        <div>
+          ${this.label && html`<label>${this.label}</label>`}
+          ${this.label && html`<strong>`}<slot></slot>${this.label && html`</strong>`}
+        </div>
         ${this.clickable && html`<span class="cui-list-item-arrow">${rightArrowSVG}</span>`}
       </li>
     `

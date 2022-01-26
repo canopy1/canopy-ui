@@ -1,5 +1,6 @@
 import { html, css } from "lit";
 import { dashboardLogoSVG } from "../icons/inline"
+import { defaults } from './defaults';
 
 const demoDashboardCSS = css`
   #DashboardDemo {
@@ -100,7 +101,7 @@ const demoDashboardCSS = css`
 
 export default {
   title: 'Demos/Dashboard',
-  parameters:{
+  parameters: {
     layout: 'fullscreen',
   },
   argTypes: {
@@ -113,7 +114,10 @@ export default {
     AltBackgroundColor: {
       control: { type: 'color' }
     },
-    BorderRadius: {
+    ContainerBorderRadius: {
+      control: { type: 'number' }
+    },
+    ButtonBorderRadius: {
       control: { type: 'number' }
     },
     Logo: {
@@ -122,7 +126,7 @@ export default {
   }
 };
 
-const Template = ({ PrimaryColor, BorderRadius, AltBackgroundColor, ButtonHoverColor, Logo }) => {
+const Template = ({ PrimaryColor, ContainerBorderRadius, AltBackgroundColor, ButtonBorderRadius, ButtonHoverColor, Logo }) => {
 
   const paymentMeta = {
     due_by: "8/20/2021",
@@ -305,7 +309,8 @@ const Template = ({ PrimaryColor, BorderRadius, AltBackgroundColor, ButtonHoverC
       :root {
         --cui-color-primary: ${PrimaryColor};
         --cui-btn-background-color-hover: ${ButtonHoverColor};
-        --cui-border-radius: ${BorderRadius}px;
+        --cui-border-radius: ${ContainerBorderRadius}px;
+        --cui-btn-border-radius: ${ButtonBorderRadius}px;
       }
 
       .sidebar {
@@ -365,8 +370,5 @@ const Template = ({ PrimaryColor, BorderRadius, AltBackgroundColor, ButtonHoverC
 
 export const InstallmentLoan = Template.bind({});
 InstallmentLoan.args = {
-   PrimaryColor: '#4867FF',
-   ButtonHoverColor: '#443CF8',
-   AltBackgroundColor: '#F2F5FD',
-   BorderRadius: 16
+  ...defaults,
 };

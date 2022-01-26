@@ -1,0 +1,77 @@
+import { html } from "lit";
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import { LoansList } from "./loans_list";
+
+<Meta title="Components/LoansList" />
+
+export const Default = () => {
+  const fields = [
+    { key: "BNPL Loan #02938", value: 18238 },
+    { key: "BNPL Loan #02945", value: 9377 },
+    { key: "BNPL Loan #02990", value: 42913 },
+  ];
+  return html` <cui-loans-list fields=${JSON.stringify(fields)} style="width: 300px"> </cui-loans-list> `;
+};
+
+# ExternalFields (`cui-loans-list`)
+
+List of key-value fields with formatting support. The key is used as the row's label and can be anything you want it to be.
+
+## Example
+
+<br />
+
+### JavaScript
+
+```html
+<div id="loans-list-container"></div>
+
+<script>
+  const externalFieldsEl = document.createElement("cui-loans-list");
+  const fields = [
+    { key: "Disbursement Fee", value: 12_00 },
+    { key: "Origination Date", value: "6/14/2020" },
+    { key: "Origination Fee", value: 54_38 },
+    { key: "Discount Amount", value: 939_00 },
+    { key: "Discount Date", value: "2020-08-03T09:10:14+00:00" },
+    { key: "Loan Amount", value: 1000_00 },
+  ];
+  const format = {
+    "Disbursement Fee": "centsToDollars",
+    "Origination Fee": "centsToDollars",
+    "Discount Amount": "centsToDollars",
+    "Discount Date": "m/d/yy",
+    "Loan Amount": "centsToDollars",
+  };
+  externalFieldsEl.setAttribute("fields", JSON.stringify(fields));
+  externalFieldsEl.setAttribute("format", JSON.stringify(format));
+  document.getElementById("loans-list-container").appendChild(externalFieldsEl);
+</script>
+```
+
+<Canvas>
+  <Story name="Default">{Default.bind({})}</Story>
+</Canvas>
+
+## API
+
+### Attributes/Properties
+
+| property       | type                         | default |
+| -------------- | ---------------------------- | ------- |
+| fields[].key   | string                       |         |
+| fields[].value | number, string               |         |
+| format [key]   | string                       |         |
+| format [value] | "centsToDollars", "m/d/yyyy" |         |
+
+### Events
+
+_None_
+
+### CSS Custom Properties
+
+| property                           |
+| ---------------------------------- |
+| --cui-li-even-row-background-color |
+
+This component consists of CanopyUI's [Card](/docs/elements-card--default) and [List Item](/docs/elements-list-item--default) elements. To customize the css variables for these elements, see `--cui-card-` and `--cui-li-` prefixed variables in the variables.css file.

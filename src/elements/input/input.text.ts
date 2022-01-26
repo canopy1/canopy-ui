@@ -44,11 +44,17 @@ export class inputText extends LitElement {
   @property({ attribute: 'class', type: String })
   public class = '';
 
+  @property({ attribute: 'type', type: String })
+  public type = 'text';
+
   @property({ attribute: 'name', type: String })
   public name = '';
 
   @property({ attribute: 'value', type: String })
   public value = '';
+
+  @property({ attribute: 'error', type: String })
+  public error = '';
 
   @property({ attribute: 'id', type: String })
   public id = '';
@@ -57,22 +63,25 @@ export class inputText extends LitElement {
   public placeholder = '';
 
   @property({ attribute: 'required', type: Boolean })
-  public required = null;
+  public required = false;
 
   @property({ attribute: 'disabled', type: Boolean })
-  public disabled = null;
+  public disabled = false;
+
+  constructor() {
+    super()
+    this._handleChange = this._handleChange.bind(this);
+  }
+
+  private _handleChange(e: { target: HTMLInputElement }) {
+    this.dispatchEvent(new CustomEvent("change", { detail: { value: e.target.value } }))
+  }
 
   render(): TemplateResult<1> {
     return html`
-      <input
-        class="${this.class}"
-        type="text"
-        name="${this.name}"
-        value="${this.value}"
-        placeholder="${this.placeholder}"
-        ${this.required && 'required'}
-        ${this.disabled && 'disabled'}
-      </input>
+      ${this.error && html`<div>${this.error}</div>`}
+      <input class="${this.class}" type="${this.type}" name="${this.name}" placeholder="${this.placeholder}"
+        @keyup=${this._handleChange} ${this.required && 'required' } ${this.disabled && 'disabled' } </input>
     `
   }
 }
