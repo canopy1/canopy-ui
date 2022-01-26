@@ -3,7 +3,7 @@ import { html } from "lit";
 import { flexportVars, defaultControls, demoDashboardCSS } from './defaults';
 
 export default {
-  title: "Flexport Demo/Login",
+  title: "Flexport Demo",
   parameters: {
     layout: "fullscreen",
   },
@@ -17,6 +17,7 @@ const Template = ({
   AuthBgImgUrl,
   BaseFontSize,
   ButtonBorderRadius,
+  ButtonFontSize,
   ButtonHeight,
   ButtonHoverColor,
   ContainerBorderRadius,
@@ -39,13 +40,13 @@ const Template = ({
     console.log(email, password)
 
     if (email === "hello@flexport.com" && password === "password") {
-      linkTo("Demos/Dashboard", "Multiloan Account V 2")();
+      linkTo("Flexport Demo", "Dashboard")();
       console.log('logging in...')
       return;
     }
 
     console.log('invalid credentials...')
-    linkTo("Demos/InvalidLogin", "Invalid Login")();
+    linkTo("Flexport Demo", "Invalid Login")();
   }
 
   return html`
@@ -57,6 +58,7 @@ const Template = ({
         --cui-btn-background-color-hover: ${ButtonHoverColor};
         --cui-border-radius: ${ContainerBorderRadius}px;
         --cui-btn-border-radius: ${ButtonBorderRadius}px;
+        --cui-btn-font-size: ${ButtonFontSize}px;
         --cui-btn-height: ${ButtonHeight}px;
         --cui-input-border-radius: var(--cui-btn-border-radius);
         --cui-color-black: ${TextDark};
@@ -65,6 +67,7 @@ const Template = ({
         --cui-input-border-color: ${InputBorderColor};
         --cui-input-border-color-active: ${InputBorderFocusColor};
         --cui-input-border-width: ${InputBorderWidth}px;
+        --cui-input-font-size: ${ButtonFontSize}px;
         --cui-font-size-base: ${BaseFontSize}px;
         --cui-input-padding-horizontal: ${InputPaddingHorizontal}px;
         --cui-input-height: ${InputHeight}px;
@@ -105,8 +108,8 @@ const Template = ({
           </cui-input-text>
           <cui-btn @click=${(e) => handleClick(e)} >Login</cui-btn>
         </cui-card>
-        <a data-sb-kind="Demos" data-sb-story="Register" href="#">Register New Account</a><br />
-        <a data-sb-kind="Demos" data-sb-story="Password Reminder"href="#">Forgot Password?</a>
+        <a data-sb-kind="Flexport Demo" data-sb-story="Register" href="#">Register New Account</a><br />
+        <a data-sb-kind="Flexport Demo" data-sb-story="Forgot Password"href="#">Forgot Password?</a>
       </div>
     </div>
   `;

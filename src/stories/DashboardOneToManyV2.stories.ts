@@ -1,60 +1,70 @@
 import { html } from "lit";
-import { defaults } from "./defaults";
+import { flexportVars, defaultControls } from './defaults';
 import "../organisms/dashboard/dashboard"
 
 export default {
-  title: "Demos/Dashboard",
+  title: "Flexport Demo",
   parameters: {
     layout: "fullscreen",
   },
   argTypes: {
-    PrimaryColor: {
-      control: { type: "color" },
-    },
-    ButtonHoverColor: {
-      control: { type: "color" },
-    },
-    AltBackgroundColor: {
-      control: { type: "color" },
-    },
-    ContainerBorderRadius: {
-      control: { type: "number" },
-    },
-    ButtonBorderRadius: {
-      control: { type: "number" },
-    },
-    logoUrl: {
-      control: { type: "string" },
-    },
+    ...defaultControls
   },
 };
 
 const Template = ({
-  PrimaryColor,
-  ContainerBorderRadius,
   AltBackgroundColor,
+  BaseFontSize,
   ButtonBorderRadius,
+  ButtonFontSize,
+  ButtonHeight,
   ButtonHoverColor,
+  ContainerBorderRadius,
+  DangerColor,
+  InputBorderColor,
+  InputBorderWidth,
+  InputHeight,
+  InputPaddingHorizontal,
+  InputPlaceholderTextColor,
+  InputBorderFocusColor,
   logoUrl,
+  PrimaryColor,
+  SuccessColor,
+  TextBody,
+  TextDark,
 }) => {
   return html`
     <style>
       :root {
+        --cui-text-color-body: ${TextBody};
         --cui-color-primary: ${PrimaryColor};
+        --cui-color-danger: ${DangerColor};
+        --cui-color-success: ${SuccessColor};
+        --cui-background-color-alt: ${AltBackgroundColor};
         --cui-btn-background-color-hover: ${ButtonHoverColor};
         --cui-border-radius: ${ContainerBorderRadius}px;
         --cui-btn-border-radius: ${ButtonBorderRadius}px;
-      }
-
-      .sidebar {
-        background-color: ${AltBackgroundColor};
+        --cui-btn-font-size: ${ButtonFontSize}px;
+        --cui-btn-height: ${ButtonHeight}px;
+        --cui-input-border-radius: var(--cui-btn-border-radius);
+        --cui-color-black: ${TextDark};
+        --cui-text-color-headers: var(--cui-color-black);
+        --cui-btn-text-color: var(--cui-color-black);
+        --cui-input-border-color: ${InputBorderColor};
+        --cui-input-border-color-active: ${InputBorderFocusColor};
+        --cui-input-border-width: ${InputBorderWidth}px;
+        --cui-input-font-size: ${ButtonFontSize}px;
+        --cui-font-size-base: ${BaseFontSize}px;
+        --cui-input-padding-horizontal: ${InputPaddingHorizontal}px;
+        --cui-input-height: ${InputHeight}px;
+        --cui-input-placeholder-color: ${InputPlaceholderTextColor};
       }
     </style>
-    <cui-dashboard logoUrl=${logoUrl}></cui-dashboard>
+    <cui-dashboard logoUrl=${logoUrl} altBackgroundColor=${AltBackgroundColor}></cui-dashboard>
   `;
 };
 
-export const MultiloanAccountV2 = Template.bind({});
-MultiloanAccountV2.args = {
-  ...defaults,
+export const Dashboard = Template.bind({});
+Dashboard.args = {
+  ...flexportVars,
 };

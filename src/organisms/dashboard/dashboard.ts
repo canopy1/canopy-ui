@@ -31,16 +31,12 @@ const demoDashboardCSS = css`
     margin-bottom: 24px;
   }
 
-  img {
-    width: 150px;
-  }
-
   .sidebar {
-    background-color: #f2f5fd;
+    background-color: var(--cui-background-color-alt);
   }
 
   .sidebar .header {
-    background-color: var(--cui-color-primary);
+    background-color: var(--cui-background-color-alt);
     justify-content: center;
   }
 
@@ -140,8 +136,10 @@ export class Dashboard extends LitElement {
   static styles = paymentDetailsCSS;
 
   @property({ attribute: "logoUrl", type: String })
-  public logoUrl =
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Flexport_logo.svg/440px-Flexport_logo.svg.png";
+  public logoUrl = "/flexport-logo.png";
+
+  @property({ attribute: "altBackgroundColor", type: String })
+  public altBackgroundColor = "var(--cui-background-color-alt)";
 
   @state()
   private selectedLoan = 1;
@@ -180,7 +178,7 @@ export class Dashboard extends LitElement {
       <div id="DashboardDemo">
         <div class="sidebar">
           <div class="header">
-            <img src="${this.logoUrl}" />
+            <img src="${this.logoUrl}" width="120" />
           </div>
           <div class="content">
             <cui-payment

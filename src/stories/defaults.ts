@@ -1,8 +1,11 @@
 import { css } from "lit";
 
 export const flexportVars = {
-  BaseFontSize: 16,
+  BaseFontSize: 14,
   PrimaryColor: "#45DABE",
+  DangerColor: "#fa5959",
+  SuccessColor: "#27C5A7",
+  ButtonFontSize: 16,
   ButtonHeight: 56,
   ButtonHoverColor: "#27C5A7",
   AltBackgroundColor: "#24303E",
@@ -15,10 +18,10 @@ export const flexportVars = {
   InputHeight: 53,
   InputPaddingHorizontal: 20,
   InputPaddingVertical: 13,
-  MobileHeaderColor: "68ADFF",
+  MobileHeaderColor: "#24303E",
   ContainerBorderRadius: 0,
   ButtonBorderRadius: 5,
-  logoUrl: "http://retinab2.com/wp-content/uploads/2020/06/flexport-logow-r.png",
+  logoUrl: "/flexport-logo.png",
   AuthBgImgUrl: "https://www.flexport.com/static/signup-flow-background-decoration-a381d1e4863be9471489267b3a88c92f.png",
 }
 
@@ -26,7 +29,16 @@ export const defaultControls = {
   PrimaryColor: {
     control: { type: "color" },
   },
+  DangerColor: {
+    control: { type: "color" },
+  },
+  SuccessColor: {
+    control: { type: "color" },
+  },
   BaseFontSize: {
+    control: { type: "number" },
+  },
+  ButtonFontSize: {
     control: { type: "number" },
   },
   ButtonHeight: {
@@ -130,6 +142,15 @@ export const demoDashboardCSS = css`
 
   cui-input-text {
     margin-bottom: 16px;
+  }
+
+  .error {
+    background-color: var(--cui-color-danger);
+    border-radius: var(--cui-btn-border-radius);
+    color: var(--cui-color-white);
+    font-weight: 500;
+    margin-bottom: 16px;
+    padding: 12px;
   }
 
   @media only screen and (min-width: 768px) {
